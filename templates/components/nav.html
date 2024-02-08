@@ -1,0 +1,37 @@
+<nav
+  class="w-full z-40 flex px-5 items-center justify-center text-sm max-sm:justify-end py-10  bg-gray-950 fixed top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 text-white"
+  x-data="{open:false}"
+>
+  <a href="" class=" text-blue-500 font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
+  <ul class="flex justify-center items-center gap-10 w-1/5 max-sm:hidden">
+    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">Home</a>
+    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">Support</a>
+    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">FAQs</a>
+  </ul>
+  {% comment %} nav toggle {% endcomment %}
+  <section class='text-3xl py-6 px-5 absolute top-0   md:hidden w-full'>
+    <div class='flex justify-end items-center '>
+        <span @click="open=!open" class='text-4xl'><ion-icon name="reorder-four-outline"></ion-icon></span>
+    </div>
+</section>
+
+{% comment %} mobile nav {% endcomment %}
+<section class="fixed bg-gray-950 text-xl z-50 h-screen top-0 right-0  w-screen p-10 pt-10 md:hidden " x-show="open" x-transition x-transition.duration.500ms>
+    <div class='flex justify-end mb-20'>
+
+    <span class='text-xl' style='font-size:35px' span @click="open=!open"><ion-icon name="close-outline"></ion-icon></span>
+    </div>
+    <ul class=' flex flex-col gap-2 '>
+<a href="{%url 'home'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Home</a>
+    <a href="{%url 'login'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-in-outline" class='text-2xl'></ion-icon>Login</a>
+    <a href="{%url 'sign-up'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Get Started</a>
+    <a href="{%url 'markets'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="help-circle-outline" class='text-2xl'></ion-icon>About Us</a>
+
+
+    {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
+    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-500 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
+    </ul>
+</section>
+</nav>
