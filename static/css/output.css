@@ -831,6 +831,18 @@ video {
   height: 100vh;
 }
 
+.h-\[\] {
+  height: ;
+}
+
+.h-\[70\] {
+  height: 70;
+}
+
+.h-\[70vh\] {
+  height: 70vh;
+}
+
 .w-1\/12 {
   width: 8.333333%;
 }
@@ -1196,6 +1208,14 @@ video {
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-20 {
+  padding: 5rem;
+}
+
+.p-36 {
+  padding: 9rem;
 }
 
 .px-10 {
