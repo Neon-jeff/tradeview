@@ -15,8 +15,8 @@
 Revolutionize your trading experience with our secure and user-friendly crypto broker platform. Trade seamlessly and explore endless possibilities!</p>
          {% comment %} button holder {% endcomment %}
          <div class='pt-2 flex justify-center'>
-            <button class='bg-blue-500 p-3 px-10 rounded-full hover:-translate-y-2  mx-2 transition duration-150 ease-in'>Get Started</button>
-            <button class='border-blue-500 border-2 p-3 px-10 rounded-full mx-2 flex items-center gap-3'><i class="fa-regular fa-circle-play text-blue-500 text-2xl"></i>How it Works</button>
+            <a href="{%url 'sign-up'%}" class='bg-blue-500 p-3 px-10 rounded-full hover:-translate-y-2  mx-2 transition duration-150 ease-in'>Get Started</a>
+            <a href="{%url 'login'%}" class='border-blue-500 border-2 p-3 px-10 rounded-full mx-2 flex items-center gap-3'><i class="fa-regular fa-circle-play text-blue-500 text-2xl"></i>How it Works</a>
          </div>
     </section>
 
@@ -115,20 +115,20 @@ Our dedicated customer support team is here 24/7 to assist you. Experience promp
     <p class="text-center text-black w-1/2 max-sm:w-full mx-auto">
 Users praise our platform for seamless transactions, a vast array of assets, and top-notch security. Exceptional customer support enhances the overall positive trading experience.</p>
     <div class='grid lg:grid-cols-3 gap-10 text-black justify-center w-11/12 mx-auto reviews'>
-        <div class='flex flex-col gap-1 text-center shadow-lg rounded-md p-4'>
-        <img src="{%static 'images/2.jpg'%}" class='h-[200px] w-[200px] pb-3 self-center object-cover rounded-full' alt="">
+        <div class='flex flex-col gap-2 justify-center  shadow-lg rounded-md p-4'>
+        <ion-icon name="people" class="text-4xl pb-5 text-blue-500 "></ion-icon>
         <p>The system security is top notch, i was in need of a safe place to invest and this plaform helped alot</p>
         <p class='font-semibold'>William Joe</p>
         <p class='text-blue-500'>Trader, U.K</p>
         </div>
-        <div class='flex flex-col gap-1 text-center shadow-lg  rounded-md p-4'>
-        <img src="{%static 'images/5.jpg'%}" class='h-[200px] w-[200px] pb-3 self-center object-cover rounded-full' alt="">
+        <div class='flex flex-col gap-2 justify-center shadow-lg  rounded-md p-4'>
+        <ion-icon name="people" class="text-4xl pb-5 text-blue-500"></ion-icon>
         <p>Unmatched security backed by attentive support. I confidently explore different markets, knowing my assets are safe.</p>
         <p class='font-semibold'>Stan Chad</p>
         <p class='text-blue-500'>Trader, U.K</p>
         </div>
-        <div class='flex flex-col gap-1 text-center shadow-lg  rounded-md p-4'>
-        <img src="{%static 'images/6.jpg'%}" class='h-[200px] w-[200px] pb-3 self-center object-cover rounded-full' alt="">
+        <div class='flex flex-col gap-2 justify-center shadow-lg  rounded-md p-4'>
+        <ion-icon name="people" class="text-4xl pb-5 text-blue-500"></ion-icon>
         <p>Slick transactions! I've seamlessly sold and bought crypto assets. The platform's efficiency elevates the trading experience.</p>
         <p class='font-semibold'>Davion Mitchell</p>
         <p class='text-blue-500'>Design enthusiast, Omar</p>
