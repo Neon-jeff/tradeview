@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 
-if env('DEV'):
+if env('PROD')=='False':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
