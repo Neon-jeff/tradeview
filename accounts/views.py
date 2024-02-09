@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+from django.core import serializers
 
 # Create your views here.
 
@@ -63,31 +64,42 @@ def Logout(request):
 
 @login_required(login_url='login')
 def Dashboard(request):
+    user_profile=Profile.objects.filter(user=request.user)
+    user_json=serializers.serialize('json',user_profile)
     assets=FetchCoinData()
-    return render(request,'dashboard/dashboard.html',{"assets":assets})
+    return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json})
 
+@login_required(login_url='login')
 def Assets(request):
+    user_profile=Profile.objects.filter(user=request.user)
+    user_json=serializers.serialize('json',user_profile)
     assets=FetchCoinData()
-    return render(request,'dashboard/assets.html',{"assets":assets})
+    return render(request,'dashboard/assets.html',{"assets":assets,"user":user_json})
 
+@login_required(login_url='login')
 def Trades(request):
     assets=FetchCoinData()
+    user_profile=Profile.objects.filter(user=request.user)
+    user_json=serializers.serialize('json',user_profile)
     if request.method=='POST':
         data=request.POST
         print(request.POST)
         return JsonResponse({"status":"success"},safe=False)
-    return render(request,'dashboard/trades.html',{"assets":assets})
+    return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json})
 
 def UserCoinBalance(request):
     pass
 
+@login_required(login_url='login')
 def Market(request):
     assets=FetchCoinData()
     return render(request,'dashboard/markets.html',{"assets":assets})
 
+@login_required(login_url='login')
 def CoinDetails(request):
     pass
 
+@login_required(login_url='login')
 def Deposit(request):
     wallet_address=[
         {
@@ -138,6 +150,7 @@ def Deposit(request):
     ]
     return render(request,'dashboard/deposit.html',{"wallets":wallet_address})
 
+@login_required(login_url='login')
 def Withdraw(request):
     wallet_address=[
         {

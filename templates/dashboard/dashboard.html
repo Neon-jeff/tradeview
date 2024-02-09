@@ -5,6 +5,7 @@
 
 <section class="bg-gray-950 h-full text-white max-sm:pt-24" x-data="assets">
 {{ assets|json_script:"assets"}}
+{{user|json_script:"user"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
 
@@ -124,7 +125,7 @@
     <span class='w-[60px] h-[60px] flex  justify-center items-center p-5 text-xl bg-gray-950 rounded-full'>
     <ion-icon name="wallet-outline"></ion-icon>
     </span>
-    <p><span class='text-xs text-slate-200 flex gap-2 items-center'>Total Balance <span><i class="fa-regular fa-eye"></i></span></span>  <span class='text-2xl font-medium'>$0.00</span></p>
+    <p><span class='text-xs text-slate-200 flex gap-2 items-center'>Total Balance <span><i class="fa-regular fa-eye"></i></span></span>  <span class='text-2xl font-medium'>${{request.user.profile.dollar_balance}}.00</span></p>
     </div>
     <p class='text-green-600 bg-green-300 p-2 rounded-md text-xs font-semibold'>Live</p>
 </div>
@@ -163,6 +164,8 @@
     document.addEventListener('alpine:init', () => {
          let form=new FormData(document.querySelector('form'))
         const assets = JSON.parse(document.getElementById("assets").textContent);
+        const user = JSON.parse(document.getElementById("user").textContent)[0];
+        console.log(user)
         Alpine.data('assets', () => ({
             query:'',
             coins: assets,
