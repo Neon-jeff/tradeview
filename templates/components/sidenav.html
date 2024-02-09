@@ -1,5 +1,5 @@
 <div x-data="{open:false}" class='text-gray-300'>
-<section class="fixed bg-gray-900  text-sm h-screen  flex flex-col justify-center w-1/5 p-5 max-sm:hidden ">
+<section class="fixed bg-gray-900  text-sm h-screen  flex flex-col justify-center w-1/5 p-5 max-md:hidden ">
     <a href="" >{% include "components/logo.html" %}</a>
     <ul class=' flex flex-col gap-2 mt-10 justify-center '>
     <a href="{%url 'dashboard'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
@@ -17,7 +17,7 @@
 
 <section class='text-3xl py-6 px-5 absolute top-0   md:hidden w-full'>
     <div class='flex justify-between items-center '>
-        <span @click="open=!open" class='text-4xl'><ion-icon name="reorder-four-outline"></ion-icon></span>
+        <span @click="open=!open" class='text-4xl'><ion-icon name="menu-outline"></ion-icon></span>
 {% include "components/path.html" %}
     </div>
 </section>
@@ -39,7 +39,7 @@
     {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
     <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
     <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
-    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-500 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
+    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-600 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
     </ul>
 </section>
 

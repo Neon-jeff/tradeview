@@ -1,17 +1,17 @@
 <nav
-  class="w-full z-40 flex px-5 items-center justify-center text-sm max-sm:justify-end py-10  bg-gray-950 fixed top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 text-white"
+  class="w-full z-40 flex px-5 items-center justify-center text-sm max-md:justify-end py-10  bg-gray-950 fixed top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 text-white"
   x-data="{open:false}"
 >
-  <a href="" class=" text-blue-500 font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
-  <ul class="flex justify-center items-center gap-10 w-1/5 max-sm:hidden">
-    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">Home</a>
-    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">Support</a>
-    <a href="" class="hover:text-blue-500 transition duration-150 ease-in">FAQs</a>
+  <a href="" class=" text-blue-600 font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
+  <ul class="flex justify-center items-center gap-10 w-1/5 max-md:hidden">
+    <a href="" class="hover:text-blue-600 transition duration-150 ease-in">Home</a>
+    <a href="" class="hover:text-blue-600 transition duration-150 ease-in">Support</a>
+    <a href="" class="hover:text-blue-600 transition duration-150 ease-in">FAQs</a>
   </ul>
   {% comment %} nav toggle {% endcomment %}
   <section class='text-3xl py-6 px-5 absolute top-0   md:hidden w-full'>
     <div class='flex justify-end items-center '>
-        <span @click="open=!open" class='text-4xl'><ion-icon name="reorder-four-outline"></ion-icon></span>
+        <span @click="open=!open" class='text-4xl'><ion-icon name="menu-outline"></ion-icon></span>
     </div>
 </section>
 
@@ -31,7 +31,7 @@
     {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
     <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
     <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
-    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-500 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
+    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-600 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
     </ul>
 </section>
 </nav>

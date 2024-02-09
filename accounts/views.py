@@ -64,26 +64,36 @@ def Logout(request):
 
 @login_required(login_url='login')
 def Dashboard(request):
-    user_profile=Profile.objects.filter(user=request.user)
-    user_json=serializers.serialize('json',user_profile)
+    user_profile=Profile.objects.filter(user=request.user).first()
+    user_json=user_profile.serialize()
     assets=FetchCoinData()
     return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json})
 
 @login_required(login_url='login')
 def Assets(request):
-    user_profile=Profile.objects.filter(user=request.user)
-    user_json=serializers.serialize('json',user_profile)
+    user_profile=Profile.objects.filter(user=request.user).first()
+    user_json=user_profile.serialize()
     assets=FetchCoinData()
     return render(request,'dashboard/assets.html',{"assets":assets,"user":user_json})
 
 @login_required(login_url='login')
 def Trades(request):
     assets=FetchCoinData()
-    user_profile=Profile.objects.filter(user=request.user)
-    user_json=serializers.serialize('json',user_profile)
+    user_profile=Profile.objects.filter(user=request.user).first()
+    user_json=user_profile.serialize()
     if request.method=='POST':
         data=request.POST
-        print(request.POST)
+        Trade.objects.create(
+            user=request.user,
+            amount=int(data['amount']),
+            currency=data['currency'],
+            take_profit=int(data['take_profit']),
+            stop_loss=int(data['stop_loss']),
+            duration=data["duration"]
+        )
+        request.user.profile.dollar_balance=request.user.profile.dollar_balance-int(data["amount"])
+        request.user.profile.save()
+        messages.success(request,"Open trade successful")
         return JsonResponse({"status":"success"},safe=False)
     return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json})
 

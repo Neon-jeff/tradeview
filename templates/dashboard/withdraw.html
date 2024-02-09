@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<section class="bg-gray-950 h-full text-white max-sm:pt-24">
+<section class="bg-gray-950 text-white max-md:pt-24">
 {{ wallets|json_script:"wallets"}}
 {% include "components/sidenav.html" %}
 
 {% comment %} main content {% endcomment %}
-<div class="ml-72 max-sm:ml-0 p-5 ">
-<div class='max-sm:hidden'>
+<div class="ml-72 max-md:ml-0 p-5 ">
+<div class='max-md:hidden'>
 {% include "components/path.html" %}
 </div>
 
@@ -18,10 +18,10 @@
 <div x-data="assets">
     <h1 class='text-2xl font-medium pb-4'>Withdraw</h1>
     <!-- main container -->
-    <div class="bg-gray-900 p-10 max-sm:p-3 rounded-md  flex justify-center">
+    <div class="bg-gray-900 p-10 max-md:p-3 rounded-md  flex justify-center">
 
-        <form action="" class="flex flex-col gap-5 w-4/5 max-sm:w-full">
-                   <p class="text-sm text-gray-400 font-medium  flex items-center gap-3 max-sm:flex-col max-sm:items-start"><ion-icon name="alert-circle-outline" class="text-2xl text-green-500"></ion-icon>Fund your trading account by paying your choice of cryptocurrency and upload corresponding payment proof</p>
+        <form action="" class="flex flex-col gap-5 w-4/5 max-md:w-full">
+                   <p class="text-sm text-gray-400 font-medium  flex items-center gap-3 max-md:flex-col max-md:items-start"><ion-icon name="alert-circle-outline" class="text-2xl text-green-500"></ion-icon>Fund your trading account by paying your choice of cryptocurrency and upload corresponding payment proof</p>
             <fieldset class="flex flex-col gap-2">
                 <label for="">Select Currency:</label>
                 <!-- default select tab -->
@@ -52,10 +52,10 @@
             <fieldset class="flex flex-col gap-2">
                 <label for="">Address:</label>
                 <span class="w-full bg-gray-950 flex justify-between items-center p-3 rounded-md">
-                    <input type="text" name="address" :placeholder="currentCoin.name + ' address' " class="bg-gray-950 p-2 addr w-full text-sm text-blue-500  rounded-md" >
+                    <input type="text" name="address" :placeholder="currentCoin.name + ' address' " class="bg-gray-950 p-2 addr w-full text-sm text-blue-600  rounded-md" >
                                     <span class='flex items-center justify-center p-3 rounded-md text-sm gap-2 bg-gray-900 '>
                                     <img :src="currentCoin.image" alt="" class='h-[20px] w-[30]'>
-                 <span class='max-sm:text-xs' x-text="currentCoin.name"></span>
+                 <span class='max-md:text-xs' x-text="currentCoin.name"></span>
                 </span>
                 </span>
                 <!-- current balance -->

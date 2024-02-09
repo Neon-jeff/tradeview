@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<section class="bg-gray-950 h-full text-white max-sm:pt-24">
+<section class="bg-gray-950 text-white max-md:pt-24">
 {{ assets|json_script:"assets"}}
 {% include "components/sidenav.html" %}
 
 {% comment %} main content {% endcomment %}
-<div class="ml-72 max-sm:ml-0 p-5 ">
-<div class='max-sm:hidden'>
+<div class="ml-72 max-md:ml-0 p-5 ">
+<div class='max-md:hidden'>
 {% include "components/path.html" %}
 </div>
 
@@ -19,7 +19,7 @@
 {% comment %} assets container {% endcomment %}
 <div class='flex flex-col gap-5 text-sm' x-data="assets">
 <h1 class='text-2xl font-medium'>Markets</h1>
-<div class="  bg-gray-800 flex items-center w-1/3 max-sm:w-full rounded-full p-2 ">
+<div class="  bg-gray-800 flex items-center w-1/3 max-md:w-full rounded-full p-2 ">
     <ion-icon name="search-outline" class="text-2xl text-gray-300  p-1"></ion-icon>
     <input type="text" x-model="query" placeholder="search coins" x-on:input="updateCoins" class="p-3 w-full  bg-transparent rounded-full">
 </div>
@@ -29,12 +29,12 @@
 
 {% comment %} asset items {% endcomment %}
 <template x-for="asset in matchingCoins" :key="asset.name" x-show.important="!empty">
-<div class='flex justify-between py-2 px-3 bg-gray-900 rounded-md items-center [&>*]:w-1/4 gap-10 max-sm:gap-5 max-sm:text-xs    '>
+<div class='flex justify-between py-2 px-3 bg-gray-900 rounded-md items-center [&>*]:w-1/4 gap-10 max-md:gap-5 max-md:text-xs    '>
 <img :src="asset.image" alt="" class='h-[40px] w-1/12 object-contain flex first:w-1/12  '>
 <h1 x-text="asset.name"></h1>
 <p>0.00</p>
 <p x-text="asset.price">{{asset.price | floatformat}}</p>
-<a href="{%url 'trades'%}" class="p-3 bg-blue-500 rounded-md text-center">Trade</a>
+<a href="{%url 'trades'%}" class="p-3 bg-blue-600 rounded-md text-center">Trade</a>
 </div>
 </template>
 

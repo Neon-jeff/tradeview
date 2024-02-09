@@ -3,17 +3,17 @@
 {% block content %}
 
 <main class='h-screen py-10 bg-black flex items-center justify-center text-[.8rem]'>
-<div class='bg-blue-500 w-full py-4 absolute top-5 blur-3xl opacity-50'>
+<div class='bg-blue-600 w-full py-4 absolute top-5 blur-3xl opacity-50'>
 </div>
     {%include "components/alerts.html"%}
     {% include "components/nav.html" %}
     <section class='w-full relative'>
-            {% comment %} <div class='bg-blue-400 w-4/5 max-sm:w-full py-5 h-[100vh] rounded-full opacity-[.1] z-10 shadow-2xl shadow-blue-500 blur-3xl absolute left-[50%] -translate-x-1/2'></div> {% endcomment %}
+            {% comment %} <div class='bg-blue-400 w-4/5 max-md:w-full py-5 h-[100vh] rounded-full opacity-[.1] z-10 shadow-2xl shadow-blue-600 blur-3xl absolute left-[50%] -translate-x-1/2'></div> {% endcomment %}
 
             <form action="" method="post" class='w-2/5 max-md:w-11/12 flex flex-col gap-5 mt-24 p-10 mx-auto  bg-gray-950 shadow-sm shadow-blue-600  bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 rounded-md z-50 text-white' autocomplete="off">
             {% csrf_token %}
-            <p class='text-2xl text-center font-medium text-blue-500'>Create Account</p>
-           <div class="grid grid-cols-2 max-sm:grid-cols-1 gap-5">
+            <p class='text-2xl text-center font-medium text-blue-600'>Create Account</p>
+           <div class="grid grid-cols-2 max-md:grid-cols-1 gap-5">
              <fieldset class='flex gap-5 flex-col'>
             <label for="text">First Name</label>
             <input type="text" name="first_name" class='border-0 bg-transparent  rounded-sm placeholder:text-blue-600 border-b-2 border-white  focus:border-blue-300 active:bg-transparent focus:bg-transparent '  placeholder="first name" required>
@@ -31,8 +31,8 @@
            <input type="password" name="password" class='border-0 bg-transparent  rounded-sm placeholder:text-blue-600 border-b-2 border-white  focus:border-blue-300 '  placeholder="password" required>
         </fieldset>
            </div>
-        <button class='bg-blue-600 p-4 rounded-full w-1/2 self-center max-sm:w-4/5'>Register</button>
-        <p class='text-center'>Already Registered? <a href="{%url 'login'%}" class='text-blue-500'>Sign In</a></p>
+        <button class='bg-blue-600 p-4 rounded-full w-1/2 self-center max-md:w-4/5'>Register</button>
+        <p class='text-center'>Already Registered? <a href="{%url 'login'%}" class='text-blue-600'>Sign In</a></p>
 
     </form>
     </section>
