@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import datetime
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Profile(models.Model):
@@ -44,12 +45,22 @@ class Trade(models.Model):
     take_profit=models.IntegerField(null=True,blank=True)
     duration=models.CharField(null=True,blank=True,max_length=20)
     closed=models.BooleanField(default=False)
+    created=models.DateTimeField(auto_now_add=True,null=True,blank=True)
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} Trade '
 
 class Deposit(models.Model):
-    pass
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_deposit',null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
+    currency=models.CharField(null=True,blank=True,max_length=20)
+    proof=CloudinaryField('image',blank=True,null=True)
+    created=models.DateTimeField(auto_now_add=True,null=True,blank=True)
+    confirmed=models.BooleanField(blank=True,null=True,default=False)
+
+    def __str__(self):
+        return f'{self.user.first_name} {self.user.last_name} {self.currency} Deposit '
+
 
 class Withdrawal(models.Model):
     pass

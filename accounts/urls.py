@@ -8,7 +8,7 @@ urlpatterns = [
     path('assets/',Assets,name='assets'),
     path('trades/',Trades,name='trades'),
     path('markets/',Market,name='markets'),
-    path('deposit/',Deposit,name='deposits'),
+    path('deposit/',DepositFunds,name='deposits'),
     path('withdraw/',Withdraw,name='withdraws'),
     path('logout/',Logout,name='logout')
 ]

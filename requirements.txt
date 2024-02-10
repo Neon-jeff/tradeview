@@ -1,6 +1,7 @@
 asgiref==3.7.2
 certifi==2023.11.17
 charset-normalizer==3.3.2
+cloudinary==1.38.0
 dj-database-url==2.1.0
 Django==4.2.6
 django-appconf==1.0.5
@@ -16,6 +17,7 @@ psycopg2-binary==2.9.9
 rcssmin==1.1.1
 requests==2.31.0
 rjsmin==1.2.1
+six==1.16.0
 sqlparse==0.4.4
 typing_extensions==4.8.0
 tzdata==2023.3

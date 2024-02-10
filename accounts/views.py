@@ -110,7 +110,8 @@ def CoinDetails(request):
     pass
 
 @login_required(login_url='login')
-def Deposit(request):
+def DepositFunds(request):
+    user_deposits=Deposit.objects.filter(user=request.user)
     wallet_address=[
         {
             "name":"BTC",
@@ -158,7 +159,19 @@ def Deposit(request):
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
         }
     ]
-    return render(request,'dashboard/deposit.html',{"wallets":wallet_address})
+    # def get_image(name):
+    #     return
+    if request.method=='POST':
+        data=request.POST
+        image=request.FILES['image']
+        Deposit.objects.create(
+            user=request.user,
+            amount=data['amount'],
+            currency=data['currency'],
+            proof=image
+        )
+        return JsonResponse({"status":"success"},safe=False,status=200)
+    return render(request,'dashboard/deposit.html',{"wallets":wallet_address,"deposits":user_deposits})
 
 @login_required(login_url='login')
 def Withdraw(request):
