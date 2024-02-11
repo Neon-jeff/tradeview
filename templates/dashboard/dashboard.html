@@ -118,6 +118,7 @@
         </button>
     </form>
 </div>
+
 {% comment %} balance and widget container {% endcomment %}
 <div class='flex flex-col w-3/5 gap-10 max-md:w-full'>
 <div class='bg-gray-900 h-64 rounded-md p-5 flex flex-col justify-between'>
@@ -152,6 +153,8 @@
 
 
 </div>
+
+{% include "dashboard/summary.html" %}
 {% comment %} trading widget {% endcomment %}
 <div class='bg-gray-900 p-5 rounded-md h-[600px]'>
 <!-- TradingView Widget BEGIN -->
