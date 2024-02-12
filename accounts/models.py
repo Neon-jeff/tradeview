@@ -20,7 +20,8 @@ class Profile(models.Model):
     bnb_balance=models.IntegerField(default=0,null=True,blank=True)
     sol_balance=models.IntegerField(default=0,null=True,blank=True)
     ada_balance=models.IntegerField(default=0,null=True,blank=True)
-    
+    profit=models.IntegerField(default=0,null=True,blank=True)
+
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} Profile '
     def serialize(self):

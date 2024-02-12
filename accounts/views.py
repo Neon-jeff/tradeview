@@ -81,6 +81,8 @@ def Trades(request):
     assets=FetchCoinData()
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
+    open_trades=Trade.objects.filter(user=request.user,closed=False).order_by('-id')
+    closed_trades=Trade.objects.filter(user=request.user,closed=True).order_by('-id')
     if request.method=='POST':
         data=request.POST
         Trade.objects.create(
@@ -95,7 +97,7 @@ def Trades(request):
         request.user.profile.save()
         messages.success(request,"Open trade successful")
         return JsonResponse({"status":"success"},safe=False)
-    return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json})
+    return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json,"open_trades":open_trades,"closed_trades":closed_trades})
 
 def UserCoinBalance(request):
     pass
@@ -224,3 +226,5 @@ def Withdraw(request):
     ]
     return render(request,'dashboard/withdraw.html',{"wallets":wallet_address})
 
+def CopyTrades(request):
+    return render(request,"dashboard/copy.html")

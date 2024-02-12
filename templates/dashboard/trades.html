@@ -7,6 +7,8 @@
 {% comment %} Coin data from request {% endcomment %}
 {{ assets|json_script:"assets"}}
 {{user|json_script:"user"}}
+{{ assets|json_script:"assets"}}
+{{trades|json_script:"trades"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
 {% include "components/error.html" %}
@@ -134,7 +136,32 @@
 {% comment %} main container end {% endcomment %}
 
 {% comment %} Trade History {% endcomment %}
-<div class='p-5 bg-gray-900 mt-10 rounded-md '> History</div>
+<div class='p-5 bg-gray-900 mt-10 rounded-md '>
+<h1>Trades History</h1>
+<div class="flex gap-5 text-sm py-5">
+    <button class="bg-gray-800 p-5 rounded-md">Open </button>
+<button class="bg-gray-800 p-5 rounded-md">Closed </button>
+</div>
+
+<!-- open trades wrappper -->
+<div class="flex flex-col gap-5">
+{% for trade in open_trades %}
+<div class="flex justify-between  max-sm:text-xs gap-3 items-center bg-gray-950 p-5 rounded-md">
+    <p class="flex flex-col gap-1"><span class="text-lg">${{trade.amount}}</span> <span>{{trade.created}}</span></p>
+    <p>{{trade.currency}}</p>
+
+    <p class="text-green-500">${{trade.take_profit}}</p>
+    <p>Won</p>
+
+</div>
+{% endfor %}
+</div>
+
+<!-- closed trades wrapper -->
+
+
+
+</div>
 </div>
 {% comment %} main end {% endcomment %}
 
@@ -146,7 +173,8 @@
          let form=new FormData(document.querySelector('form'))
         const assets = JSON.parse(document.getElementById("assets").textContent);
         const user = JSON.parse(document.getElementById("user").textContent);
-        console.log(user)
+        const trades = document.getElementById("trades").textContent
+        console.log(trades);
         Alpine.data('assets', () => ({
             query:'',
             coins: assets,

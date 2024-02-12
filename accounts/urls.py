@@ -10,5 +10,6 @@ urlpatterns = [
     path('markets/',Market,name='markets'),
     path('deposit/',DepositFunds,name='deposits'),
     path('withdraw/',Withdraw,name='withdraws'),
+    path('copy/',CopyTrades,name='withdraws'),
     path('logout/',Logout,name='logout')
 ]

@@ -1,0 +1,122 @@
+{% extends "dbase.html" %}
+{%load static%}
+
+{% block content %}
+
+<section class="bg-gray-950 h-screen  text-white max-md:pt-24" x-data="assets">
+
+{% include "components/sidenav.html" %}
+{% include "components/loader.html" %}
+{% include "components/trader-copy.html" %}
+{% include "components/alerts.html" %}
+
+{% comment %} main content {% endcomment %}
+<div class="ml-72 max-md:ml-0 p-5 ">
+<div class='max-md:hidden'>
+{% include "components/path.html" %}
+</div>
+
+<!-- Copy Experts -->
+
+<div class="text-sm">
+    <h1 class="text-2xl font-medium pb-2">Copy Experts</h1>
+    <p class="text-gray-200">Increase your win rate by copying trades from experts</p>
+    <p class="text-gray-200 text-lg font-medium py-5 mt-10">Available Experts</p>
+
+    <!-- Experts cards -->
+
+    <div class="bg-gray-900 p-5 w-1/2 max-md:w-full rounded-md">
+        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
+            <span class="flex items-center gap-4">
+                <img src="{%static 'images/expert.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
+                Calvin Hill
+                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
+            </span>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+        </span>
+
+        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
+            <span class="flex flex-col text-gray-300">
+                Win Rate
+                <span class="text-lg text-gray-100 font-medium">100%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Wins
+                <span class="text-lg text-gray-100 font-medium">204</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Profit Share
+                <span class="text-lg text-gray-100 font-medium">25%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Losses
+                <span class="text-lg text-gray-100 font-medium">0</span>
+            </span>
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        const assets = []
+        Alpine.data('assets', () => ({
+            coins: assets,
+            currentCoin:assets[0],
+            setCurrentCoin(name){
+                this.currentCoin=this.coins.find(item=>item.name==name)
+                this.show=false
+            },
+            show:false,
+            upload:false,
+            fileName:'',
+            copied:false,
+            handleFileChange(e){
+                this.fileName=e.target.files[0].name
+                this.upload=true
+            },
+            async copytoClipboard(){
+                this.errorMessage="Trader Copied"
+                this.showError=true
+
+            },
+            // MAKE DEPOSIT WITH THIS FUNCTION
+            async submitForm(e){
+                e.preventDefault()
+                if(e.target.image.files.length==0){
+                    this.errorMessage="Upload Payment Proof"
+                    this.showError=true
+                    console.log("nothing");
+                    return
+                }
+                form.set('amount',e.target.amount.value)
+                form.set('image',e.target.image.files[0])
+                form.set('currency',this.currentCoin.name)
+                this.showLoader=true
+                await fetch('',{
+                    body:form,
+                    method:'post',
+                }).then(async (res)=>{
+                    let data=await res.json()
+                    if (res.status==200){
+                        await window.location.reload()
+
+                    }
+                })
+
+            },
+            showLoader:false,
+            showError:false,
+            errorMessage:"Something went wrong",
+        }))
+    })
+</script>
+</section>
+
+{% endblock content %}
+
+
