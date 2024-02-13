@@ -4,9 +4,10 @@
 {% block content %}
 
 <section class="bg-gray-950 h-screen  text-white max-md:pt-24" x-data="assets">
-
+{{user|json_script:"user"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
+{% include "components/error.html" %}
 {% include "components/trader-copy.html" %}
 {% include "components/alerts.html" %}
 
@@ -63,6 +64,7 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
+        const user = JSON.parse(document.getElementById("user").textContent);
         const assets = []
         Alpine.data('assets', () => ({
             coins: assets,
@@ -80,8 +82,14 @@
                 this.upload=true
             },
             async copytoClipboard(){
-                this.errorMessage="Trader Copied"
-                this.showError=true
+                if(parseInt(user.dollar_balance)<10000){
+                    this.errorMessage="Minimum of $10,000 required to copy expert.\nFund your account"
+                    this.showError=true
+                }
+                else{
+                    this.copyMessage="Trader Copied"
+                    this.showCopy=true
+                }
 
             },
             // MAKE DEPOSIT WITH THIS FUNCTION
@@ -90,7 +98,6 @@
                 if(e.target.image.files.length==0){
                     this.errorMessage="Upload Payment Proof"
                     this.showError=true
-                    console.log("nothing");
                     return
                 }
                 form.set('amount',e.target.amount.value)
@@ -112,6 +119,8 @@
             showLoader:false,
             showError:false,
             errorMessage:"Something went wrong",
+            showCopy:false,
+            copyMessage:"Expert copied"
         }))
     })
 </script>

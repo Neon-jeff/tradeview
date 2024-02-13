@@ -36,7 +36,8 @@ class Profile(models.Model):
             "btc_balance":self.btc_balance,
             "sol_balance":self.sol_balance,
             "usdt_balance":self.usdt_balance,
-            "usdc_balance":self.usdc_balance
+            "usdc_balance":self.usdc_balance,
+            "profit":self.profit
         }
 
 class Trade(models.Model):

@@ -128,7 +128,9 @@
     <span class='w-[60px] h-[60px] flex  justify-center items-center p-5 text-xl bg-gray-950 rounded-full'>
     <ion-icon name="wallet-outline"></ion-icon>
     </span>
-    <p><span class='text-xs text-slate-200 flex gap-2 items-center'>Total Balance <span><i class="fa-regular fa-eye"></i></span></span>  <span class='text-2xl font-medium'>${{request.user.profile.dollar_balance|add:request.user.profile.profit}}.00</span></p>
+    <p><span class='text-xs text-slate-200 flex gap-2 items-center'>Total Balance <span><ion-icon name="eye" class="text-lg text-white" @click="hideBalance" x-show="balanceHidden" ></ion-icon>
+    <ion-icon name="eye-off" class="text-lg text-white" x-show="!balanceHidden" @click="hideBalance"></ion-icon>
+    </span></span>  <span class='text-2xl font-medium balance'>${{request.user.profile.dollar_balance|add:request.user.profile.profit}}.00</span></p>
     </div>
     <p class='text-green-600 bg-green-300 p-2 rounded-md text-xs font-semibold'>Live</p>
 </div>
@@ -170,7 +172,7 @@
          let form=new FormData(document.querySelector('form'))
         const assets = JSON.parse(document.getElementById("assets").textContent);
         const user = JSON.parse(document.getElementById("user").textContent);
-        console.log(user)
+        let balance_el=document.querySelector('.balance')
         Alpine.data('assets', () => ({
             query:'',
             coins: assets,
@@ -234,6 +236,17 @@
             showLoader:false,
             showError:false,
             errorMessage:"Something went wrong",
+            balanceHidden:false,
+            hideBalance(){
+                this.balanceHidden=!this.balanceHidden
+                if (this.balanceHidden == true){
+                    balance_el.textContent='*****'
+                }
+                else{
+                    balance_el.textContent=`$${user.dollar_balance+user.profit}.00`
+                }
+            }
+
 
 
         }))

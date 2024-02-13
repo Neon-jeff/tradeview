@@ -227,4 +227,4 @@ def Withdraw(request):
     return render(request,'dashboard/withdraw.html',{"wallets":wallet_address})
 
 def CopyTrades(request):
-    return render(request,"dashboard/copy.html")
+    return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize()})
