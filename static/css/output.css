@@ -664,6 +664,22 @@ video {
   z-index: 50;
 }
 
+.z-\[1\] {
+  z-index: 1;
+}
+
+.z-\[5\] {
+  z-index: 5;
+}
+
+.z-\[-1\] {
+  z-index: -1;
+}
+
+.-z-20 {
+  z-index: -20;
+}
+
 .-mx-1 {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
@@ -715,6 +731,10 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .ml-72 {
   margin-left: 18rem;
 }
@@ -751,8 +771,8 @@ video {
   margin-top: 2rem;
 }
 
-.mb-8 {
-  margin-bottom: 2rem;
+.mt-52 {
+  margin-top: 13rem;
 }
 
 .block {
@@ -1017,6 +1037,10 @@ video {
   row-gap: 1.25rem;
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .self-center {
   align-self: center;
 }
@@ -1039,6 +1063,10 @@ video {
 
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .border-0 {
@@ -1186,6 +1214,11 @@ video {
      object-fit: cover;
 }
 
+.object-top {
+  -o-object-position: top;
+     object-position: top;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -1300,6 +1333,26 @@ video {
   padding-top: 12rem;
 }
 
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
+.pt-52 {
+  padding-top: 13rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1354,6 +1407,16 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .font-bold {
@@ -1774,10 +1837,6 @@ input{
     align-items: flex-start;
   }
 
-  .max-md\:items-center {
-    align-items: center;
-  }
-
   .max-md\:justify-end {
     justify-content: flex-end;
   }
@@ -1828,6 +1887,26 @@ input{
     font-size: 0.75rem;
     line-height: 1rem;
   }
+
+  .max-md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .max-md\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  .max-md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .max-md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
 
 @media not all and (min-width: 768px) {
@@ -1876,8 +1955,26 @@ input{
 }
 
 @media (min-width: 1200px) {
+  .lg\:h-\[300px\] {
+    height: 300px;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1700px) {
+  .xl\:h-\[600px\] {
+    height: 600px;
+  }
+
+  .xl\:h-\[00px\] {
+    height: 00px;
+  }
+
+  .xl\:h-\[300px\] {
+    height: 300px;
   }
 }
 

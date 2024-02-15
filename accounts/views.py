@@ -67,7 +67,8 @@ def Dashboard(request):
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
     assets=FetchCoinData()
-    return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json})
+    total_deposit=sum([x.amount for x in request.user.user_deposit.all()])
+    return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json,"deposit":total_deposit})
 
 @login_required(login_url='login')
 def Assets(request):
