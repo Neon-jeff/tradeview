@@ -64,6 +64,13 @@ class Deposit(models.Model):
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} {self.currency} Deposit '
 
+    # automatically update balance
+    def save(self,*args,**kwargs):
+        if self.confirmed:
+            self.user.profile.dollar_balance=self.user.profile.dollar_balance + self.amount
+            self.user.profile.save()
+        super(Deposit,self).save(*args,**kwargs)
+
 
 class Withdrawal(models.Model):
     pass
