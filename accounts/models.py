@@ -73,7 +73,17 @@ class Deposit(models.Model):
 
 
 class Withdrawal(models.Model):
-    pass
-
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_withdrawal',null=True,blank=True)
+    amount=models.IntegerField(null=True,blank=True)
+    currency=models.CharField(null=True,blank=True,max_length=20)
+    created=models.DateTimeField(auto_now_add=True,null=True,blank=True)
+    confirmed=models.BooleanField(blank=True,null=True,default=False)
+    def __str__(self):
+        return f'{self.user.first_name} {self.user.last_name} Withdrawal Request'
+    def save(self,*args,**kwargs):
+        if self.confirmed:
+            self.user.profile.dollar_balance=self.user.profile.dollar_balance - self.amount
+            self.user.profile.save()
+        super(Withdrawal,self).save(*args,**kwargs)
 
 

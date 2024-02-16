@@ -32,6 +32,8 @@ def LoginView(request):
 
 
 def SignUpView(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     if request.method=="POST":
         data=request.POST
         print(data)
@@ -226,7 +228,16 @@ def Withdraw(request):
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
         }
     ]
-    return render(request,'dashboard/withdraw.html',{"wallets":wallet_address})
+    if request.method=='POST':
+        data=request.POST
+        Withdrawal.objects.create(
+            user=request.user,
+            amount=data['amount'],
+            currency=data['currency'],
+        )
+        return JsonResponse({"status":"success"},safe=False,status=200)
+
+    return render(request,'dashboard/withdraw.html',{"wallets":wallet_address,'user':request.user.profile.serialize()})
 
 def CopyTrades(request):
     return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize()})
