@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="bg-gray-950 h-screen  text-white max-md:pt-24" x-data="assets">
+<section class="bg-gray-950   text-white max-md:pt-24" x-data="assets">
 {{user|json_script:"user"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
@@ -25,8 +25,11 @@
     <p class="text-gray-200 text-lg font-medium py-5 mt-10">Available Experts</p>
 
     <!-- Experts cards -->
+    <!-- container -->
 
-    <div class="bg-gray-900 p-5 w-1/2 max-md:w-full rounded-md">
+    <div class="grid grid-cols-2 w-full  gap-10 max-md:grid-cols-1">
+        <!-- Expert one statt -->
+            <div class="bg-gray-900 p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
                 <img src="{%static 'images/expert.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
@@ -56,6 +59,78 @@
 
         </div>
     </div>
+
+    <!-- expert end -->
+
+            <!-- Expert one statt -->
+            <div class="bg-gray-900 p-5  rounded-md">
+        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
+            <span class="flex items-center gap-4">
+                <img src="{%static 'images/trader2.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
+                Tyler
+                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
+            </span>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+        </span>
+
+        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
+            <span class="flex flex-col text-gray-300">
+                Win Rate
+                <span class="text-lg text-gray-100 font-medium">100%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Wins
+                <span class="text-lg text-gray-100 font-medium">193</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Profit Share
+                <span class="text-lg text-gray-100 font-medium">20%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Losses
+                <span class="text-lg text-gray-100 font-medium">0</span>
+            </span>
+
+        </div>
+    </div>
+
+    <!-- expert end -->
+
+            <!-- Expert one statt -->
+            <div class="bg-gray-900 p-5  rounded-md">
+        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
+            <span class="flex items-center gap-4">
+                <img src="{%static 'images/trader3.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
+                Sebastian
+                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
+            </span>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+        </span>
+
+        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
+            <span class="flex flex-col text-gray-300">
+                Win Rate
+                <span class="text-lg text-gray-100 font-medium">100%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Wins
+                <span class="text-lg text-gray-100 font-medium">223</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Profit Share
+                <span class="text-lg text-gray-100 font-medium">25%</span>
+            </span>
+                        <span class="flex flex-col text-gray-300">
+                Losses
+                <span class="text-lg text-gray-100 font-medium">0</span>
+            </span>
+
+        </div>
+    </div>
+
+    <!-- expert end -->
+    </div>
+
 </div>
 
 
