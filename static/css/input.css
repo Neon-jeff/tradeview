@@ -16,3 +16,7 @@ html{
 input{
     outline: none;
 }
+
+.blue-text{
+    display: none;
+}

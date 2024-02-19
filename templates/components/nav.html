@@ -5,7 +5,7 @@
   <a href="" class=" text-blue-600 font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
   <ul class="flex justify-center items-center gap-10 w-1/5 max-md:hidden">
     <a href="{%url 'home'%}" class="hover:text-blue-600 transition duration-150 ease-in">Home</a>
-    <a href="" class="hover:text-blue-600 transition duration-150 ease-in">Contact</a>
+    <a href="{%url 'market'%}" class="hover:text-blue-600 transition duration-150 ease-in">Markets</a>
     <a href="{%url 'about'%}" class="hover:text-blue-600 transition duration-150 ease-in">About </a>
   </ul>
   {% comment %} nav toggle {% endcomment %}
@@ -26,6 +26,7 @@
     <a href="{%url 'login'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-in-outline" class='text-2xl'></ion-icon>Login</a>
     <a href="{%url 'sign-up'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Get Started</a>
     <a href="{%url 'about'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="help-circle-outline" class='text-2xl'></ion-icon>About Us</a>
+      <a href="{%url 'market'%}" class="hover:text-blue-600 transition duration-150 ease-in">Markets</a>
 
 
     {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>

@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block content %}
+{% include "components/nav.html" %}
+
+{% comment %} Header section {% endcomment %}
+<main class="bg-gray-950  text-white flex flex-col items-center">
+   <section class='w-1/2  pt-52 text-center flex flex-col gap-2  max-md:h-full px-5 pb-20 max-md:w-full relative z-[1]'>
+             <div class='bg-blue-400 w-4/5 max-md:w-full py-5 md:hidden max-md:h-1/2 -z-20  rounded-full opacity-20  shadow-2xl shadow-blue-600 blur-3xl absolute left-[50%] -translate-x-1/2'></div>
+         <h1 class=' text-8xl max-md:text-5xl font-semibold z-10'>Our Asset <span class='text-blue-600'>Markets</span></h1>
+         <p class='pt-2 text-sm z-10 '>
+Dive into limitless possibilities! Explore our market page for real-time insights, trending cryptocurrencies, and seamless trading experiences. Empower your financial journey with us today. Discover, trade, thrive</p>
+         {% comment %} button holder {% endcomment %}
+         <div class='pt-2 flex justify-center'>
+            <a href="{%url 'sign-up'%}" class='bg-blue-600 p-3 px-10 rounded-full hover:-translate-y-2  mx-2 transition duration-150 ease-in'>Get Started</a>
+         </div>
+         <div class='bg-blue-400 w-4/5 max-md:w-full py-5 h-1/2 max-md:h-1/2  rounded-full opacity-20  shadow-2xl shadow-blue-600 blur-3xl absolute left-[50%] -translate-x-1/2'></div>
+    </section>
+
+<h1 class="text-3xl font-medium px-5 self-start">Markets Overview </h1>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container h-screen w-full p-5 rounded-xl">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+      {
+      "title": "Cryptocurrencies",
+      "title_raw": "Cryptocurrencies",
+      "title_link": "/markets/cryptocurrencies/prices-all/",
+      "locale": "en",
+      "showSymbolLogo": true,
+      "symbolsGroups": [
+        {
+          "name": "Overview",
+          "symbols": [
+            {
+              "name": "CRYPTOCAP:TOTAL"
+            },
+            {
+              "name": "BITSTAMP:BTCUSD"
+            },
+            {
+              "name": "BITSTAMP:ETHUSD"
+            },
+            {
+              "name": "FTX:SOLUSD"
+            },
+            {
+              "name": "BINANCE:AVAXUSD"
+            },
+            {
+              "name": "COINBASE:UNIUSD"
+            }
+          ]
+        },
+        {
+          "name": "Bitcoin",
+          "symbols": [
+            {
+              "name": "BITSTAMP:BTCUSD"
+            },
+            {
+              "name": "COINBASE:BTCEUR"
+            },
+            {
+              "name": "COINBASE:BTCGBP"
+            },
+            {
+              "name": "BITFLYER:BTCJPY"
+            },
+            {
+              "name": "CME:BTC1!"
+            }
+          ]
+        },
+        {
+          "name": "Ethereum",
+          "symbols": [
+            {
+              "name": "BITSTAMP:ETHUSD"
+            },
+            {
+              "name": "KRAKEN:ETHEUR"
+            },
+            {
+              "name": "COINBASE:ETHGBP"
+            },
+            {
+              "name": "BITFLYER:ETHJPY"
+            },
+            {
+              "name": "BINANCE:ETHBTC"
+            },
+            {
+              "name": "BINANCE:ETHUSDT"
+            }
+          ]
+        },
+        {
+          "name": "Solana",
+          "symbols": [
+            {
+              "name": "FTX:SOLUSD"
+            },
+            {
+              "name": "BINANCE:SOLEUR"
+            },
+            {
+              "name": "COINBASE:SOLGBP"
+            },
+            {
+              "name": "BINANCE:SOLBTC"
+            },
+            {
+              "name": "HUOBI:SOLETH"
+            },
+            {
+              "name": "BINANCE:SOLUSDT"
+            }
+          ]
+        },
+        {
+          "name": "Uniswap",
+          "symbols": [
+            {
+              "name": "COINBASE:UNIUSD"
+            },
+            {
+              "name": "KRAKEN:UNIEUR"
+            },
+            {
+              "name": "COINBASE:UNIGBP"
+            },
+            {
+              "name": "BINANCE:UNIBTC"
+            },
+            {
+              "name": "KRAKEN:UNIETH"
+            },
+            {
+              "name": "BINANCE:UNIUSDT"
+            }
+          ]
+        }
+      ],
+      "colorTheme": "dark"
+    }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+</main>
+
+
+{% endblock content %}
