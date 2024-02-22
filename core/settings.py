@@ -105,6 +105,10 @@ else:
     }
 
 
+# Email Configs
+
+EMAIL_USER=env("EUSER")
+EMAIL_AUTH=env("EPASS")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

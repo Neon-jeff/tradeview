@@ -1,19 +1,19 @@
 <div x-data="{open:false}" class='text-gray-300'>
-<section class="fixed bg-gray-900  text-sm h-screen  flex flex-col justify-center w-1/5 p-5 max-md:hidden ">
+<section class="fixed bg-sub  text-sm h-screen  flex flex-col justify-center w-1/5 p-5 max-md:hidden ">
     <a href="" >{% include "components/logo.html" %}</a>
     <ul class=' flex flex-col gap-2 mt-10 justify-center '>
-    <a href="{%url 'dashboard'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
-    <a href="{%url 'assets'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
-    <a href="{%url 'trades'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
-    <a href="{%url 'markets'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
-    <a href="{%url 'deposits'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
-    <a href="{%url 'withdraws'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
-        <a href="{%url 'copy'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
+    <a href="{%url 'dashboard'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
+    <a href="{%url 'assets'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
+    <a href="{%url 'trades'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
+    <a href="{%url 'markets'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
+    <a href="{%url 'deposits'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
+    <a href="{%url 'withdraws'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
+        <a href="{%url 'copy'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
 
-    <a href="{%url 'logout'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
-    {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
+    <a href="{%url 'logout'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
+    {% comment %} <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
     </ul>
 </section>
 
@@ -30,19 +30,19 @@
     <span class='text-xl' style='font-size:35px' span @click="open=!open"><ion-icon name="close-outline"></ion-icon></span>
     </div>
     <ul class=' flex flex-col gap-2 '>
-<a href="{%url 'dashboard'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
-    <a href="{%url 'assets'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
-    <a href="{%url 'trades'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
-    <a href="{%url 'markets'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
-    <a href="{%url 'deposits'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
-    <a href="{%url 'withdraws'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
-    <a href="{%url 'copy'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
+<a href="{%url 'dashboard'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
+    <a href="{%url 'assets'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
+    <a href="{%url 'trades'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
+    <a href="{%url 'markets'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
+    <a href="{%url 'deposits'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
+    <a href="{%url 'withdraws'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
+    <a href="{%url 'copy'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
 
-    <a href="{%url 'logout'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
+    <a href="{%url 'logout'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
 
-    {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
+    {% comment %} <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
     <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-600 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
     </ul>
 </section>

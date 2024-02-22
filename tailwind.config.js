@@ -5,15 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#faf3cc",
-        secondary: "#FEFBF6",
-        dimWhite: "rgba(255, 255, 255, 0.7)",
-        dimBlue: "rgba(9, 151, 124, 0.1)",
-        imgBg: "#DDFFBB",
-        borderpri: "black",
+        pri: "#212529",
+        secondary: "#343a40",
+        main: "#2cbca5",
+        sub: "#0f151c",
+        light: "#83d2c0",
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        workSans: ["Work Sans", "sans-serif"],
         lato: ["Lato", "sans-serif"],
       },
     },

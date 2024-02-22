@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="bg-gray-950   text-white max-md:pt-24" x-data="assets">
+<section class="bg-black   text-white max-md:pt-24" x-data="assets">
 {{user|json_script:"user"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
@@ -29,14 +29,14 @@
 
     <div class="grid grid-cols-2 w-full  gap-10 max-md:grid-cols-1">
         <!-- Expert one statt -->
-            <div class="bg-gray-900 p-5  rounded-md">
+            <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
                 <img src="{%static 'images/expert.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
                 Calvin Hill
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
@@ -63,14 +63,14 @@
     <!-- expert end -->
 
             <!-- Expert one statt -->
-            <div class="bg-gray-900 p-5  rounded-md">
+            <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
                 <img src="{%static 'images/trader2.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
                 Tyler
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
@@ -97,14 +97,14 @@
     <!-- expert end -->
 
             <!-- Expert one statt -->
-            <div class="bg-gray-900 p-5  rounded-md">
+            <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
                 <img src="{%static 'images/trader3.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
                 Sebastian
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
@@ -131,14 +131,14 @@
     <!-- expert end -->
 
                 <!-- Expert one statt -->
-            <div class="bg-gray-900 p-5  rounded-md">
+            <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
                 <img src="{%static 'images/trader4.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
                 Jamie
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-blue-600 flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">

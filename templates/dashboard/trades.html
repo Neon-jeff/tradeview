@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class='bg-gray-950 text-white max-md:pt-20' x-data="assets">
+<section class='bg-black text-white max-md:pt-20' x-data="assets">
 {% comment %} Coin data from request {% endcomment %}
 {{ assets|json_script:"assets"}}
 {{user|json_script:"user"}}
@@ -27,9 +27,9 @@
 {% comment %} main container {% endcomment %}
 
 <div class='flex flex-row-reverse gap-10 max-md:flex-col-reverse pt-10 h-full'>
- <div class='bg-gray-900 h-full rounded-md p-5 w-2/5 max-md:w-full  text-sm flex flex-col gap-5'>
+ <div class='bg-sub h-full rounded-md p-5 w-2/5 max-md:w-full  text-sm flex flex-col gap-5'>
     {% comment %} button holder {% endcomment %}
-    <div class='bg-gray-950 p-3 rounded-md flex gap-2 justify-between'>
+    <div class='bg-black p-3 rounded-md flex gap-2 justify-between'>
     <button class='hover:border-2 hover:border-green-500 transition duration-300 ease-in-out   rounded-md p-2 w-1/3'>Buy</button>
     <button class='hover:border-2 hover:border-red-500  transition duration-300 ease-in-out   rounded-md p-2 w-1/3'>Sell</button>
     <button class='hover:border-2 hover:border-orange-500 transition duration-300 ease-in-out    rounded-md p-2 w-1/3'>Convert</button>
@@ -47,8 +47,8 @@
 
         <fieldset class='flex flex-col gap-2 relative' >
             <label for="">Amount :</label>
-    <div class='bg-gray-950 rounded-md flex justify-between' >
-       <input type="number" name="amount" id="" class=' p-3 bg-gray-950 rounded-md' placeholder='$0.00' inputmode="numeric" required>
+    <div class='bg-black rounded-md flex justify-between' >
+       <input type="number" name="amount" id="" class=' p-3 bg-black rounded-md' placeholder='$0.00' inputmode="numeric" required>
             <span  class='p-3 cursor-pointer bg-gray-700 rounded-md text-xs flex items-center justify-between gap-2 w-1/3 max-md:w-1/2 '>
                 <span class='flex items-center gap-2'>
                                     <img :src="currentCoin.image" alt="" class='h-[30px] w-[30]'>
@@ -58,10 +58,10 @@
             </span>
     </div>
                 <div class=' bottom-0 w-full bg-gray-700 flex flex-col  p-5 rounded-md '  x-show="show" x-transition x-transition.duration.500ms>
-                <input type="text" name="" placeholder='Search Coin' x-on:input="updateCoins" x-model="query"  id="" class='bg-gray-950 search-input p-3 mb-5 rounded-md placeholder:text-xs'>
+                <input type="text" name="" placeholder='Search Coin' x-on:input="updateCoins" x-model="query"  id="" class='bg-black search-input p-3 mb-5 rounded-md placeholder:text-xs'>
 
             <template x-for="asset in matchingCoins" :key="asset.name" x-show.important="!empty">
-                                <div class='cursor-pointer bg-gray-700 rounded-md hover:bg-gray-950 py-3 hover:px-3 transition duration-500  ease-in justify-between font-medium text-sm flex items-center gap-2' @click="setCurrentCoin(asset.symbol)">
+                                <div class='cursor-pointer bg-gray-700 rounded-md hover:bg-black py-3 hover:px-3 transition duration-500  ease-in justify-between font-medium text-sm flex items-center gap-2' @click="setCurrentCoin(asset.symbol)">
             <div class='flex items-center gap-4' ><img src="" :src="asset.image" alt="" class='h-[30px] w-[30px]'>
                 <span x-text="asset.name"></span>
                  </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="text-xs font-semibold  flex justify-between ">
                 <p class="font-semibold">Current Price</p>
-                <p x-text="'$' + currentCoin.price" class="text-blue-600"></p>
+                <p x-text="'$' + currentCoin.price" class="text-main"></p>
             </div>
 
 
@@ -89,16 +89,16 @@
             <!-- Stop Loss -->
             <div class="">
                 <p class="pb-2">Stop Loss</p>
-                <div class="bg-gray-950 rounded-md flex justify-between p-1" >
-                    <input type="number" name="stop_loss" :placeholder="currentCoin.price" class="p-3 bg-gray-950 rounded-md" required>
+                <div class="bg-black rounded-md flex justify-between p-1" >
+                    <input type="number" name="stop_loss" :placeholder="currentCoin.price" class="p-3 bg-black rounded-md" required>
                     <span x-text="currentCoin.symbol" class="bg-gray-700  rounded-md p-3"></span>
                 </div>
             </div>
             <!-- Take Profit -->
                         <div class=" ">
                 <p class="pb-2">Take Profit</p>
-                <div class="bg-gray-950 rounded-md flex justify-between p-1" >
-                    <input type="number" name="take_profit" :placeholder="currentCoin.price" class="p-3 bg-gray-950 rounded-md" required>
+                <div class="bg-black rounded-md flex justify-between p-1" >
+                    <input type="number" name="take_profit" :placeholder="currentCoin.price" class="p-3 bg-black rounded-md" required>
                     <span x-text="currentCoin.symbol" class="bg-gray-700  rounded-md p-3"></span>
                 </div>
             </div>
@@ -120,14 +120,14 @@
                 <option value="60" class='bg-gray-700'>60 minutes</option>
             </select>
         </fieldset>
-        <button  class='bg-blue-600  p-3 rounded-md' >
+        <button  class='bg-main  p-3 rounded-md' >
             Trade
         </button>
     </form>
 </div>
 
 {% comment %} trading widget {% endcomment %}
-<div class='bg-gray-900 p-5 rounded-md w-3/5 h-[600px] max-md:w-full'>
+<div class='bg-sub p-5 rounded-md w-3/5 h-[600px] max-md:w-full'>
 <!-- TradingView Widget BEGIN -->
 <div class="sc-jOrOLN dclneQ h-full"><div class="wrapper h-full"><div id="tradingview_widget_wrapper h-full" style="height: 100%;"><div id="tradingview_8eac5" style="height: 100%;"><div id="tradingview_14a51-wrapper h-full" style="position: relative; box-sizing: content-box; font-family: -apple-system, BlinkMacSystemFont, &quot;Trebuchet MS&quot;, Roboto, Ubuntu, sans-serif; margin: 0px auto !important; padding: 0px !important; width: 100%; height: 100%;"><iframe title="advanced chart TradingView widget" class='h-full rounded-md' lang="en" id="tradingview_14a51" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="true" src="https://s.tradingview.com/widgetembed/?hideideas=1&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en#%7B%22symbol%22%3A%22BTC%22%2C%22frameElementId%22%3A%22tradingview_14a51%22%2C%22interval%22%3A%22D%22%2C%22hide_side_toolbar%22%3A%220%22%2C%22allow_symbol_change%22%3A%221%22%2C%22save_image%22%3A%221%22%2C%22backgroundColor%22%3A%22%23151823%22%2C%22gridColor%22%3A%22%23151823%22%2C%22studies%22%3A%22%5B%5D%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22withdateranges%22%3A%221%22%2C%22studies_overrides%22%3A%22%7B%7D%22%2C%22utm_source%22%3A%22app.deluxemarketpro.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%2C%22utm_term%22%3A%22BTC%22%2C%22page-uri%22%3A%22app.deluxemarketpro.com%2Fdashboard%22%7D" style="width: 100%; height: ; margin: 0px !important; padding: 0px !important;"></iframe></div></div><div style="font-size: 13px; line-height: 32px; text-align: center; font-family: &quot;Trebuchet MS&quot;, Arial, sans-serif; color: rgb(157, 178, 189); display: none;"><a href="https://www.tradingview.com/symbols/BTC" target="_blank" style="text-decoration: none; color: rgb(157, 178, 189);"><span style="color: rgb(41, 98, 255);">BTC Chart </span></a>By TradingView</div></div><div class="box"></div></div></div>
 <!-- TradingView Widget END -->
@@ -136,7 +136,7 @@
 {% comment %} main container end {% endcomment %}
 
 {% comment %} Trade History {% endcomment %}
-<div class='p-5 bg-gray-900 mt-10 rounded-md '>
+<div class='p-5 bg-sub mt-10 rounded-md '>
 <h1>Trades History</h1>
 <div class="flex gap-5 text-sm py-5">
     <button class="bg-gray-800 p-5 rounded-md">Open </button>
@@ -146,7 +146,7 @@
 <!-- open trades wrappper -->
 <div class="flex flex-col gap-5">
 {% for trade in open_trades %}
-<div class="flex justify-between  max-sm:text-xs gap-3 items-center bg-gray-950 p-5 rounded-md">
+<div class="flex justify-between  max-sm:text-xs gap-3 items-center bg-black p-5 rounded-md">
     <p class="flex flex-col gap-1"><span class="text-lg">${{trade.amount}}</span> <span>{{trade.created}}</span></p>
     <p>{{trade.currency}}</p>
 
