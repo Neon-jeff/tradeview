@@ -1878,6 +1878,11 @@ html.theme-dark .tv-embed-widget-wrapper__body{
     margin-right: 0.75rem;
   }
 
+  .max-md\:mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
   .max-md\:ml-0 {
     margin-left: 0px;
   }
