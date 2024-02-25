@@ -7,6 +7,11 @@
 html{
     font-family: "Work Sans", sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+iframe{
+    border: none !important;
 }
 *{
     margin: 0;
@@ -23,4 +28,12 @@ input:focus{
 
 .blue-text{
     display: none;
+}
+
+.tv-embed-widget-wrapper__body{
+    border: none;
+}
+
+html.theme-dark .tv-embed-widget-wrapper__body{
+    background: black;
 }
