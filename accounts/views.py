@@ -8,6 +8,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from django.core import serializers
 from .utils import *
+from .locations import CountryData
 
 # Create your views here.
 
@@ -40,7 +41,7 @@ def SignUpView(request):
         email=data['email']
         if User.objects.filter(email=email).first() is not  None:
             messages.error(request,"Email already used")
-            return render(request,'pages/register.html',status=200)
+            return render(request,'pages/register.html',{"countries":CountryData()},status=200)
         else:
             user=User.objects.create(
                 first_name=data['first_name'],
@@ -58,7 +59,7 @@ def SignUpView(request):
             SendEmail(user=user)
             messages.success(request,"Registration Successful")
             return redirect('dashboard')
-    return render(request,'pages/register.html',status=200)
+    return render(request,'pages/register.html',{"countries":CountryData()},status=200)
 
 
 @login_required(login_url='login')

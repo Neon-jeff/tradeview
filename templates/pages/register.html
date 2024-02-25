@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {%load static%}
+{% load countries %}
 {% block content %}
 
-<main class='h-screen py-10 bg-black flex items-center justify-center text-base'>
+<main class='h-screen py-10 bg-black flex  justify-center text-base'>
 </div>
     {%include "components/alerts.html"%}
     {% include "components/nav.html" %}
@@ -25,10 +26,58 @@
             <label for="email">Email</label>
             <input type="email" name="email" class='p-3 rounded-md bg-gray-900 active:border-[1px]' placeholder=" email" required>
         </fieldset>
+
+        {% comment %} Location {% endcomment %}
+
+        <fieldset class='flex gap-2 flex-col'>
+            <label for="email">Select Country</label>
+
+        <select class='p-3 w-full rounded-md bg-gray-900' name="country">
+        {% for country in countries %}
+    <option value="{{ country.name }}"> {{ country.name }}</option>
+    {% endfor %}
+    </select>
+ </fieldset>
+
+         <fieldset class='flex gap-2 flex-col'>
+            <label for="">Address</label>
+           <input type="text" name="address" class='p-3 rounded-md bg-gray-900 active:border-[1px]'  placeholder="Address" required>
+        </fieldset>
+
+        <fieldset class='flex gap-2 flex-col'>
+            <label for="">Phone</label>
+           <span class="flex bg-gray-900 rounded-md">
+    <select class='p-3 w-full rounded-md bg-gray-900' name="phone_code">
+        {% for country in countries %}
+    <option value="{{ country.phone_code }}">{{country.name}} {{ country.phone_code }}</option>
+    {% endfor %}
+    </select>
+           <input type="tel" name="phone" class='p-3 rounded-md bg-gray-900 active:border-[1px]'  placeholder="Phone number"  required>
+           </span>
+        </fieldset>
+
+        <fieldset class='flex gap-2 flex-col'>
+            <label for="">Preferred Currency</label>
+            <select name="currency" id="" class='p-3 w-full rounded-md bg-gray-900'>
+                <option value="CAD">CAD</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="BRL">BRL</option>
+                <option value="ZAR">ZAR</option>
+                <option value="PHP">PHP</option>
+
+            </select>
+        </fieldset>
+
+
         <fieldset class='flex gap-2 flex-col'>
             <label for="">Password</label>
            <input type="password" name="password" class='p-3 rounded-md bg-gray-900 active:border-[1px]'  placeholder="password" required>
         </fieldset>
+
+
+
            </div>
         <button class='bg-main p-4 rounded-full w-1/2 mt-5 self-center text-white max-md:w-4/5'>Register</button>
         <p class='text-center text-white'>Already Registered? <a href="{%url 'login'%}" class='text-main'>Sign In</a></p>

@@ -2,11 +2,11 @@
   class="w-full z-40 flex px-5 items-center justify-center text-sm max-md:justify-end py-10  bg-gray-950 fixed top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 text-white"
   x-data="{open:false}"
 >
-  <a href="" class=" text-blue-600 font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
+  <a href="" class=" text-main font-semibold absolute left-5 ">{% include "components/logo.html" %}</a>
   <ul class="flex justify-center items-center gap-10 w-1/5 max-md:hidden">
-    <a href="{%url 'home'%}" class="hover:text-blue-600 transition duration-150 ease-in">Home</a>
-    <a href="{%url 'market'%}" class="hover:text-blue-600 transition duration-150 ease-in">Markets</a>
-    <a href="{%url 'about'%}" class="hover:text-blue-600 transition duration-150 ease-in">About </a>
+    <a href="{%url 'home'%}" class="hover:text-main transition duration-150 ease-in">Home</a>
+    <a href="{%url 'market'%}" class="hover:text-main transition duration-150 ease-in">Markets</a>
+    <a href="{%url 'about'%}" class="hover:text-main transition duration-150 ease-in">About </a>
   </ul>
   {% comment %} nav toggle {% endcomment %}
   <section class='text-3xl py-6 px-5 absolute top-0   md:hidden w-full'>
@@ -22,17 +22,17 @@
     <span class='text-xl' style='font-size:35px' span @click="open=!open"><ion-icon name="close-outline"></ion-icon></span>
     </div>
     <ul class=' flex flex-col gap-2 '>
-<a href="{%url 'home'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Home</a>
-    <a href="{%url 'login'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-in-outline" class='text-2xl'></ion-icon>Login</a>
-    <a href="{%url 'sign-up'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Get Started</a>
-    <a href="{%url 'about'%}" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="help-circle-outline" class='text-2xl'></ion-icon>About Us</a>
-      <a href="{%url 'market'%}" class="hover:text-blue-600 transition duration-150 ease-in">Markets</a>
+<a href="{%url 'home'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Home</a>
+    <a href="{%url 'login'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-in-outline" class='text-2xl'></ion-icon>Login</a>
+    <a href="{%url 'sign-up'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Get Started</a>
+    <a href="{%url 'about'%}" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="help-circle-outline" class='text-2xl'></ion-icon>About Us</a>
+      <a href="{%url 'market'%}" class="hover:text-main transition duration-150 ease-in">Markets</a>
 
 
-    {% comment %} <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
-    <a href="" class='hover:bg-blue-600 p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
-    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-600 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
+    {% comment %} <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
+    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-main flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
     </ul>
 </section>
 </nav>
