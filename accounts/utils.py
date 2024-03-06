@@ -11,13 +11,13 @@ import requests
 sender=settings.EMAIL_USER
 auth=settings.EMAIL_AUTH
 
-def SendEmail(user):
+def SendEmail(user,request):
 
     recipient = f'{user.email}'
 
 # Create message
     msg = MIMEMultipart("alternative")
-    email_template=render_to_string('pages/index.html',{'user':user})
+    email_template=render_to_string('pages/index.html',{'user':user,'request':request.get_host()})
     # text="Hi, welcome to nello"
     msg['Subject'] = f"Welcome to GTBULLS – Let's Begin Your Trading Journey"
     msg['From'] = sender
