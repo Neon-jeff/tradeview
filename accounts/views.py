@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.core import serializers
 from .utils import *
 from .locations import CountryData
+import uuid
 
 # Create your views here.
 
@@ -40,8 +41,7 @@ def SignUpView(request):
         data=request.POST
         email=data['email']
         if User.objects.filter(email=email).first() is not  None:
-            messages.error(request,"Email already used")
-            return render(request,'pages/register.html',{"countries":CountryData()},status=200)
+            return JsonResponse({"status":"failure"},safe=False)
         else:
             user=User.objects.create(
                 first_name=data['first_name'],
@@ -52,14 +52,39 @@ def SignUpView(request):
             user.set_password(data['password'])
             user.save()
             Profile.objects.create(
-                user=user
+                user=user,
+                country=data['country'],
+                address=data['address'],
+                phone_code=data['phone_code'],
+                phone=f"+{data['phone_code']}{data['phone']}",
+                verified=False,
+                token=uuid.uuid4()
+
             )
             login(request,user)
             # Send welcome email to user
             SendEmail(user=user)
             messages.success(request,"Registration Successful")
-            return redirect('dashboard')
+            print(request.POST)
+            return JsonResponse({"status":"success"},safe=False)
     return render(request,'pages/register.html',{"countries":CountryData()},status=200)
+
+
+
+
+def ActivateAccount(request):
+    profile=Profile.objects.filter(token=request.GET['token']).first()
+    if profile.verified:
+        messages.success(request,'Account already verified')
+        return redirect('login')
+    profile.verified=True
+    profile.save()
+    messages.success(request,'Account successfully verified')
+    return redirect('login')
+
+
+def SignUpSuccessView(request):
+    return render(request,'pages/register-success.html')
 
 
 @login_required(login_url='login')

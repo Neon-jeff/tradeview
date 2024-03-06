@@ -1,0 +1,90 @@
+<!-- Personal Details -->
+
+<div
+  class="flex flex-col gap-3"
+  x-transition
+  x-transition.duration.200ms
+  x-show="step2"
+>
+  <!-- progress bar full -->
+  <div class="flex flex-col text-base text-main">
+    <!-- step checker -->
+    <div
+      class="radial-progress mb-2 text-main text-sm"
+      style="--value: 50; --size: 3rem; --thickness: 2px"
+      role="progressbar"
+    >
+      50%
+    </div>
+    Contact Details
+  </div>
+  <!-- Fieldsets Start -->
+
+  <fieldset class="flex gap-2 flex-col">
+    <label for="email">Select Country</label>
+
+    <select
+      title="name"
+      class="p-3 w-full rounded-md bg-neutral-900"
+      name="country"
+    >
+      {% for country in countries %}
+      <option value="{{ country.name }}">{{ country.name }}</option>
+      {% endfor %}
+    </select>
+  </fieldset>
+
+  <fieldset class="flex flex-col gap-2">
+    <label for="address">Address *</label>
+    <input
+      type="text"
+      name="address"
+      placeholder="Enter Your Address"
+      class="p-3 rounded-md bg-neutral-900"
+      required
+    />
+  </fieldset>
+
+  <fieldset class='flex gap-2 flex-col '>
+            <label for="">Phone *</label>
+           <span class="flex  rounded-md bg-neutral-900 ">
+    <select class='p-3 w-1/4 rounded-md bg-neutral-900  ' name="phone_code">
+        {% for country in countries %}
+    <option value="{{ country.phone_code }}">{{country.name}} {{ country.phone_code }}</option>
+    {% endfor %}
+    </select>
+           <input type="tel" name="phone" class='p-3 bg-neutral-900 rounded-md w-full  active:border-[1px]'  placeholder="Phone number"  required>
+           </span>
+        </fieldset>
+
+        <fieldset class='flex gap-2 flex-col'>
+            <label for="">Preferred Currency *</label>
+            <select name="currency" id="" class='p-3 w-full rounded-md bg-neutral-900' required>
+                <option value="CAD">CAD</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="AUD">AUD</option>
+                <option value="BRL">BRL</option>
+                <option value="ZAR">ZAR</option>
+                <option value="PHP">PHP</option>
+
+            </select>
+        </fieldset>
+
+
+  <div class="flex gap-4 self-end mt-3">
+    <span
+      @click="moveHome"
+      class="bg-sub px-3 py-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-main"
+    >
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Back
+    </span>
+
+    <span
+      @click="moveLast"
+      class="bg-main p-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-black"
+      >Add Password <ion-icon name="chevron-forward-outline"></ion-icon
+    ></span>
+  </div>
+</div>

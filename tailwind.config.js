@@ -4,6 +4,23 @@ module.exports = {
   content: ["./templates/**/*.html", "./static/js/*.js"],
   theme: {
     extend: {
+      keyframes: {
+        sliding: {
+          "0%": {
+            transform: "translate(500px,0)",
+          },
+          "70%": {
+            transform: "translate(0,0)",
+            transform: "scale(1.3)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+      },
+      animation:{
+        'slide':'sliding 1s ease-in '
+      },
       colors: {
         pri: "#212529",
         secondary: "#343a40",

@@ -24,6 +24,8 @@ input{
 
 input:focus{
     outline: solid 1px #2cbca5;
+    border: none;
+    border-color: transparent;
 }
 
 .blue-text{
@@ -37,3 +39,5 @@ input:focus{
 html.theme-dark .tv-embed-widget-wrapper__body{
     background: black;
 }
+
+[x-cloak] { display: none !important; }
