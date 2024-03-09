@@ -32,11 +32,12 @@ input[type=number] {
 </style>
 
 </head>
-<body class="bg-gray-950 max-md:h-screen" style='font-family: "Work Sans", sans-serif;' x-data="general">
+<body class="bg-black  relative pb-20" style='font-family: "Work Sans", sans-serif;' x-data="general">
 
 {% block content %}
 
 {% endblock content %}
+{%include 'components/dashboard/bottom-nav.html'%}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

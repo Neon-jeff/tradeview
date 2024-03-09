@@ -1,0 +1,33 @@
+<section class="fixed bottom-nav text-gray-300 w-full left-1/2 text-xs -translate-x-1/2 hidden max-md:flex justify-center gap-10 bg-gray-900
+bottom-0 rounded-t-3xl p-3 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-75">
+    <a href="{%url 'dashboard'%}" class=" flex flex-col gap-1 items-center ">
+        <ion-icon name="home" class="text-2xl"></ion-icon>
+        <span>Dashboard</span>
+    </a>
+
+        <a href="{%url 'trades'%}" class=" flex flex-col gap-1 items-center ">
+        <ion-icon name="analytics" class="text-2xl"></ion-icon>
+        <span>Trades</span>
+    </a>
+
+            <a href="{%url 'deposits'%}" class=" flex flex-col gap-1 items-center ">
+        <ion-icon name="wallet" class="text-2xl"></ion-icon>
+        <span>Deposit</span>
+    </a>
+
+                <a href="{%url 'copy'%}" class=" flex flex-col gap-1 items-center ">
+        <ion-icon name="copy" class="text-2xl"></ion-icon>
+        <span>Copy Experts</span>
+    </a>
+
+
+    <script>
+        let navItems=Array.from(document.querySelectorAll('.bottom-nav a'))
+        navItems.forEach((item)=>{
+            let pathArr=location.pathname.split('/')
+            if(item.textContent.toLocaleLowerCase().match(pathArr[pathArr.length-2])){
+                item.classList.add('text-main')
+            }
+        })
+    </script>
+</section>
