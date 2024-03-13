@@ -21,7 +21,7 @@
 <div class='flex flex-row-reverse justify-center gap-10 max-md:flex-col-reverse pt-10'>
 
 {% comment %} balance and widget container {% endcomment %}
-<div class='flex flex-col w-3/5 gap-10 max-md:w-full'>
+<div class='flex flex-col w-full gap-10 max-md:w-full'>
 <div class='bg-sub  rounded-md p-5 flex flex-col justify-between'>
 {% comment %} top section {% endcomment %}
 <div class='flex justify-between items-center'>
@@ -37,44 +37,25 @@
 </div>
 <!-- Balance Summary -->
 {%include 'dashboard/summary.html'%}
-{% comment %} bottom section {% endcomment %}
-<div class=' flex  gap-5 rounded-md   items-center'>
-    <span class=" w-[60px] h-[60px] flex items-center justify-center text-2xl rounded-full bg-gray-800">
-        <ion-icon name="stats-chart" class="" ></ion-icon>
-    </span>
-    <div class="w-3/4 ">
-        <h1 class="text-gray-300 font-medium flex justify-between">Trading Progress <span>%</span></h1>
-        <!-- primary progress -->
-        <div class="h-[0.35rem] bg-gray-300 rounded-full mt-5">
-            <!-- relative progress -->
 
-            <div class="h-full w-1/3 bg-main rounded-full">
-
-            </div>
-        </div>
-    </div>
-</div>
 
 </div>
 
 {%include 'dashboard/actions.html'%}
-
-{% comment %} trading widget {% endcomment %}
-<div class='bg-sub p-5 rounded-md h-[600px]'>
-<!-- TradingView Widget BEGIN -->
-<div class="sc-jOrOLN dclneQ h-full"><div class="wrapper h-full"><div id="tradingview_widget_wrapper h-full" style="height: 100%;"><div id="tradingview_8eac5" style="height: 100%;"><div id="tradingview_14a51-wrapper h-full" style="position: relative; box-sizing: content-box; font-family: -apple-system, BlinkMacSystemFont, &quot;Trebuchet MS&quot;, Roboto, Ubuntu, sans-serif; margin: 0px auto !important; padding: 0px !important; width: 100%; height: 100%;"><iframe title="advanced chart TradingView widget" class='h-full rounded-md' lang="en" id="tradingview_14a51" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="true" src="https://s.tradingview.com/widgetembed/?hideideas=1&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en#%7B%22symbol%22%3A%22BTC%22%2C%22frameElementId%22%3A%22tradingview_14a51%22%2C%22interval%22%3A%22D%22%2C%22hide_side_toolbar%22%3A%220%22%2C%22allow_symbol_change%22%3A%221%22%2C%22save_image%22%3A%221%22%2C%22backgroundColor%22%3A%22%23151823%22%2C%22gridColor%22%3A%22%23151823%22%2C%22studies%22%3A%22%5B%5D%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22withdateranges%22%3A%221%22%2C%22studies_overrides%22%3A%22%7B%7D%22%2C%22utm_source%22%3A%22app.deluxemarketpro.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%2C%22utm_term%22%3A%22BTC%22%2C%22page-uri%22%3A%22app.deluxemarketpro.com%2Fdashboard%22%7D" style="width: 100%; height: ; margin: 0px !important; padding: 0px !important;"></iframe></div></div><div style="font-size: 13px; line-height: 32px; text-align: center; font-family: &quot;Trebuchet MS&quot;, Arial, sans-serif; color: rgb(157, 178, 189); display: none;"><a href="https://www.tradingview.com/symbols/BTC" target="_blank" style="text-decoration: none; color: rgb(157, 178, 189);"><span style="color: rgb(41, 98, 255);">BTC Chart </span></a>By TradingView</div></div><div class="box"></div></div></div>
-<!-- TradingView Widget END -->
-</div>
+{%include 'dashboard/market-data.html'%}
 </div>
 </div>
 </div>
 <script>
 
     document.addEventListener('alpine:init', () => {
-        const assets = JSON.parse(document.getElementById("assets").textContent);
+        const assets = JSON.parse(document.getElementById("assets").textContent).crypto;
+        const forex= JSON.parse(document.getElementById("assets").textContent).forex;
         const user = JSON.parse(document.getElementById("user").textContent);
         let balance_el=document.querySelector('.balance')
         Alpine.data('assets', () => ({
+            forex:forex,
+            static_path:`${location.origin}/static/images/forex/`,
             query:'',
             coins: assets,
             currentCoin:assets[0],
@@ -84,7 +65,15 @@
                 this.show=false
                 this.matchingCoins=this.coins.slice(0,6)
             },
-            matchingCoins:assets.slice(0,6),
+            matchingCoins:assets,
+            changeMarketType(el){
+                let templates=Array.from(document.querySelectorAll('template'))
+                el.addEventListener('click',()=>{
+                    templates.forEach(template=>{
+                        console.log(template);
+                    })
+                })
+            },
             updateCoins(){
 
                 let result=this.coins.filter(

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .handlers import FetchCoinData
+from .handlers import FetchCoinData,Forex_Currencies
 from django.http import JsonResponse
 from .models import *
 from django.contrib.auth.models import User
@@ -10,6 +10,8 @@ from django.core import serializers
 from .utils import *
 from .locations import CountryData
 import uuid
+from django.conf import settings
+
 
 # Create your views here.
 
@@ -95,7 +97,10 @@ def Logout(request):
 def Dashboard(request):
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
-    assets=FetchCoinData()
+    assets={
+        "crypto":FetchCoinData(),
+        "forex":Forex_Currencies()
+        }
     total_deposit=sum([x.amount for x in request.user.user_deposit.filter(confirmed=True)])
     return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json,"deposit":total_deposit})
 
@@ -235,3 +240,7 @@ def Withdraw(request):
 
 def CopyTrades(request):
     return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize()})
+
+
+
+

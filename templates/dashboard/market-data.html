@@ -1,0 +1,45 @@
+{%load static%}
+
+<section class="text-gray-200">
+  <h1 class="text-xl font-medium">Market Data</h1>
+
+  <!-- button groups -->
+  <div
+    class="flex [&>*]:p-3 toggle-button-group [&>*]:bg-gray-900 my-5 text-sm max-md:text-xs gap-4 [&>*]:rounded-full [&>*]:text-gray-400"
+  >
+    <button @click="changeMarketType($el)">Watchlists</button>
+    <button>Crypto</button>
+    <button>Forex</button>
+    <button>Tickers</button>
+  </div>
+
+  <!-- crypto items -->
+  <template x-for="asset in matchingCoins" class="crypto" :key="asset.name">
+    <div
+      class="cursor-pointer rounded-md hover:bg-black py-3   justify-center font-medium text-sm grid grid-cols-5 gap-10 "
+    >
+    <span class="w-1/12">
+        <ion-icon name="star-outline" class="text-main"></ion-icon>
+    </span>
+      <div class="flex items-center gap-4 col-span-2">
+        <img src="" :src="asset.image" alt="" class="h-[30px] w-[30px]" />
+        <span x-text="asset.name" class="max-md:hidden"></span>
+        <span x-text="asset.symbol" class="lg:hidden"></span>
+      </div>
+          <span x-text="'$' + asset.price" class="text-center col-span-2"></span>
+
+    </div>
+  </template>
+
+  <!-- forex items -->
+
+  <template x-for="asset in forex" :key="asset.currency" class="forex">
+    <div class="text-gray-300 flex justify-between items-center text-sm bg-sub p-5 rounded-md my-5">
+      <div class="flex items-center gap-3 font-semibold ">
+             <img :src="static_path + asset.image" class="h-[50px] object-contain" alt="">
+          <p x-text="asset.currency"></p>
+      </div>
+       <p x-text="asset.rate"></p>
+    </div>
+  </template>
+</section>
