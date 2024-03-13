@@ -10,7 +10,7 @@ forex_symbols=[
 
 Base_Dir=Path(__file__).parents[1]
 
-path=f'{Base_Dir}\\static\\images\\forex'
+path=f'{Base_Dir}/static/images/forex'
 
 image_list=os.listdir(path)
 pair_list=[pair.split('.')[0] for pair in image_list]
