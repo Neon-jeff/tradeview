@@ -67,12 +67,15 @@
             },
             matchingCoins:assets,
             changeMarketType(el){
-                let templates=Array.from(document.querySelectorAll('template'))
-                el.addEventListener('click',()=>{
-                    templates.forEach(template=>{
-                        console.log(template);
+                let templates=Array.from(document.querySelectorAll('.market'))
+                templates.forEach(template=>{
+                        if(template.classList.contains(el.textContent.toLowerCase())){
+                            template.setAttribute("x-show",true)
+                        }
+                        else{
+                            template.setAttribute("x-show",false)
+                        }
                     })
-                })
             },
             updateCoins(){
 

@@ -8,13 +8,14 @@
     class="flex [&>*]:p-3 toggle-button-group [&>*]:bg-gray-900 my-5 text-sm max-md:text-xs gap-4 [&>*]:rounded-full [&>*]:text-gray-400"
   >
     <button @click="changeMarketType($el)">Watchlists</button>
-    <button>Crypto</button>
-    <button>Forex</button>
-    <button>Tickers</button>
+    <button @click="changeMarketType($el)">Crypto</button>
+    <button @click="changeMarketType($el)">Forex</button>
+    <button @click="changeMarketType($el)">Tickers</button>
   </div>
 
   <!-- crypto items -->
-  <template x-for="asset in matchingCoins" class="crypto" :key="asset.name">
+<div class="market crypto">
+    <template x-for="asset in matchingCoins"  :key="asset.name">
     <div
       class="cursor-pointer rounded-md hover:bg-black py-3   justify-center font-medium text-sm grid grid-cols-5 gap-10 "
     >
@@ -30,10 +31,14 @@
 
     </div>
   </template>
+</div>
+
+
 
   <!-- forex items -->
 
-  <template x-for="asset in forex" :key="asset.currency" class="forex">
+<div class="market forex" x-transition x-show="false">
+    <template x-for="asset in forex" :key="asset.currency" class="forex">
     <div class="text-gray-300 flex justify-between items-center text-sm bg-sub p-5 rounded-md my-5">
       <div class="flex items-center gap-3 font-semibold ">
              <img :src="static_path + asset.image" class="h-[50px] object-contain" alt="">
@@ -42,4 +47,5 @@
        <p x-text="asset.rate"></p>
     </div>
   </template>
+</div>
 </section>
