@@ -5,23 +5,24 @@
 
   <!-- button groups -->
   <div
-    class="flex [&>*]:p-3 toggle-button-group [&>*]:bg-gray-900 my-5 text-sm max-md:text-xs gap-4 [&>*]:rounded-full [&>*]:text-gray-400"
+    class="flex button-group [&>*]:p-3 [&>*]:w-1/6 toggle-button-group [&>*]:bg-gray-900 my-5 text-xs max-md:text-xs gap-4 [&>*]:rounded-full text-gray-400"
+
   >
-    <button @click="changeMarketType($el)">Watchlists</button>
+    <!-- <button @click="changeMarketType($el)">Watchlists</button> -->
     <button @click="changeMarketType($el)">Crypto</button>
     <button @click="changeMarketType($el)">Forex</button>
-    <button @click="changeMarketType($el)">Tickers</button>
+    <button @click="changeMarketType($el)">Stocks</button>
   </div>
 
   <!-- crypto items -->
-<div class="market crypto">
+<div class="market crypto" x-transition x-transition.duration.500ms>
     <template x-for="asset in matchingCoins"  :key="asset.name">
     <div
-      class="cursor-pointer rounded-md hover:bg-black py-3   justify-center font-medium text-sm grid grid-cols-5 gap-10 "
+      class="cursor-pointer rounded-md hover:bg-black py-3   justify-center font-medium text-sm grid grid-cols-4 gap-10 "
     >
-    <span class="w-1/12">
+    <!-- <span class="w-1/12">
         <ion-icon name="star-outline" class="text-main"></ion-icon>
-    </span>
+    </span> -->
       <div class="flex items-center gap-4 col-span-2">
         <img src="" :src="asset.image" alt="" class="h-[30px] w-[30px]" />
         <span x-text="asset.name" class="max-md:hidden"></span>
@@ -37,7 +38,7 @@
 
   <!-- forex items -->
 
-<div class="market forex" x-transition x-show="false">
+<div class="market forex" x-transition x-show="false" x-transition x-transition.duration.500ms>
     <template x-for="asset in forex" :key="asset.currency" class="forex">
     <div class="text-gray-300 flex justify-between items-center text-sm bg-sub p-5 rounded-md my-5">
       <div class="flex items-center gap-3 font-semibold ">
@@ -45,6 +46,18 @@
           <p x-text="asset.currency"></p>
       </div>
        <p x-text="asset.rate"></p>
+    </div>
+  </template>
+</div>
+
+<div class="market stocks" x-transition x-show="false" x-transition x-transition.duration.500ms>
+    <template x-for="asset in stocks" :key="asset.name" class="forex">
+    <div class="text-gray-300 flex justify-between items-center text-sm bg-sub p-5 rounded-md my-5">
+      <div class="flex items-center gap-3 font-semibold ">
+             <img :src="stocks_path + asset.image" class="h-[50px] object-contain" alt="">
+          <p x-text="asset.name"></p>
+      </div>
+       <p x-text="'$'+asset.price"></p>
     </div>
   </template>
 </div>

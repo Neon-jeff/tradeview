@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .handlers import FetchCoinData,Forex_Currencies
+from .handlers import FetchCoinData,Forex_Currencies,StockData
 from django.http import JsonResponse
 from .models import *
 from django.contrib.auth.models import User
@@ -99,7 +99,8 @@ def Dashboard(request):
     user_json=user_profile.serialize()
     assets={
         "crypto":FetchCoinData(),
-        "forex":Forex_Currencies()
+        "forex":Forex_Currencies(),
+        "stocks":StockData()
         }
     total_deposit=sum([x.amount for x in request.user.user_deposit.filter(confirmed=True)])
     return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json,"deposit":total_deposit})

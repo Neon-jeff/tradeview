@@ -17,9 +17,34 @@ module.exports = {
             transform: "scale(1)",
           },
         },
+        headHeroText: {
+          "0%": {
+            transform: "translate(-500px,0)",
+            opacity: 0,
+          },
+          "100%": {
+            transform: "translate(0,0)",
+            opacity: 1,
+          },
+        },
+        heroParagraph: {
+          "0%": {
+            transform: "translate(0,50px)",
+            opacity: 0,
+          },
+          "40%": {
+            opacity: 0.5,
+          },
+          "100%": {
+            transform: "translate(0,0)",
+            opacity: 1,
+          },
+        },
       },
-      animation:{
-        'slide':'sliding 1s ease-in '
+      animation: {
+        slide: "sliding 1s ease-in ",
+        herotext: "headHeroText 1s ease-in",
+        heroparagraph: "heroParagraph 1s ease-in",
       },
       colors: {
         pri: "#212529",

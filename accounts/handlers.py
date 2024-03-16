@@ -2,18 +2,24 @@
 import requests
 from pathlib import Path
 import os
+
+
 # constants
 
-forex_symbols=[
-    'USD','GBP','EUR','AUD','CAD','CHF','NZD'
-]
-
 Base_Dir=Path(__file__).parents[1]
+# stocks
+
+stocks_path=f'{Base_Dir}/static/images/stocks'
+stocks_currency_list=[stock.split('.')[0] for stock in os.listdir(stocks_path)]
+
+# forex
 
 path=f'{Base_Dir}/static/images/forex'
 
 image_list=os.listdir(path)
+
 pair_list=[pair.split('.')[0] for pair in image_list]
+
 first_currencies=sorted(list(set([pair[:3] for pair in pair_list])))
 # second_currencies=[pair[3:] for pair in pair_list]
 Currency_and_available_pair={
@@ -54,24 +60,6 @@ def FetchCoinData():
     return result
 
 
-def Forex_Pairs():
-      result={}
-      url=''
-      headers={
-        "X-RapidAPI-Host":"exchangerate-api.p.rapidapi.com",
-        "X-RapidAPI-Key":"6bee04bf0fmsh91e6a790ee2e537p152a6ajsn7ed0fcc5e5b1"
-      }
-      for currency in forex_symbols:
-            response=requests.get(
-              f'https://exchangerate-api.p.rapidapi.com/rapid/latest/{currency}',
-              headers=headers
-              )
-            pairs=[{
-              f'{currency}{x}':response.json()['rates'][x]
-            } for x in second_currencies if x !=currency]
-            result[currency]=pairs
-      return result
-
 
 def Forex_Currencies():
       result=[]
@@ -96,7 +84,42 @@ def Forex_Currencies():
       return result
 
 def StockData():
-      pass
+    """
+    the returned value from this function:
+    [
+      {
+      "name":stock_name,
+      "price":api_value,
+      "image":stock_name.png
+      },
+    {
+      "name":stock_name,
+      "price":api_value,
+      "image":stock_name.png
+    },
+    .................
+    ]
+
+    """
+    headers={
+      "Apca-Api-Key-Id":"PK1RL15DAV9TNZKZFGKT",
+      "Apca-Api-Secret-Key":"TfXp3cNM6XfTHupPPWbevBFvEGCUGTiaD9ZjpxCP"
+
+    }
+    response=requests.get(f"https://data.alpaca.markets/v2/stocks/snapshots?symbols={','.join(stocks_currency_list)}",headers=headers)
+
+    result=[
+      {
+        "name":stock,
+        "price":response.json()[stock]['latestQuote']['ap'],
+        "image":f"{stock}.png"
+      }
+      for stock in stocks_currency_list
+    ]
+    return result
+
+
+
 
 
 # print(Currency_and_available_pair)

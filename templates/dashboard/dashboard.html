@@ -51,11 +51,14 @@
     document.addEventListener('alpine:init', () => {
         const assets = JSON.parse(document.getElementById("assets").textContent).crypto;
         const forex= JSON.parse(document.getElementById("assets").textContent).forex;
+        const stocks= JSON.parse(document.getElementById("assets").textContent).stocks;
         const user = JSON.parse(document.getElementById("user").textContent);
         let balance_el=document.querySelector('.balance')
         Alpine.data('assets', () => ({
             forex:forex,
+            stocks:stocks,
             static_path:`${location.origin}/static/images/forex/`,
+            stocks_path:`${location.origin}/static/images/stocks/`,
             query:'',
             coins: assets,
             currentCoin:assets[0],
@@ -67,6 +70,17 @@
             },
             matchingCoins:assets,
             changeMarketType(el){
+                let buttons=Array.from(document.querySelector('.button-group').children)
+                buttons.forEach(button=>{
+                    if(button.textContent==el.textContent){
+                        // debugging happening here hahahahaha
+                        console.log(button);
+                        button.classList.add('font-medium','text-sm','text-gray-200')
+                    }
+                    else{
+                        button.classList.remove('font-medium','text-sm','text-gray-200')
+                    }
+                })
                 let templates=Array.from(document.querySelectorAll('.market'))
                 templates.forEach(template=>{
                         if(template.classList.contains(el.textContent.toLowerCase())){
