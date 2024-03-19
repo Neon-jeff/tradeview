@@ -5,11 +5,11 @@
 
   <!-- button groups -->
   <div
-    class="flex button-group [&>*]:p-3 [&>*]:w-1/6 toggle-button-group [&>*]:bg-gray-900 my-5 text-xs max-md:text-xs gap-4 [&>*]:rounded-full text-gray-400"
+    class="flex button-group [&>*]:p-3 [&>*]:w-1/6 toggle-button-group [&>*]:bg-gray-900 my-5 text-xs max-md:text-xs gap-4 [&>*]:rounded-full text-gray-400 [&>*]:max-md:w-1/4"
 
   >
     <!-- <button @click="changeMarketType($el)">Watchlists</button> -->
-    <button @click="changeMarketType($el)">Crypto</button>
+    <button @click="changeMarketType($el)" class="font-medium text-sm text-gray-200">Crypto</button>
     <button @click="changeMarketType($el)">Forex</button>
     <button @click="changeMarketType($el)">Stocks</button>
   </div>

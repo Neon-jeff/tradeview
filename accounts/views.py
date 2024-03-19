@@ -243,5 +243,5 @@ def CopyTrades(request):
     return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize()})
 
 
-
-
+def SelectMethod(request):
+    return render(request,"dashboard/select-method.html",{"user":request.user.profile.serialize()})
