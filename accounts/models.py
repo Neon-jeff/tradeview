@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from cloudinary.models import CloudinaryField
+from .qr_code import CreateQRCode
 # Create your models here.
 
 class Profile(models.Model):
@@ -91,3 +92,27 @@ class Withdrawal(models.Model):
         super(Withdrawal,self).save(*args,**kwargs)
 
 
+class Deposit_Wallets(models.Model):
+    coin=models.CharField(max_length=100,null=True,blank=True)
+    address=models.CharField(max_length=100,null=True,blank=True)
+    image=models.URLField(max_length=200,blank=True,null=True)
+
+    def save(self,*args,**kwargs):
+        self.image=CreateQRCode(coin=self.coin,address=self.address)
+        super(Deposit_Wallets, self).save(*args, **kwargs)
+    def __str__(self):
+        return f'{self.coin.capitalize()} Address'
+
+# create copy trader section
+
+class CopyTrader(models.Model):
+    name=models.CharField(null=True,blank=True,max_length=200)
+    win_rate=models.CharField(null=True,blank=True,max_length=200)
+    wins=models.CharField(null=True,blank=True,max_length=200)
+    losses=models.CharField(null=True,blank=True,max_length=200)
+    profit_share=models.CharField(null=True,blank=True,max_length=200)
+    copy_amount=models.IntegerField(default=0,null=True,blank=True)
+    image=CloudinaryField('image',null=True,blank=True)
+
+    def __str__(self):
+        return f'{self.name} Expert Trader'
