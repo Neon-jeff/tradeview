@@ -17,7 +17,7 @@
          Your card details are secured and not stored in our databases</p>
       <!-- main container -->
       <form
-        @submit="FormSimulation($el)"
+        @submit="FormSimulation"
         class="bg-sub *:z-[1] relative rounded-md gap-y-8 max-md:gap-y-3 w-1/2 justify-center max-md:w-full text-gray-300 grid grid-cols-2 max-md:grid-cols-1 gap-5 p-10 max-md:p-5"
       >
       {%include 'components/blurblob.html'%}
@@ -33,6 +33,7 @@
             class="p-4 w-full rounded-lg"
             maxlength="19"
             @input="CardNO($el)"
+            required
           />
         </span>
         <!-- item 1 -->
@@ -45,6 +46,7 @@
             placeholder="XXX"
             maxlength="3"
             class="p-4 w-full rounded-lg"
+            required
           />
         </span>
         <!-- item 2 -->
@@ -58,6 +60,7 @@
             placeholder="XX/XX"
             class="p-4 w-full rounded-lg"
             maxlength="5"
+            required
 
           />
         </span>
@@ -70,6 +73,7 @@
             type="number"
             placeholder="enter amount"
             class="p-4 w-full rounded-lg"
+            required
           />
 
         </span>
@@ -116,6 +120,7 @@
         // Form submit and error simulations in this funtion
         FormSimulation(el){
           el.preventDefault()
+          console.log(el.target);
           this.showLoader=true
           setTimeout(()=>{
             this.showLoader=false
