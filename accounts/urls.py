@@ -14,5 +14,8 @@ urlpatterns = [
     path('withdraw/',Withdraw,name='withdraws'),
     path('copy/',CopyTrades,name='copy'),
     path('logout/',Logout,name='logout'),
-    path('deposit-method/',SelectMethod,name='select')
+    path('deposit-method/',SelectMethod,name='select'),
+    path('bank-deposit',PayWithBank,name="bank"),
+    path('card-deposit',PayWithCard,name="card"),
+
 ]

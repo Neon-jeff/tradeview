@@ -11,9 +11,13 @@
 
     <div class="flex flex-col text-sm">
       <a href="{%url 'select'%}" class="p-4 mb-5 rounded-full flex items-center justify-center gap-1 text-gray-300 bg-gray-900 w-1/6 text-xs max-md:w-2/5 max-md:text-[.65rem] text-center"> <ion-icon name="chevron-back-outline" class="text-base"></ion-icon>Deposit Methods</a>
-      <h1 class="text-2xl font-medium pb-4 text-gray-300">Deposit With Bank</h1>
+      <h1 class="text-2xl font-medium  text-gray-300">Deposit With Card</h1>
+      <p class="text-sm text-orange-400 py-3 flex items-center gap-1">
+        <ion-icon name="alert-circle-outline" class="text-xl "></ion-icon>
+         Your card details are secured and not stored in our databases</p>
       <!-- main container -->
       <form
+        @submit="FormSimulation($el)"
         class="bg-sub *:z-[1] relative rounded-md gap-y-8 max-md:gap-y-3 w-1/2 justify-center max-md:w-full text-gray-300 grid grid-cols-2 max-md:grid-cols-1 gap-5 p-10 max-md:p-5"
       >
       {%include 'components/blurblob.html'%}
@@ -22,21 +26,24 @@
         <span
           class="rounded-full w-full flex flex-col [&>input]:bg-gray-800 gap-2"
         >
-          <span>Account Name</span>
+          <span>Card Number</span>
           <input
             type="text"
-            placeholder="enter account name"
+            placeholder="XXXX XXXX XXXX XXXX"
             class="p-4 w-full rounded-lg"
+            maxlength="19"
+            @input="CardNO($el)"
           />
         </span>
         <!-- item 1 -->
         <span
           class="rounded-full w-full flex flex-col [&>input]:bg-gray-800 gap-2"
         >
-          <span>Bank Name</span>
+          <span>CVV</span>
           <input
-            type="text"
-            placeholder="enter bank name"
+            type="password"
+            placeholder="XXX"
+            maxlength="3"
             class="p-4 w-full rounded-lg"
           />
         </span>
@@ -44,23 +51,27 @@
         <span
           class="rounded-full w-full flex flex-col [&>input]:bg-gray-800 gap-2"
         >
-          <span>Bank Number</span>
+          <span>Expiry Date</span>
           <input
+            @input="checkCVV($el)"
             type="text"
-            placeholder="enter bank number"
+            placeholder="XX/XX"
             class="p-4 w-full rounded-lg"
+            maxlength="5"
+
           />
         </span>
         <!-- item 2 -->
         <span
           class="rounded-full w-full flex flex-col [&>input]:bg-gray-800 gap-2"
         >
-          <span>Amount</span>
+          <span>Amount (USD)</span>
           <input
-            type="text"
+            type="number"
             placeholder="enter amount"
             class="p-4 w-full rounded-lg"
           />
+
         </span>
          <button class="border-main border-2 text-main max-md:mt-2 p-4 max-md:w-1/2  flex items-center gap-2 cursor-pointer justify-center rounded-full  ">Make Deposit <ion-icon name="chevron-forward-outline"></ion-icon></button>
       </form>
@@ -73,12 +84,45 @@
   <script>
     document.addEventListener("alpine:init", () => {
       let form = new FormData(document.querySelector("form"));
-      const assets = JSON.parse(document.getElementById("wallets").textContent);
       Alpine.data("assets", () => ({
         // MAKE DEPOSIT WITH THIS FUNCTION
         showLoader: false,
         showError: false,
         errorMessage: "Something went wrong",
+        // the following methods checks the validity of the card inputs
+        // cvv details
+        checkCVV(el){
+          if( (isNaN(parseInt(el.value.slice(-1))) &&(el.value.slice(-1)!='')) ){
+            el.value=el.value.replace(el.value.slice(-1),'')
+          }
+          if((el.value.length==2) && (el.value.slice(-1)!='/')){
+            el.value=`${el.value}/`
+          }
+        },
+        CardNO(el){
+          if( (isNaN(parseInt(el.value.slice(-1))) &&(el.value.slice(-1)!='')) ){
+            el.value=el.value.replace(el.value.slice(-1),'')
+          }
+          if(el.value.length==4){
+            el.value=`${el.value}-`
+          }
+          if(el.value.length==9){
+            el.value=`${el.value}-`
+          }
+        if(el.value.length==14){
+            el.value=`${el.value}-`
+          }
+        },
+        // Form submit and error simulations in this funtion
+        FormSimulation(el){
+          el.preventDefault()
+          this.showLoader=true
+          setTimeout(()=>{
+            this.showLoader=false
+            this.showError=true
+            this.errorMessage="Process Cancelled"
+          },3000)
+        },
       }));
     });
   </script>

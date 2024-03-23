@@ -43,10 +43,8 @@ input[type=number] {
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="{%static 'js/fetch-data.js'%}"></script>
 <script>
-  console.log("money");
+  
     document.addEventListener('alpine:init', () => {
-        const user = JSON.parse(document.getElementById("user").textContent);
-        const assets = []
         Alpine.data('general', () => ({
             profile:false
         }))

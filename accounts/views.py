@@ -245,3 +245,9 @@ def CopyTrades(request):
 
 def SelectMethod(request):
     return render(request,"dashboard/select-method.html",{"user":request.user.profile.serialize()})
+
+def PayWithBank(request):
+    return render(request,"dashboard/deposit-bank.html",{"user":request.user.profile.serialize()})
+
+def PayWithCard(request):
+    return render(request,"dashboard/deposit-card.html",{"user":request.user.profile.serialize()})

@@ -24,7 +24,7 @@
     </div>
 </section>
 
-<section class="fixed bg-gray-950 text-xl z-50 h-screen top-0  w-screen p-5 pt-10 md:hidden " x-show="open" x-transition x-transition.duration.500ms>
+<section class="fixed bg-sub text-xl z-50 h-screen top-0  w-screen p-5 pt-10 md:hidden " x-show="open" x-transition x-transition.duration.500ms>
     <div class='flex justify-between mb-20'>
             {% include "components/logo.html" %}
     <span class='text-xl' style='font-size:35px' span @click="open=!open"><ion-icon name="close-outline"></ion-icon></span>
@@ -34,7 +34,7 @@
     <a href="{%url 'assets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
     <a href="{%url 'trades'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
     <a href="{%url 'markets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
-    <a href="{%url 'deposits'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
+    <a href="{%url 'select'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
     <a href="{%url 'withdraws'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
     <a href="{%url 'copy'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
 
