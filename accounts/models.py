@@ -62,7 +62,7 @@ class Deposit(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_deposit',null=True,blank=True)
     amount=models.IntegerField(null=True,blank=True)
     currency=models.CharField(null=True,blank=True,max_length=20)
-    proof=CloudinaryField('image',blank=True,null=True)
+    # proof=CloudinaryField('image',blank=True,null=True)
     created=models.DateTimeField(auto_now_add=True,null=True,blank=True)
     confirmed=models.BooleanField(blank=True,null=True,default=False)
 

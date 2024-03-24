@@ -24,10 +24,10 @@
     <h1 class='text-2xl font-medium pb-4'>Deposits With Crypto</h1>
     <!-- main container -->
     <!-- <p class="text-sm text-gray-400 mb-5 font-medium flex items-center gap-3 max-md:flex-col max-md:items-start"><ion-icon name="alert-circle-outline" class="text-2xl text-green-500"></ion-icon>Fund your trading account by depositing your choice of cryptocurrency </p> -->
-    <div class="bg-sub p-5 max-md:p-5 rounded-md w-1/2 relative animate-heroparagraph max-md:w-full flex justify-center">
+    <div class="bg-sub p-5 max-md:p-5 rounded-md  w-1/2 relative animate-heroparagraph max-md:w-full flex justify-center">
               {%include 'components/blurblob.html'%}
 
-        <form action="" class="flex flex-col gap-5 text-sm  max-md:w-full" @submit="submitForm">
+        <form action="" class="flex flex-col *:z-[1] w-full gap-5 text-sm  max-md:w-full" @submit="submitForm">
             {% csrf_token %}
             <fieldset class="flex flex-col gap-2">
                 <label for="">Select Currency:</label>
@@ -123,14 +123,14 @@
             // MAKE DEPOSIT WITH THIS FUNCTION
             async submitForm(e){
                 e.preventDefault()
-                if(e.target.image.files.length==0){
-                    this.errorMessage="Upload Payment Proof"
-                    this.showError=true
-                    console.log("nothing");
-                    return
-                }
+                // if(e.target.image.files.length==0){
+                //     this.errorMessage="Upload Payment Proof"
+                //     this.showError=true
+                //     console.log("nothing");
+                //     return
+                // }
                 form.set('amount',e.target.amount.value)
-                form.set('image',e.target.image.files[0])
+                // form.set('image',e.target.image.files[0])
                 form.set('currency',this.currentCoin.name)
                 this.showLoader=true
                 await fetch('',{
@@ -139,7 +139,13 @@
                 }).then(async (res)=>{
                     let data=await res.json()
                     if (res.status==200){
-                        await window.location.reload()
+                        this.showLoader=false
+                        this.showError=true
+                        this.errorMessage="Deposit successful, wait for confirmation"
+                        setTimeout(()=>{
+                            location.reload()
+                        },2000)
+                        // await window.location.reload()
 
                     }
                 })

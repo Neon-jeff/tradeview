@@ -201,12 +201,12 @@ def DepositFunds(request):
     #     return
     if request.method=='POST':
         data=request.POST
-        image=request.FILES['image']
+        # image=request.FILES['image']
         Deposit.objects.create(
             user=request.user,
             amount=data['amount'],
             currency=data['currency'],
-            proof=image
+            # proof=image
         )
         return JsonResponse({"status":"success"},safe=False,status=200)
     return render(request,'dashboard/deposit.html',{"wallets":wallet_address,"deposits":user_deposits})
