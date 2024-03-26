@@ -5,6 +5,7 @@
 
 <section class="bg-black   text-white max-md:pt-24" x-data="assets">
 {{user|json_script:"user"}}
+{{experts|json_script:"experts"}}
 {% include "components/sidenav.html" %}
 {% include "components/loader.html" %}
 {% include "components/error.html" %}
@@ -29,140 +30,42 @@
 
     <div class="grid grid-cols-2 w-full  gap-10 max-md:grid-cols-1">
         <!-- Expert one statt -->
-            <div class="bg-sub p-5  rounded-md">
+           <template x-for="expert in experts">
+             <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
-                <img src="{%static 'images/expert.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
-                Calvin Hill
+                <img :src="expert.image" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
+                <span x-text="expert.name"></span>
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
+            <button @click="copytoClipboard(expert.copy_amount)" class="p-3 rounded-full bg-main text-black flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
             <span class="flex flex-col text-gray-300">
                 Win Rate
-                <span class="text-lg text-gray-100 font-medium">100%</span>
+                <span x-text="expert.win_rate" class="text-lg text-gray-100 font-medium">100%</span>
             </span>
                         <span class="flex flex-col text-gray-300">
                 Wins
-                <span class="text-lg text-gray-100 font-medium">204</span>
+                <span x-text="expert.wins" class="text-lg text-gray-100 font-medium">204</span>
             </span>
                         <span class="flex flex-col text-gray-300">
                 Profit Share
-                <span class="text-lg text-gray-100 font-medium">25%</span>
+                <span x-text="expert.profit_share" class="text-lg text-gray-100 font-medium">25%</span>
             </span>
                         <span class="flex flex-col text-gray-300">
                 Losses
-                <span class="text-lg text-gray-100 font-medium">0</span>
+                <span x-text="expert.losses" class="text-lg text-gray-100 font-medium">0</span>
             </span>
 
         </div>
     </div>
+           </template>
 
     <!-- expert end -->
 
-            <!-- Expert one statt -->
-            <div class="bg-sub p-5  rounded-md">
-        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
-            <span class="flex items-center gap-4">
-                <img src="{%static 'images/trader2.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
-                Tyler
-                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
-            </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
-        </span>
 
-        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
-            <span class="flex flex-col text-gray-300">
-                Win Rate
-                <span class="text-lg text-gray-100 font-medium">100%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Wins
-                <span class="text-lg text-gray-100 font-medium">193</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Profit Share
-                <span class="text-lg text-gray-100 font-medium">20%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Losses
-                <span class="text-lg text-gray-100 font-medium">0</span>
-            </span>
-
-        </div>
-    </div>
-
-    <!-- expert end -->
-
-            <!-- Expert one statt -->
-            <div class="bg-sub p-5  rounded-md">
-        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
-            <span class="flex items-center gap-4">
-                <img src="{%static 'images/trader3.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
-                Sebastian
-                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
-            </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
-        </span>
-
-        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
-            <span class="flex flex-col text-gray-300">
-                Win Rate
-                <span class="text-lg text-gray-100 font-medium">100%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Wins
-                <span class="text-lg text-gray-100 font-medium">223</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Profit Share
-                <span class="text-lg text-gray-100 font-medium">25%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Losses
-                <span class="text-lg text-gray-100 font-medium">0</span>
-            </span>
-
-        </div>
-    </div>
-
-    <!-- expert end -->
-
-                <!-- Expert one statt -->
-            <div class="bg-sub p-5  rounded-md">
-        <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
-            <span class="flex items-center gap-4">
-                <img src="{%static 'images/trader4.jpg'%}" alt="" class="object-cover h-[80px] w-[80px] rounded-full">
-                Jamie
-                <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
-            </span>
-            <button @click="copytoClipboard" class="p-3 rounded-full bg-main flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl text-white"></ion-icon></button>
-        </span>
-
-        <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
-            <span class="flex flex-col text-gray-300">
-                Win Rate
-                <span class="text-lg text-gray-100 font-medium">98.6%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Wins
-                <span class="text-lg text-gray-100 font-medium">219</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Profit Share
-                <span class="text-lg text-gray-100 font-medium">30%</span>
-            </span>
-                        <span class="flex flex-col text-gray-300">
-                Losses
-                <span class="text-lg text-gray-100 font-medium">3</span>
-            </span>
-
-        </div>
-    </div>
-
-    <!-- expert end -->
     </div>
 
 </div>
@@ -172,11 +75,13 @@
 </div>
 
 <script>
-    document.addEventListener('alpine:init', () => {
+        document.addEventListener('alpine:init', () => {
         const user = JSON.parse(document.getElementById("user").textContent);
+        const experts = JSON.parse(document.getElementById("experts").textContent);
         const assets = []
         Alpine.data('assets', () => ({
             coins: assets,
+            experts:experts,
             currentCoin:assets[0],
             setCurrentCoin(name){
                 this.currentCoin=this.coins.find(item=>item.name==name)
@@ -190,9 +95,9 @@
                 this.fileName=e.target.files[0].name
                 this.upload=true
             },
-            async copytoClipboard(){
-                if(parseInt(user.dollar_balance)<5000){
-                    this.errorMessage="Minimum of $5,000 required to copy expert.\nFund your account"
+            async copytoClipboard(amount){
+                if(parseInt(user.dollar_balance)<amount){
+                    this.errorMessage=`Minimum of ${amount} required to copy expert.\nFund your account`
                     this.showError=true
                 }
                 else{

@@ -1,19 +1,29 @@
 <div x-data="{open:false}" class='text-gray-300'>
-<section class="fixed bg-sub  text-sm h-screen  flex flex-col justify-center w-1/5 p-5 max-md:hidden ">
-    <a href="" >{% include "components/logo.html" %}</a>
-    <ul class=' flex flex-col gap-2 mt-10 justify-center '>
-    <a href="{%url 'dashboard'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
-    <a href="{%url 'assets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
-    <a href="{%url 'trades'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
-    <a href="{%url 'markets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
-    <a href="{%url 'select'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
-    <a href="{%url 'withdraws'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
-        <a href="{%url 'copy'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
+<section class="fixed border-r-2 border-sub  text-xs  flex flex-col justify-center w-1/6 p-5 max-md:hidden ">
+    <!-- <a href="" >{% include "components/logo.html" %}</a> -->
+    <!-- avatar -->
+    <div class="flex flex-col items-center gap-2">
+       <span class="flex flex-col items-center gap-2"> <ion-icon name="person" class="p-5 text-3xl bg-sub rounded-full" ></ion-icon>
+        <span  class="">{{request.user.first_name}}</span></span>
 
-    <a href="{%url 'logout'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
-    {% comment %} <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
-    <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
-    <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
+        <span class=" bg-main text-black p-3 rounded-full font-medium text-base w-full text-center">$0.00</span>
+    </div>
+    <ul class=' flex flex-col gap-4 mt-10 justify-center '>
+    <a href="{%url 'dashboard'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-xl'></ion-icon>Dashboard</a>
+    <a href="{%url 'assets'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-xl'></ion-icon>Assets</a>
+    <a href="{%url 'trades'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-xl'></ion-icon>Trades</a>
+    <a href="{%url 'markets'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-xl'></ion-icon>Markets</a>
+
+    <div class="my-10 flex flex-col gap-4">
+            <a href="{%url 'select'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-xl'></ion-icon>Deposit</a>
+    <a href="{%url 'withdraws'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-xl'></ion-icon>Withdraw</a>
+        <a href="{%url 'copy'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-xl'></ion-icon>Copy Trades</a>
+    </div>
+
+    <a href="{%url 'logout'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-xl'></ion-icon>Logout</a>
+    {% comment %} <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
     </ul>
 </section>
 
@@ -24,26 +34,35 @@
     </div>
 </section>
 
-<section class="fixed bg-sub text-xl z-50 h-screen top-0  w-screen p-5 pt-10 md:hidden " x-show="open" x-transition x-transition.duration.500ms>
-    <div class='flex justify-between mb-20'>
-            {% include "components/logo.html" %}
-    <span class='text-xl' style='font-size:35px' span @click="open=!open"><ion-icon name="close-outline"></ion-icon></span>
+<section class="fixed bg-black text-sm text-gray-400 z-50 h-screen top-0  w-4/5 p-5 pt-10 md:hidden " x-show="open" x-transition x-transition.duration.500ms>
+    <div class='flex justify-end mb-10'>
+    <span class='text-xl' span @click="open=!open"><ion-icon name="arrow-back"></ion-icon></span>
     </div>
-    <ul class=' flex flex-col gap-2 '>
-<a href="{%url 'dashboard'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-2xl'></ion-icon>Dashboard</a>
-    <a href="{%url 'assets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-2xl'></ion-icon>Assets</a>
-    <a href="{%url 'trades'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-2xl'></ion-icon>Trades</a>
-    <a href="{%url 'markets'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-2xl'></ion-icon>Markets</a>
-    <a href="{%url 'select'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-2xl'></ion-icon>Deposit</a>
-    <a href="{%url 'withdraws'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-2xl'></ion-icon>Withdraw</a>
-    <a href="{%url 'copy'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-2xl'></ion-icon>Copy Trades</a>
 
-    <a href="{%url 'logout'%}" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-2xl'></ion-icon>Logout</a>
+        <!-- avatar -->
+    <div class="flex flex-col items-center gap-2">
+       <span class="flex flex-col items-center gap-2"> <ion-icon name="person" class="p-5 text-3xl bg-sub rounded-full" ></ion-icon>
+        <span  class="">{{request.user.first_name}}</span></span>
 
-    {% comment %} <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
-    <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
-    <a href="" class='hover:text-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
-    <a href="" class=' p-3 rounded-md hover:scale-105 transition duration-100 ease-in text-blue-600 flex items-center gap-3'> <ion-icon name="mail-unread-outline" class='text-2xl'></ion-icon>Contact Us</a>
+        <span class=" bg-main text-black p-3 rounded-full font-medium text-base w-full text-center">$0.00</span>
+    </div>
+
+     <ul class=' flex flex-col gap-4 mt-10 justify-center '>
+    <a href="{%url 'dashboard'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="home-outline" class='text-xl'></ion-icon>Dashboard</a>
+    <a href="{%url 'assets'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="wallet-outline" class='text-xl'></ion-icon>Assets</a>
+    <a href="{%url 'trades'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="analytics-outline" class='text-xl'></ion-icon>Trades</a>
+    <a href="{%url 'markets'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="storefront-outline" class='text-xl'></ion-icon>Markets</a>
+
+    <div class="my-10 flex flex-col gap-4">
+            <a href="{%url 'select'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="cash-outline" class='text-xl'></ion-icon>Deposit</a>
+    <a href="{%url 'withdraws'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="diamond-outline" class='text-xl'></ion-icon>Withdraw</a>
+        <a href="{%url 'copy'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="clipboard-outline" class='text-xl'></ion-icon>Copy Trades</a>
+    </div>
+
+    <a href="{%url 'logout'%}" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in flex gap-3 items-center '><ion-icon name="log-out-outline" class='text-xl'></ion-icon>Logout</a>
+    {% comment %} <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Subcribe</a>
+    <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Signals</a>
+    <a href="" class='hover:text-main rounded-md hover:scale-105 transition duration-100 ease-in'>Copy Experts</a> {% endcomment %}
     </ul>
 </section>
 

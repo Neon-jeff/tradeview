@@ -1,0 +1,20 @@
+<div class=' text-black rounded-md  w-3/5 max-md:w-full flex flex-col relative justify-between'>
+<!-- balance and greetings -->
+<span class="text-gray-300 text-2xl">Welcome {{request.user.first_name}}</span>
+<div class='flex justify-between items-center p-5  rounded-xl mt-5 bg-main bg-opacity-90 relative'>
+    <!-- blob -->
+    <!-- <div class="absolute p-5 rounded-full bg-black -top-5 right-0"></div> -->
+    <div class='flex items-center gap-5 max-md:gap-3'>
+    <span class=' flex  justify-center items-center  text-black'>
+    <ion-icon name="wallet" class="text-4xl -rotate-12"></ion-icon>
+    </span>
+    <p class="flex flex-col gap-1"><span class='text-sm font-medium  flex gap-2 items-center'>Assets Balance <span><ion-icon name="eye" class="text-lg text-black" @click="hideBalance" x-show="balanceHidden" ></ion-icon>
+    <ion-icon name="eye-off" class="text-lg text-black" x-show="!balanceHidden" @click="hideBalance"></ion-icon>
+    </span></span>  <span class='text-3xl  font-semibold balance'>${{request.user.profile.dollar_balance|add:request.user.profile.profit}}.00</span></p>
+    </div>
+    <!-- <p class='text-green-600 bg-green-300 p-2 rounded-md text-xs font-semibold'>Live</p> -->
+</div>
+<!-- Balance Summary -->
+{%include 'dashboard/summary.html'%}
+
+</div>

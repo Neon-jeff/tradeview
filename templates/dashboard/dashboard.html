@@ -22,30 +22,8 @@
 
 {% comment %} balance and widget container {% endcomment %}
 <div class='flex flex-col gap-10 w-full max-md:w-full'>
-<div class='bg-sub  rounded-md p-8 w-3/5 max-md:w-full flex flex-col relative justify-between'>
-    <!-- blob div -->
-    <div class="absolute h-2/3 bg-main blur-[100px] rounded-full z-[1] w-3/5 bg-opacity-20 bottom-0 right-0 ">
-    </div>
-        <div class="absolute h-2/3 bg-orange-300 blur-[100px] rounded-full z-[1] w-3/5 bg-opacity-20 top-0 left-0 ">
-    </div>
-{% comment %} top section {% endcomment %}
-<div class='flex justify-between items-center'>
-    <div class='flex items-center gap-5 max-md:gap-3'>
-    <span class=' flex  justify-center items-center p-3 text-gray-300  bg-gray-800 rounded-full'>
-    <ion-icon name="wallet-outline" class="text-3xl"></ion-icon>
-    </span>
-    <p><span class='text-xs text-slate-200 flex gap-2 items-center'>Total Balance <span><ion-icon name="eye" class="text-lg text-white" @click="hideBalance" x-show="balanceHidden" ></ion-icon>
-    <ion-icon name="eye-off" class="text-lg text-white" x-show="!balanceHidden" @click="hideBalance"></ion-icon>
-    </span></span>  <span class='text-2xl font-medium balance'>${{request.user.profile.dollar_balance|add:request.user.profile.profit}}.00</span></p>
-    </div>
-    <p class='text-green-600 bg-green-300 p-2 rounded-md text-xs font-semibold'>Live</p>
-</div>
-<!-- Balance Summary -->
-{%include 'dashboard/summary.html'%}
 
-
-</div>
-
+{%include 'dashboard/balance-details.html'%}
 {%include 'dashboard/actions.html'%}
 {%include 'dashboard/market-data.html'%}
 </div>

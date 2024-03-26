@@ -1,13 +1,31 @@
-<div class=" rounded-md mt-16 text-gray-300">
-  <h1 class="font-medium mb-5 ">Balance Summary</h1>
-  <div class="grid grid-cols-3 max-md:grid-cols-2   gap-4 text-md font-medium text-xs">
-    <span class="flex justify-between w-full flex-col gap-2">
-      <span class="flex items-center gap-2 text-gray-400"
-        ><ion-icon name="card-outline" class="text-xl text-gray-400"></ion-icon>Total Profit</span
+<div class=" rounded-md mt-10 text-black">
+  <div class="grid grid-cols-3 max-md:grid-cols-3 gap-y-8   gap-4 text-md font-medium text-xs">
+    <span class="flex justify-between w-full flex-col relative gap-2 bg-blue-200 bg-opacity-60  p-5 rounded-lg">
+      <span class="flex items-center gap-2 mt-2 text-black max-md:flex-col max-md:items-start"
+        ><ion-icon name="card" class="text-2xl bg-blue-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Profits</span
       >
-      <span class="text-sm font-medium">${{request.user.profile.profit}}.00</span>
+      <span class="text-xl font-medium">${{request.user.profile.profit}}.00</span>
     </span>
-    <span class="flex justify-between w-full flex-col gap-2">
+
+        <span class="flex justify-between w-full flex-col relative gap-2 bg-orange-200 bg-opacity-60  p-5 rounded-lg">
+      <span class="flex items-center gap-2 mt-2 max-md:flex-col max-md:items-start "
+        ><ion-icon name="cash" class="text-2xl bg-orange-200   p-2 rounded-full  -top-3 left-3 "></ion-icon>Deposits</span
+      >
+      <span class="text-xl font-medium">${{deposit}}.00</span>
+    </span>
+
+        <span class="flex justify-between w-full flex-col relative gap-2 bg-green-300 bg-opacity-60  p-5 rounded-lg">
+      <span class="flex items-center gap-2 mt-2 max-md:flex-col max-md:items-start "
+        ><ion-icon name="wallet" class="text-2xl bg-green-300   p-2 rounded-full  -top-3 left-3 "></ion-icon>Bonuses</span
+      >
+      <span class="text-xl font-medium">$0.00</span>
+    </span>
+
+
+
+
+
+    <!-- <span class="flex justify-between w-full flex-col gap-2">
       <span class="flex items-center gap-2 text-gray-400"
         ><ion-icon name="cash-outline" class="text-xl text-gray-400"></ion-icon>Total Deposits</span
       >
@@ -18,6 +36,6 @@
         ><ion-icon name="wallet-outline" class="text-xl text-gray-400"></ion-icon>Total Withdrawals</span
       >
       <span  class="text-sm font-medium">$0.00</span>
-    </span>
+    </span> -->
   </div>
 </div>

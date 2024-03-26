@@ -97,11 +97,16 @@ def Logout(request):
 def Dashboard(request):
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
+    # assets={
+    #     "crypto":FetchCoinData(),
+    #     "forex":Forex_Currencies(),
+    #     "stocks":StockData()
+    #     }
     assets={
-        "crypto":FetchCoinData(),
-        "forex":Forex_Currencies(),
-        "stocks":StockData()
-        }
+        "crypto":[],
+        "forex":[],
+        "stocks":[]
+    }
     total_deposit=sum([x.amount for x in request.user.user_deposit.filter(confirmed=True)])
     return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json,"deposit":total_deposit})
 
@@ -240,7 +245,19 @@ def Withdraw(request):
     return render(request,'dashboard/withdraw.html',{"wallets":wallet_address,'user':request.user.profile.serialize()})
 
 def CopyTrades(request):
-    return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize()})
+    experts_dict=[
+        {
+            "name":expert.name,
+            "win_rate":expert.win_rate,
+            "wins":expert.wins,
+            "losses":expert.losses,
+            "profit_share":expert.profit_share,
+            "image":expert.image.url,
+            "copy_amount":expert.copy_amount
+        }
+        for expert in CopyTrader.objects.all()
+    ]
+    return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize(),"experts":experts_dict})
 
 
 def SelectMethod(request):
