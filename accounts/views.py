@@ -97,16 +97,16 @@ def Logout(request):
 def Dashboard(request):
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
-    # assets={
-    #     "crypto":FetchCoinData(),
-    #     "forex":Forex_Currencies(),
-    #     "stocks":StockData()
-    #     }
     assets={
-        "crypto":[],
-        "forex":[],
-        "stocks":[]
-    }
+        "crypto":FetchCoinData(),
+        "forex":Forex_Currencies(),
+        "stocks":StockData()
+        }
+    # assets={
+    #     "crypto":[],
+    #     "forex":[],
+    #     "stocks":[]
+    # }
     total_deposit=sum([x.amount for x in request.user.user_deposit.filter(confirmed=True)])
     return render(request,'dashboard/dashboard.html',{"assets":assets,"user":user_json,"deposit":total_deposit})
 
