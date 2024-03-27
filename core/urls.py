@@ -26,6 +26,7 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name='pages/home.html'),name='home'),
     path('about/',TemplateView.as_view(template_name='pages/about-us.html'),name='about'),
     path('markets/',TemplateView.as_view(template_name='pages/markets.html'),name='market'),
+    path('expert/',TemplateView.as_view(template_name='pages/expert.html'),name='expert'),
     path('accounts/',include('accounts.urls'))
 ]
 
