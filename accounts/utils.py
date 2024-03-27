@@ -19,7 +19,7 @@ def SendEmail(user,request):
     msg = MIMEMultipart("alternative")
     email_template=render_to_string('pages/index.html',{'user':user,'request':request.get_host()})
     # text="Hi, welcome to nello"
-    msg['Subject'] = f"Welcome to GTBULLS – Let's Begin Your Trading Journey"
+    msg['Subject'] = f"Welcome to QX options – A Trusted Trading Journey"
     msg['From'] = sender
     msg['To'] = recipient
     part2 = MIMEText(email_template, 'html')
