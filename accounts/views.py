@@ -123,8 +123,17 @@ def Trades(request):
     assets=FetchCoinData()
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
-    open_trades=Trade.objects.filter(user=request.user,closed=False).order_by('-id')
-    closed_trades=Trade.objects.filter(user=request.user,closed=True).order_by('-id')
+    trades=[
+        {
+            "amount":trade.amount,
+            "currency":trade.currency,
+            "stop_loss":trade.stop_loss,
+            "take_profit":trade.take_profit,
+            "closed":trade.closed,
+            "created":trade.created.strftime('%m/%d/%Y'),
+            "id":trade.id
+        } for trade in Trade.objects.filter(user=request.user)
+    ]
     if request.method=='POST':
         data=request.POST
         Trade.objects.create(
@@ -133,13 +142,13 @@ def Trades(request):
             currency=data['currency'],
             take_profit=int(data['take_profit']),
             stop_loss=int(data['stop_loss']),
-            duration=data["duration"]
+            # duration=data["duration"]
         )
         request.user.profile.dollar_balance=request.user.profile.dollar_balance-int(data["amount"])
         request.user.profile.save()
         messages.success(request,"Open trade successful")
         return JsonResponse({"status":"success"},safe=False)
-    return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json,"open_trades":open_trades,"closed_trades":closed_trades})
+    return render(request,'dashboard/trades.html',{"assets":assets,"user":user_json,"trades":trades})
 
 def UserCoinBalance(request):
     pass

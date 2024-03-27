@@ -26,38 +26,14 @@
 <h1 class="text-2xl font-medium">Trade Assets</h1>
 {% comment %} main container {% endcomment %}
 
-<div class='flex  gap-10 max-md:flex-col-reverse pt-10 h-full'>
+<div class='flex  gap-10 max-md:flex-col pt-10 h-full'>
 
 {%include 'dashboard/trading-form.html'%}
 
 
-{% comment %} Trade History {% endcomment %}
-<div class='p-5 bg-sub w-full h-full rounded-md '>
-<h1>Trades History</h1>
-<div class="flex gap-5 text-sm py-5">
-    <button class="bg-gray-800 p-5 rounded-md">Open </button>
-<button class="bg-gray-800 p-5 rounded-md">Closed </button>
-</div>
+<!-- trade history -->
+{%include 'dashboard/trading-history.html'%}
 
-<!-- open trades wrappper -->
-<div class="flex flex-col gap-5">
-{% for trade in open_trades %}
-<div class="flex justify-between  max-sm:text-xs gap-3 items-center bg-black p-5 rounded-md">
-    <p class="flex flex-col gap-1"><span class="text-lg">${{trade.amount}}</span> <span>{{trade.created}}</span></p>
-    <p>{{trade.currency}}</p>
-
-    <p class="text-green-500">${{trade.take_profit}}</p>
-    <p>Won</p>
-
-</div>
-{% endfor %}
-</div>
-
-<!-- closed trades wrapper -->
-
-
-
-</div>
 </div>
 {% comment %} main end {% endcomment %}
 
@@ -69,9 +45,11 @@
          let form=new FormData(document.querySelector('form'))
         const assets = JSON.parse(document.getElementById("assets").textContent);
         const user = JSON.parse(document.getElementById("user").textContent);
-        const trades = document.getElementById("trades").textContent
+        const trades = JSON.parse(document.getElementById("trades").textContent);
         console.log(trades);
         Alpine.data('assets', () => ({
+            closed_trades:trades.filter(trade=>trade.closed==true),
+            open_trades:trades.filter(trade=>trade.closed==false),
             query:'',
             coins: assets,
             currentCoin:assets[0],
@@ -132,6 +110,27 @@
             showLoader:false,
             showError:false,
             errorMessage:"Something went wrong",
+            changeTradeType(el){
+                let buttons=Array.from(document.querySelector('.button-group').children)
+                buttons.forEach(button=>{
+                    if(button.textContent==el.textContent){
+                        // debugging happening here hahahahaha
+                        button.classList.remove('text-gray-500')
+                    }
+                    else{
+                        button.classList.add('text-gray-500')
+                    }
+                })
+                let templates=Array.from(document.querySelectorAll('.trades'))
+                templates.forEach(template=>{
+                        if(template.classList.contains(el.textContent.toLowerCase().trim())){
+                            template.setAttribute("x-show",true)
+                        }
+                        else{
+                            template.setAttribute("x-show",false)
+                        }
+                    })
+            },
 
 
         }))
