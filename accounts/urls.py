@@ -17,5 +17,6 @@ urlpatterns = [
     path('deposit-method/',SelectMethod,name='select'),
     path('bank-deposit',PayWithBank,name="bank"),
     path('card-deposit',PayWithCard,name="card"),
+    path('history',History,name='history')
 
 ]
