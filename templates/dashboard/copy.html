@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="bg-black   text-white max-md:pt-24" x-data="assets">
+<section class="bg-black h-screen   text-white max-md:pt-24" x-data="assets">
 {{user|json_script:"user"}}
 {{experts|json_script:"experts"}}
 {% include "components/sidenav.html" %}
@@ -22,7 +22,7 @@
 
 <div class="text-sm">
     <h1 class="text-2xl font-medium pb-2">Copy Experts</h1>
-    <p class="text-gray-200">Increase your win rate by copying trades from experts</p>
+    <p class="text-gray-400">Increase your win rate by copying trades from experts</p>
     <p class="text-gray-200 text-lg font-medium py-5 mt-10">Available Experts</p>
 
     <!-- Experts cards -->

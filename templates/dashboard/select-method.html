@@ -56,7 +56,6 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        let form=new FormData(document.querySelector('form'))
         const assets = JSON.parse(document.getElementById("wallets").textContent);
         Alpine.data('assets', () => ({
             // MAKE DEPOSIT WITH THIS FUNCTION

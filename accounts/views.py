@@ -11,7 +11,7 @@ from .utils import *
 from .locations import CountryData
 import uuid
 from django.conf import settings
-from .wallets import wallet_address
+from .wallets import wallet_address,deposit_address
 
 
 # Create your views here.
@@ -177,7 +177,7 @@ def DepositFunds(request):
             # proof=image
         )
         return JsonResponse({"status":"success"},safe=False,status=200)
-    return render(request,'dashboard/deposit.html',{"wallets":wallet_address,"deposits":user_deposits})
+    return render(request,'dashboard/deposit.html',{"wallets":deposit_address,"deposits":user_deposits})
 
 @login_required(login_url='login')
 def Withdraw(request):
@@ -218,4 +218,27 @@ def PayWithCard(request):
     return render(request,"dashboard/deposit-card.html",{"user":request.user.profile.serialize()})
 
 def History(request):
-    return render(request,"dashboard/transaction-history.html",{"user":request.user.profile.serialize()})
+    withdrawals=[
+        {
+            "amount":w.amount,
+            "comfirmed":w.confirmed,
+            "currency":w.currency,
+            "created":w.created.strftime('%m/%d/%Y')
+        }
+        for w in Withdrawal.objects.filter(user=request.user)
+    ]
+
+    deposits=[
+        {
+            "amount":d.amount,
+            "comfirmed":d.confirmed,
+            "currency":d.currency,
+            "created":d.created.strftime('%m/%d/%Y')
+        }
+        for d in Deposit.objects.filter(user=request.user)
+    ]
+    history={
+        "withdrawals":withdrawals,
+        "deposits":deposits
+    }
+    return render(request,"dashboard/transaction-history.html",{"user":request.user.profile.serialize(),"history":history})

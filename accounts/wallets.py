@@ -45,3 +45,24 @@ wallet_address=[
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/74.png"
         }
     ]
+
+
+deposit_address=[
+        {
+            "name":"BTC",
+            "address":"bc1qenyj9s3wpuldxcuk6jrl7jn3yepqmw4n59lq0t",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"
+        },
+                {
+            "name":"ETH",
+            "address":"0x2588672098e60AD7c35D1A8CE7896bcb6F0f39Ea",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
+        },
+                {
+            "name":"USDT(ERC-20)",
+            "address":"0x2588672098e60AD7c35D1A8CE7896bcb6F0f39Ea",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"
+        }
+    ]
+
+

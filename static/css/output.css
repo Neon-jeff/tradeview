@@ -722,10 +722,6 @@ video {
   z-index: 50;
 }
 
-.z-\[-1\] {
-  z-index: -1;
-}
-
 .z-\[1\] {
   z-index: 1;
 }
@@ -791,11 +787,6 @@ video {
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 .-mb-10 {
@@ -898,6 +889,10 @@ video {
   height: 66.666667%;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-3 {
   height: 0.75rem;
 }
@@ -992,6 +987,10 @@ video {
 
 .w-2\/5 {
   width: 40%;
+}
+
+.w-20 {
+  width: 5rem;
 }
 
 .w-3 {
@@ -1528,11 +1527,6 @@ video {
      object-fit: cover;
 }
 
-.object-top {
-  -o-object-position: top;
-     object-position: top;
-}
-
 .p-1 {
   padding: 0.25rem;
 }
@@ -1739,10 +1733,6 @@ video {
   font-weight: 600;
 }
 
-.uppercase {
-  text-transform: uppercase;
-}
-
 .capitalize {
   text-transform: capitalize;
 }
@@ -1796,6 +1786,11 @@ video {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
+}
+
 .text-green-500 {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity));
@@ -1839,11 +1834,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.antialiased {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .opacity-0 {
@@ -1913,11 +1903,6 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.grayscale {
-  --tw-grayscale: grayscale(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1983,6 +1968,7 @@ html{
   font-family: "DM Sans", sans-serif !important;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: black;
 }
 
 iframe{
@@ -2348,11 +2334,6 @@ html.theme-dark .tv-embed-widget-wrapper__body{
     border-width: 0px;
   }
 
-  .max-sm\:text-xs {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-
   .max-sm\:text-blue-500 {
     --tw-text-opacity: 1;
     color: rgb(59 130 246 / var(--tw-text-opacity));
@@ -2401,10 +2382,6 @@ html.theme-dark .tv-embed-widget-wrapper__body{
 @media (min-width: 1200px) {
   .lg\:hidden {
     display: none;
-  }
-
-  .lg\:h-\[300px\] {
-    height: 300px;
   }
 
   .lg\:w-1\/4 {

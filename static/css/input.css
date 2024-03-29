@@ -8,6 +8,8 @@ html{
     font-family: "DM Sans", sans-serif !important;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: black;
+
 }
 
 iframe{

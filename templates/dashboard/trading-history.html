@@ -34,8 +34,13 @@
   <!-- closed trades -->
 
     <div class="trades closed bg-red-100" x-show="false" x-transition x-transition.duration.500ms>
-    <template x-for="trade in closed_trades" :key="trade.currency">
-        <span x-text="trade.currency"></span>
+    <template x-for="trade in open_trades" :key="trade.id">
+        <div class="flex justify-between bg-gray-800 p-5 rounded-md my-5">
+              <span x-text="trade.currency"></span>
+        <span x-text="trade.created"></span>
+        <span x-text="'$'+trade.amount"></span>
+        <span class="text-green-400">closed</span>
+        </div>
     </template>
   </div>
 
