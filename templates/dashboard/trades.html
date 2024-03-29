@@ -48,11 +48,13 @@
         const trades = JSON.parse(document.getElementById("trades").textContent);
         console.log(trades);
         Alpine.data('assets', () => ({
-            closed_trades:trades.filter(trade=>trade.closed==true),
-            open_trades:trades.filter(trade=>trade.closed==false),
+            closed_trades:trades.filter(trade=>trade.closed==true && trade.expert==false),
+            open_trades:trades.filter(trade=>trade.closed==false && trade.expert==false),
+            expert_trades:trades.filter(trade=>trade.expert==true),
             query:'',
             coins: assets,
             currentCoin:assets[0],
+
             setCurrentCoin(id){
                 this.currentCoin=this.coins.find(item=>item.symbol==id)
                 this.query=''

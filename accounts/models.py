@@ -5,6 +5,22 @@ from cloudinary.models import CloudinaryField
 from .qr_code import CreateQRCode
 # Create your models here.
 
+
+class CopyTrader(models.Model):
+    name=models.CharField(null=True,blank=True,max_length=200)
+    win_rate=models.CharField(null=True,blank=True,max_length=200)
+    wins=models.CharField(null=True,blank=True,max_length=200)
+    losses=models.CharField(null=True,blank=True,max_length=200)
+    profit_share=models.CharField(null=True,blank=True,max_length=200)
+    copy_amount=models.IntegerField(default=0,null=True,blank=True)
+    image=CloudinaryField('image',null=True,blank=True)
+
+    def __str__(self):
+        return f'{self.name} Expert Trader'
+
+
+
+
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     verified=models.BooleanField(default=False)
@@ -17,31 +33,17 @@ class Profile(models.Model):
     dollar_balance=models.IntegerField(default=0,null=True,blank=True)
     usdt_balance=models.IntegerField(default=0,null=True,blank=True)
     btc_balance=models.IntegerField(default=0,null=True,blank=True)
-    xlm_balance=models.IntegerField(default=0,null=True,blank=True)
     eth_balance=models.IntegerField(default=0,null=True,blank=True)
-    usdc_balance=models.IntegerField(default=0,null=True,blank=True)
-    xrp_balance=models.IntegerField(default=0,null=True,blank=True)
-    doge_balance=models.IntegerField(default=0,null=True,blank=True)
-    bnb_balance=models.IntegerField(default=0,null=True,blank=True)
-    sol_balance=models.IntegerField(default=0,null=True,blank=True)
-    ada_balance=models.IntegerField(default=0,null=True,blank=True)
     profit=models.IntegerField(default=0,null=True,blank=True)
-
+    trading_profile=models.OneToOneField(CopyTrader,null=True,blank=True,related_name='trading_profile',on_delete=models.PROTECT)
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} Profile '
     def serialize(self):
         return{
             "dollar_balance":self.dollar_balance,
-            "doge_balance":self.doge_balance,
-            "ada_balance":self.ada_balance,
-            "xlm_balance":self.xlm_balance,
-            "xrp_balance":self.xrp_balance,
-            "bnb_balance":self.bnb_balance,
             "eth_balance":self.eth_balance,
             "btc_balance":self.btc_balance,
-            "sol_balance":self.sol_balance,
             "usdt_balance":self.usdt_balance,
-            "usdc_balance":self.usdc_balance,
             "profit":self.profit
         }
 
@@ -55,6 +57,7 @@ class Trade(models.Model):
     closed=models.BooleanField(default=False)
     created=models.DateTimeField(auto_now_add=True,null=True,blank=True)
     expert_trade=models.BooleanField(default=False,null=True,blank=True)
+    lost_trade=models.BooleanField(default=False,null=True,blank=True)
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} Trade '
@@ -107,14 +110,4 @@ class Deposit_Wallets(models.Model):
 
 # create copy trader section
 
-class CopyTrader(models.Model):
-    name=models.CharField(null=True,blank=True,max_length=200)
-    win_rate=models.CharField(null=True,blank=True,max_length=200)
-    wins=models.CharField(null=True,blank=True,max_length=200)
-    losses=models.CharField(null=True,blank=True,max_length=200)
-    profit_share=models.CharField(null=True,blank=True,max_length=200)
-    copy_amount=models.IntegerField(default=0,null=True,blank=True)
-    image=CloudinaryField('image',null=True,blank=True)
 
-    def __str__(self):
-        return f'{self.name} Expert Trader'

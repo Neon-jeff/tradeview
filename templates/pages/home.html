@@ -7,16 +7,16 @@
 {% include "components/nav.html" %}
 
     {% comment %} hero-section {% endcomment %}
-    <section class='w-4/5  flex max-md:flex-col self-start  max-md:bg-black  gap-10 justify-start  items-center    max-md:h-full  py-10 rounded-3xl max-md:w-full relative px-5  max-md:items-start max-md:gap-10'>
+    <section class='w-4/5 h-screen flex max-md:flex-col self-start  max-md:bg-black  gap-10 justify-start  items-center    max-md:h-full   rounded-3xl max-md:w-full relative px-5  max-md:items-start max-md:gap-10'>
       {%include 'components/svg.html'%}
       <div class="flex flex-col gap-3 w-1/2 max-md:w-full">
 
-         <h1 class=' text-5xl max-md:text-5xl w-4/5  max-md:w-full  font-semibold animate-herotext'>Smart Trading Options at  your <span class='text-main'>Fingers</span></h1>
+         <h1 class=' text-7xl max-md:text-5xl  max-md:w-full  font-semibold animate-herotext'>Smart Trading Options at  your <span class='text-main'>Fingers</span></h1>
          <p class='pt-2 text-sm w-4/5  max-md:w-full animate-heroparagraph '>
 Revolutionize your trading experience with our secure and user-friendly crypto broker platform. Trade seamlessly and explore endless possibilities!</p>
          {% comment %} button holder {% endcomment %}
          <div class='pt-4 flex '>
-            <a href="{%url 'sign-up'%}" class='bg-main text-black flex items-center gap-3 p-4 px-10 rounded-full hover:-translate-y-2  transition duration-150 ease-in'>Get Started <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
+            <a href="{%url 'sign-up'%}" class='bg-main z-[1] text-black flex items-center gap-3 p-4 px-10 rounded-full hover:-translate-y-2  transition duration-150 ease-in'>Get Started <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
             <!-- <a href="{%url 'about'%}" class='border-2 border-main  p-3 px-10 rounded-full mx-2 flex items-center gap-3'><i class="fa-regular fa-circle-play text-main text-2xl"></i>How it Works</a> -->
          </div>
       </div>
@@ -96,9 +96,9 @@ Revolutionize your trading experience with our secure and user-friendly crypto b
     <h1 class='text-5xl max-md:text-4xl w-1/2 max-md:w-full font-semibold  text-gray-400 py-3 pb-5' >Reviews from <span class="text-main">Satisfied</span> Customers</h1>
     <p class="text-gray-300 w-1/2 max-md:w-full ">
 Users praise our platform for seamless transactions, a vast array of assets, and top-notch security. Exceptional customer support enhances the overall positive trading experience.</p>
-<div class="carousel rounded-box mt-10 max-md:mt-5 carousel-center bg-sub h-96 px-5 py-10 max-md:px-0 max-md:w-full max-md:bg-black">
+<div class="carousel rounded-box mt-10 max-md:mt-5 carousel-center bg-sub  px-5 py-10 max-md:px-0 max-md:w-full max-md:bg-black">
   <div class="carousel-item flex flex-col bg-black w-1/3 p-10 mx-5 max-md:bg-sub max-md:mx-3 max-md:w-3/5 gap-5 rounded-box justify-center ">
-    <img src="{%static 'images/r1.jpg'%}" alt="reviewImage" class="h-20 w-20 rounded-full object-cover">
+    <img src="{%static 'images/r1.jpg'%}" alt="reviewImage" class="h-[80px] w-[80px] rounded-full object-cover">
     <h1 class="text-base font-medium text-main">Very Secured Plaform</h1>
     <p class="">The system security is top notch, I was in need of a safe place to invest and this plaform helped alo</p>
     <span class="flex flex-col gap-1 text-sm text-gray-400">
@@ -107,7 +107,7 @@ Users praise our platform for seamless transactions, a vast array of assets, and
   </div>
 
     <div class="carousel-item flex flex-col bg-black w-1/3 p-10 mx-5 max-md:bg-sub max-md:mx-3 max-md:w-3/5 gap-5 rounded-box justify-center ">
-    <img src="{%static 'images/r2.jpg'%}" alt="reviewImage" class="h-20 w-20 rounded-full object-cover">
+    <img src="{%static 'images/r2.jpg'%}" alt="reviewImage" class="h-[80px] w-[80px] rounded-full object-cover">
       <h1 class="text-base font-medium text-main">Great Customer Support</h1>
     <p class="">Unmatched security backed by attentive support. I confidently explore different markets, knowing my assets are safe</p>
     <span class="flex flex-col gap-1 text-sm text-gray-400">
@@ -116,7 +116,7 @@ Users praise our platform for seamless transactions, a vast array of assets, and
   </div>
 
       <div class="carousel-item flex flex-col bg-black w-1/3 p-10 mx-5 max-md:bg-sub max-md:mx-3 max-md:w-3/5 gap-5 rounded-box justify-center ">
-        <img src="{%static 'images/r3.jpg'%}" alt="reviewImage" class="h-20 w-20 rounded-full object-cover">
+        <img src="{%static 'images/r3.jpg'%}" alt="reviewImage" class="h-[80px] w-[80px] rounded-full object-cover">
         <h1 class="text-base font-medium text-main">Easy and Fast Transactions</h1>
     <p class="">Slick transactions! I've seamlessly sold and bought crypto assets. The platform's efficiency elevates the trading experience.</p>
     <span class="flex flex-col gap-1 text-sm text-gray-400">
@@ -125,11 +125,10 @@ Users praise our platform for seamless transactions, a vast array of assets, and
   </div>
 
       <div class="carousel-item flex flex-col bg-black w-1/3 p-10 mx-5 max-md:bg-sub max-md:mx-3 max-md:w-3/5 gap-5 rounded-box justify-center ">
-        <img src="{%static 'images/r4.jpg'%}" alt="reviewImage" class="h-20 w-20 rounded-full object-cover">
+        <img src="{%static 'images/r4.jpg'%}" alt="reviewImage" class="h-[80px] w-[80px] rounded-full object-cover">
         <h1 class="text-base font-medium text-main">Superb Experts</h1>
     <p class="">My trading progress Increased exponentially after suscribing to the available trading experts</p>
     <span class="flex flex-col gap-1 text-sm text-gray-400">
-      <ion-icon name="people-circle" class="text-4xl"></ion-icon>
       <span>Mark Knov</span>
     </span>
   </div>

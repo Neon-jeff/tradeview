@@ -131,7 +131,9 @@ def Trades(request):
             "take_profit":trade.take_profit,
             "closed":trade.closed,
             "created":trade.created.strftime('%m/%d/%Y'),
-            "id":trade.id
+            "id":trade.id,
+            "expert":trade.expert_trade,
+            "lost":trade.lost_trade
         } for trade in Trade.objects.filter(user=request.user)
     ]
     if request.method=='POST':
@@ -192,6 +194,7 @@ def Withdraw(request):
 
     return render(request,'dashboard/withdraw.html',{"wallets":wallet_address,'user':request.user.profile.serialize()})
 
+@login_required(login_url='login')
 def CopyTrades(request):
     experts_dict=[
         {
@@ -201,10 +204,17 @@ def CopyTrades(request):
             "losses":expert.losses,
             "profit_share":expert.profit_share,
             "image":expert.image.url,
-            "copy_amount":expert.copy_amount
+            "copy_amount":expert.copy_amount,
+            "id":expert.id
         }
         for expert in CopyTrader.objects.all()
     ]
+    print(request.GET)
+    if "copy" in request.GET:
+        expert_id=request.GET["copy"]
+        request.user.profile.trading_profile=CopyTrader.objects.filter(id=expert_id).first()
+        request.user.profile.save()
+        return JsonResponse({"status":"success"},safe=False)
     return render(request,"dashboard/copy.html",{"user":request.user.profile.serialize(),"experts":experts_dict})
 
 
@@ -223,7 +233,8 @@ def History(request):
             "amount":w.amount,
             "comfirmed":w.confirmed,
             "currency":w.currency,
-            "created":w.created.strftime('%m/%d/%Y')
+            "created":w.created.strftime('%m/%d/%Y'),
+            "id":w.id
         }
         for w in Withdrawal.objects.filter(user=request.user)
     ]
@@ -233,7 +244,8 @@ def History(request):
             "amount":d.amount,
             "comfirmed":d.confirmed,
             "currency":d.currency,
-            "created":d.created.strftime('%m/%d/%Y')
+            "created":d.created.strftime('%m/%d/%Y'),
+            "id":d.id
         }
         for d in Deposit.objects.filter(user=request.user)
     ]
@@ -242,3 +254,4 @@ def History(request):
         "deposits":deposits
     }
     return render(request,"dashboard/transaction-history.html",{"user":request.user.profile.serialize(),"history":history})
+

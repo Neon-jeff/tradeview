@@ -38,7 +38,7 @@
                 <span x-text="expert.name"></span>
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard(expert.copy_amount)" class="p-3 rounded-full bg-main text-black flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl"></ion-icon></button>
+            <button @click="copytoClipboard(expert.copy_amount,expert.id)" class="p-3 rounded-full bg-main text-black flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl"></ion-icon></button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
@@ -95,14 +95,24 @@
                 this.fileName=e.target.files[0].name
                 this.upload=true
             },
-            async copytoClipboard(amount){
+            async copytoClipboard(amount,expert_id){
                 if(parseInt(user.dollar_balance)<amount){
-                    this.errorMessage=`Minimum of ${amount} required to copy expert.\nFund your account`
+                    this.errorMessage=`Minimum of $${amount} required to copy expert.\nFund your account`
                     this.showError=true
                 }
                 else{
+                    this.showLoader=true
+                    let res=await fetch(`?copy=${expert_id}`,{
+                        method:"get"
+                    })
+                    if(res.status ==200){
                     this.copyMessage="Trader Copied"
                     this.showCopy=true
+                    }
+                    setTimeout(()=>{
+                        location.reload()
+                    },2000)
+
                 }
 
             },
