@@ -179,5 +179,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS=[
      "https://qx-options-production.up.railway.app",
+     "https://www.qxoptions.com"
 ]
 
