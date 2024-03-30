@@ -205,7 +205,8 @@ def CopyTrades(request):
             "profit_share":expert.profit_share,
             "image":expert.image.url,
             "copy_amount":expert.copy_amount,
-            "id":expert.id
+            "id":expert.id,
+            "followers":expert.followers
         }
         for expert in CopyTrader.objects.all()
     ]
