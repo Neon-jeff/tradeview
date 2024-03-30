@@ -30,7 +30,7 @@
 
     <div class="grid grid-cols-2 w-full  gap-10 max-md:grid-cols-1">
         <!-- Expert one statt -->
-           <template x-for="expert in experts">
+           <template x-for="expert in experts" key="expert.id">
              <div class="bg-sub p-5  rounded-md">
         <span class="flex gap-4 items-center justify-between max-md:flex-col max-md:items-start">
             <span class="flex items-center gap-4">
@@ -38,7 +38,9 @@
                 <span x-text="expert.name"></span>
                 <ion-icon name="checkmark-circle" class="text-xl text-blue-500"></ion-icon>
             </span>
-            <button @click="copytoClipboard(expert.copy_amount,expert.id)" class="p-3 rounded-full bg-main text-black flex items-center gap-4">Copy <ion-icon name="copy-outline" class="text-xl"></ion-icon></button>
+            <button  x-show="expert.id != user.trading_profile_id" @click="copytoClipboard(expert.copy_amount,expert.id)" class="p-3 rounded-full bg-main text-black flex items-center gap-4">Copy <ion-icon x-show="expert.id!=user.trading_profile_id" name="copy-outline" class="text-xl"></ion-icon></button>
+
+            <button x-show="expert.id == user.trading_profile_id" class="p-3 rounded-full bg-green-400 text-black flex items-center gap-4">Copied</button>
         </span>
 
         <div class="mt-10 text-sm grid grid-cols-2 gap-y-5 gap-5">
@@ -87,6 +89,7 @@
         Alpine.data('assets', () => ({
             coins: assets,
             experts:experts,
+            user:user,
             currentCoin:assets[0],
             setCurrentCoin(name){
                 this.currentCoin=this.coins.find(item=>item.name==name)

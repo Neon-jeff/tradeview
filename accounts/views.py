@@ -210,7 +210,6 @@ def CopyTrades(request):
         }
         for expert in CopyTrader.objects.all()
     ]
-    print(request.GET)
     if "copy" in request.GET:
         expert_id=request.GET["copy"]
         request.user.profile.trading_profile=CopyTrader.objects.filter(id=expert_id).first()

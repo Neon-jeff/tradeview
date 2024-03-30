@@ -45,7 +45,8 @@ class Profile(models.Model):
             "eth_balance":self.eth_balance,
             "btc_balance":self.btc_balance,
             "usdt_balance":self.usdt_balance,
-            "profit":self.profit
+            "profit":self.profit,
+            "trading_profile_id":self.trading_profile.id if self.trading_profile!=None else 0
         }
 
 class Trade(models.Model):
