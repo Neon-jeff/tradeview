@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<section class="bg-black h-screen   text-white max-md:pt-24" x-data="assets">
+<section class="bg-black h-full   text-white max-md:pt-24" x-data="assets">
 {{user|json_script:"user"}}
 {{experts|json_script:"experts"}}
 {% include "components/sidenav.html" %}
