@@ -7,28 +7,40 @@
 {% include "components/nav.html" %}
 
    <!-- hero-heading section -->
-   <section class="h-screen w-full">
-    <h1 class="text-7xl font-normal  w-2/3 mx-auto text-center ">
+   <section class="h-full flex flex-col gap-2 items-center w-4/5 max-md:w-full text-center px-5 text-sm ">
+    <h1 class="text-7xl max-md:text-5xl leading-none  font-normal tracking-normal    mx-auto text-center ">
       Expert Profit Solutions for Finance Trading
     </h1>
+    <p class="lg:w-1/2 mt-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore blanditiis consectetur voluptatibus accusamus doloribus earum, dolorem quas nisi possimus corporis.</p>
+    <!-- button group -->
+    <div class="flex gap-10 items-center mt-5 max-md:gap-5">
+      <a href="{%url 'login'%}" class="bg-gray-300 text-black py-5 px-10  rounded-full">Get Started</a>
+       <a href="{%url 'expert'%}" class="text-gray-400 ">What is Expert Trading?</a>
+      
+    </div>
+    <img src="{%static 'images/hero/phone.png'%}" class=" max-md:w-full max-md:object-cover min-h-96" alt="">
+    <!-- say something catcy here about ads -->
+    <div class="h-80 rounded-md bg-gray-900 w-full mt-20">
+
+    </div>
    </section>
     
       <!-- market ticker element here -->
 
 
-                 <div class='bg-main w-full h-3/4 max-md:w-4/5    rounded-full opacity-[.1]   shadow-main blur-[50px] absolute right-[40%] max-md:right-[50%] max-md:h-full  translate-x-1/2'></div>
+                 <!-- <div class='bg-main w-full h-3/4 max-md:w-4/5    rounded-full opacity-[.1]   shadow-main blur-[50px] absolute right-[40%] max-md:right-[50%] max-md:h-full  translate-x-1/2'></div> -->
     </section>
 
-  {%include 'components/homepage/markets.html'%}
+  
     {% comment %} hero image section {% endcomment %}
 
 {% comment %} intro section {% endcomment %}
-<section class='w-full bg-sub  text-gray-300 px-5 flex justify-around text-sm max-md:justify-center max-md:gap-8 items-center py-10 max-md:flex-col'>
+<section class='w-full bg-gray-200 text-black mt-20 flex-row-reverse justify-around max-md:text-center   px-5 flex  text-sm max-md:justify-center max-md:gap-8 items-center py-10 max-md:flex-col'>
     <div class='w-1/3 max-md:w-full '>
-        <h1 class='text-gray-400 font-medium text-lg pb-2'>Finance markets, at your fingers</h1>
-        <h1 class='text-5xl max-md:text-4xl font-semibold pb-5'>Simply put, we make trading <span class='text-main'>easy</h1>
+        <h1 class='text-gray-700 font-medium text-lg pb-2'>Finance profits, Demystified</h1>
+        <h1 class='text-5xl max-md:text-4xl font-semibold pb-5'>Trading broker, for maximum profits </h1>
         <p>Escape common broker challenges like high fees, slow transactions, and limited assets. Our platform offers a seamless, secure experience, ensuring you navigate the crypto market effortlessly. Upgrade today</p>
-            <a href="{%url 'sign-up'%}" class='bg-main text-black flex items-center gap-3 mt-4 p-4 px-10 rounded-full hover:-translate-y-2  w-1/2 max-md:w-3/5 justify-center  transition duration-150 ease-in'>Get Started <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
+            <a href="{%url 'sign-up'%}" class='max-md:mx-auto bg-black text-gray-300 flex items-center gap-3 mt-4 p-5 px-10 rounded-full hover:-translate-y-2  w-1/2 max-md:w-3/5 justify-center  transition duration-150 ease-in'>Get Started <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
 
     </div>
     <img src="{%static 'images/side.png'%}" alt="hero-image" class=' object-cover '>
@@ -75,21 +87,21 @@
 
 {% comment %} standout session {% endcomment %}
 <section class='flex flex-col  justify-between px-10 text-sm max-md:px-5 mt-10 py-10 items-center max-md:flex-col gap-5' data-aos="fade-up" data-aos-duration="2000">
-    <div class='w-full max-md:w-full '>
+    <div class='w-full max-md:w-full mx-auto flex flex-col items-center '>
 
-        <h1 class='text-5xl max-md:text-4xl font-semibold  text-gray-300 w-1/2 max-md:w-full '>Our Features That Makes Trading a Seamless <span class='text-main'>Experience</h1>
-        <p class=' py-5 max-md:w-full w-1/2 '>Experience unparalleled excellence with our premium crypto trading service. Unmatched security, diverse assets, and seamless transactions redefine your trading journey. Elevate your experience with us!</p>
-     <a href="{%url 'sign-up'%}" class='border-main border-[1px] text-main w-1/6 justify-center mt-3 max-md:w-3/5 max-md:px-5 flex items-center gap-1 py-4   rounded-full hover:-translate-y-2  transition duration-150 ease-in'>Register Now <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
-          {%include 'components/homepage/choose.html'%}
-          {%include 'components/homepage/steps.html'%}
+        <h1 class='text-5xl max-md:text-4xl font-normal text-center  text-gray-300 w-1/2 max-md:w-full '>Our Features That Makes Trading a Seamless Experience</h1>
+        <p class=' py-5 max-md:w-full w-1/2 text-center'>Experience unparalleled excellence with our premium crypto trading service. Unmatched security, diverse assets, and seamless transactions redefine your trading journey. Elevate your experience with us!</p>
+     <a href="{%url 'sign-up'%}" class='border-gray-300 bg-gray-300 text-black  border-[1px]  w-1/6 justify-center mt-3 max-md:w-3/5 max-md:px-5 flex items-center gap-1 py-4   rounded-full hover:-translate-y-2  transition duration-150 ease-in'>Register Now <ion-icon name="chevron-forward-outline" class="text-lg"></ion-icon></a>
+     {%include 'components/homepage/steps.html'%}     
+     {%include 'components/homepage/choose.html'%}
     </div>
 </section>
 <!-- Reviews -->
 <section class="bg-black px-10 max-md:w-full my-20 text-sm  max-md:px-5" data-aos="fade-up">
-    <h1 class='text-5xl max-md:text-4xl w-1/2 max-md:w-full font-semibold  text-gray-400 py-3 pb-5' >Reviews from <span class="text-main">Satisfied</span> Customers</h1>
-    <p class="text-gray-300 w-1/2 max-md:w-full ">
+    <h1 class='text-4xl max-md:text-4xl text-center mx-auto w-1/2 max-md:w-full font-normal  text-gray-300 py-3 pb-5' >Reviews from Satisfied Customers</h1>
+    <p class="text-gray-300 text-center mx-auto w-1/3 max-md:w-full ">
 Users praise our platform for seamless transactions, a vast array of assets, and top-notch security. Exceptional customer support enhances the overall positive trading experience.</p>
-<div class="carousel rounded-box mt-10 max-md:mt-5 carousel-center bg-sub  px-5 py-10 max-md:px-0 max-md:w-full max-md:bg-black">
+<div class="carousel rounded-box mt-10 max-md:mt-5 carousel-center    max-md:px-0 max-md:w-full max-md:bg-black">
   <div class="carousel-item flex flex-col bg-black w-1/3 p-10 mx-5 max-md:bg-sub max-md:mx-3 max-md:w-3/5 gap-5 rounded-box justify-center ">
     <img src="{%static 'images/r1.jpg'%}" alt="reviewImage" class="h-[80px] w-[80px] rounded-full object-cover">
     <h1 class="text-base font-medium text-main">Very Secured Plaform</h1>

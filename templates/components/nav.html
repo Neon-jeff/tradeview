@@ -1,6 +1,14 @@
 <nav
   class="w-full z-40 flex px-5 justify-center text-xs font-light max-md:justify-end py-10 bg-black fixed right-0 top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 text-white"
-  x-data="{open:false}"
+  x-data="{open:false,toggle(el){
+    this.open=!this.open
+    if(this.open){
+      el.children[0].setAttribute('name','close-outline')
+    }
+    else{
+      el.children[0].setAttribute('name','menu-outline')
+    }
+  }}"
   x-cloak
 >
   <!-- login and contact -->
@@ -9,9 +17,9 @@
     <a href="{%url 'login'%}" class="hover:bg-main hover:text-gray-100 transition duration-150 ease-in p-3 px-5 bg-gray-200 text-main rounded-full">Login</a>
   </ul> -->
   {% comment %} nav toggle {% endcomment %}
-  <section class="text-3xl py-6 px-5 absolute top-0 w-full">
+  <section class="text-3xl py-6 px-5 absolute top-0 w-full cursor-pointer">
     <div class="flex justify-end items-center">
-      <span @click="open=!open" class="text-4xl"
+      <span @click="toggle($el)" class="text-4xl"
         ><ion-icon name="menu-outline"></ion-icon
       ></span>
     </div>
@@ -19,17 +27,15 @@
 
   <!-- main nav -->
   <section
-    x-cloak
     class="text-xl z-50 h-screen top-0 right-0 w-screen p-10 pt-10"
     x-show="open"
-    x-transition
-    x-transition.duration.500ms
+    x-transition:enter="transition duration-1000"
+    x-transition:enter-start="transform translate-x-full"
+    x-transition:enter-end="transform translate-x-0"
+    x-transition:leave="transition duration-1000"
+    x-transition:leave-start="transform"
+    x-transition:leave-end="transform -translate-x-full"
   >
-    <div class="flex justify-end mb-20">
-      <span class="text-xl" style="font-size: 35px" span @click="open=!open"
-        ><ion-icon name="close-outline"></ion-icon
-      ></span>
-    </div>
     <ul class="flex flex-col gap-2">
       <a
         href="{%url 'home'%}"
@@ -61,7 +67,6 @@
         Markets</a
       >
 
-  
       <!-- <a
         href=""
         class="hover:bg-main p-3 rounded-md hover:scale-105 transition duration-100 ease-in"
