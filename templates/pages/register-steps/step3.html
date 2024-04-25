@@ -1,37 +1,75 @@
 <!-- Personal Details -->
 
- <div class=" flex flex-col gap-3" x-transition x-transition.duration.200ms x-show="step3">
-                <!-- progress bar full -->
-                <div class="flex flex-col text-base text-main">
+<div
+  class="flex flex-col gap-3"
+  x-transition
+  x-transition.duration.200ms
+  x-show="step3"
+>
+  <!-- progress bar full -->
+  <div class="flex flex-col text-base text-gray-200">
+    <!-- step checker -->
+    <div
+      class="radial-progress mb-2 text-gray-200 text-sm"
+      style="--value: 70; --size: 3rem; --thickness: 2px"
+      role="progressbar"
+    >
+      80%
+    </div>
+    Secure Your Account
+  </div>
+  <!-- Fieldsets Start -->
+  <fieldset class="flex flex-col gap-2">
+    <label for="first_name">Password *</label>
+    <span class="relative">
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter Password"
+        class="p-3 rounded-md w-full"
+        required
+      />
+      <span
+        @click="togglePassword($el)"
+        class="p-2 rounded-md bg-neutral-900 toggleBtn absolute top-1/2 -translate-y-1/2 text-gray-200 cursor-pointer text-xs right-3"
+        >Show</span
+      >
+    </span>
+    <span class="text-gray-500 text-xs"
+      >*passwords must be greater than 8 characters</span
+    >
+  </fieldset>
+  <fieldset class="flex flex-col gap-2">
+    <label for="last_name">Confirm Password *</label>
+    <span class="relative">
+      <input
+        type="password"
+        name="cpassword"
+        placeholder="Enter Password"
+        class="p-3 rounded-md w-full"
+        required
+      />
+      <span
+        @click="togglePassword($el)"
+        class="p-2 rounded-md bg-neutral-900 toggleBtn absolute top-1/2 -translate-y-1/2 text-gray-200 cursor-pointer text-xs right-3"
+        >Show</span
+      >
+    </span>
+  </fieldset>
 
-                    <!-- step checker -->
-                     <div class="radial-progress mb-2 text-main text-sm" style="--value:70; --size:3rem; --thickness: 2px;" role="progressbar">80%</div>
-                      Secure Your Account
-                   </div>
-                   <!-- Fieldsets Start -->
-                    <fieldset class="flex flex-col gap-2">
-                        <label for="first_name">Password *</label>
-                       <span class="relative">
-                         <input type="password" name="password" placeholder="Enter Password" class="p-3 rounded-md w-full" required>
-                         <span @click="togglePassword($el)" class="p-2 rounded-md bg-neutral-900 toggleBtn absolute top-1/2 -translate-y-1/2 text-main cursor-pointer text-xs right-3">Show</span>
-                       </span>
-                        <span class="text-blue-500 text-xs">*passwords must be greater than 8 characters</span>
+  <div class="flex gap-4 self-end mt-3">
+    <span
+      @click="moveFirst"
+      class="bg-sub px-3 py-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-gray-200"
+    >
+      <ion-icon name="chevron-back-outline"></ion-icon>
+      Back
+    </span>
 
-                    </fieldset>
-                    <fieldset class="flex flex-col gap-2">
-                        <label for="last_name">Confirm Password *</label>
-                    <span class="relative">
-                         <input type="password" name="cpassword" placeholder="Enter Password" class="p-3 rounded-md w-full" required>
-                         <span @click="togglePassword($el)" class="p-2 rounded-md bg-neutral-900 toggleBtn absolute top-1/2 -translate-y-1/2 text-main cursor-pointer text-xs right-3">Show</span>
-                       </span>
-                    </fieldset>
-
-                    <div class="flex gap-4 self-end mt-3">
-
-                    <span @click="moveFirst" class="bg-sub px-3 py-3  flex items-center gap-2 cursor-pointer justify-center rounded-full text-main ">
-                    <ion-icon name="chevron-back-outline"></ion-icon>
-                    Back </span>
-
-                    <button class="bg-main p-3  flex items-center gap-2 cursor-pointer justify-center rounded-full text-black ">Register <ion-icon name="chevron-forward-outline"></ion-icon></button>
-                    </div>
-                </div>
+    <button
+      class="bg-gray-200 p-3 flex items-center gap-2 cursor-pointer justify-center rounded-full text-black"
+    >
+      Register <ion-icon name="chevron-forward-outline"></ion-icon>
+    </button>
+  </div>
+</div>

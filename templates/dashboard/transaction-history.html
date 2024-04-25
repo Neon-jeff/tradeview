@@ -32,6 +32,7 @@
       <!-- Deposits -->
 
       <div class="history deposits" x-transition x-transition.duration.500ms>
+        <span x-if="deposits.length == 0">No Transaction History</span>
         <template x-for="d in deposits" :key="d.id">
           <div class="flex justify-between bg-gray-800 p-5 rounded-md my-5">
             <span x-text="d.currency"></span>

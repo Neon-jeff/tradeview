@@ -49,7 +49,7 @@ module.exports = {
       colors: {
         pri: "#212529",
         secondary: "#343a40",
-        main: "#28aae2",
+        main: "#e5e7eb",
         sub: "#0f151c",
         light: "#83d2c0",
       },

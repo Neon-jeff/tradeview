@@ -2,10 +2,10 @@
 
  <div class=" flex flex-col gap-3" x-transition x-transition.duration.200ms x-show="step1" >
                 <!-- progress bar full -->
-                <div class="flex flex-col text-base gap-1  text-main">
+                <div class="flex flex-col text-base gap-1 text-gray-400 ">
 
                     <!-- step checker -->
-                     <div class="radial-progress text-main" style="--value:10; --size:3rem; --thickness: 2px;" role="progressbar">20%</div>
+                     <div class="radial-progress text-gray-200" style="--value:10; --size:3rem; --thickness: 2px;" role="progressbar">20%</div>
                      Personal Details
                    </div>
                    <!-- Fieldsets Start -->
@@ -22,5 +22,5 @@
                         <input type="email" name="email" placeholder="Valid Email Address" class="p-3 rounded-md bg-neutral-900" required>
                     </fieldset>
 
-                    <span @click="step1=moveFirst" class="bg-main p-3 max-md:w-6/12  flex items-center gap-2 cursor-pointer justify-center rounded-full text-black self-end w-4/12">Add Location <ion-icon name="chevron-forward-outline"></ion-icon></span>
+                    <span @click="step1=moveFirst" class="bg-gray-200 p-3 max-md:w-6/12  flex items-center gap-2 cursor-pointer justify-center rounded-full text-black self-end w-4/12">Add Location <ion-icon name="chevron-forward-outline"></ion-icon></span>
                 </div>
