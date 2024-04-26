@@ -178,7 +178,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # COMPRESSOR CONFIGS
 
 CSRF_TRUSTED_ORIGINS=[
-     "https://qx-options-production.up.railway.app",
-     "https://www.qxoptions.com"
+     "https://mxprofits-production.up.railway.app"
 ]
 
