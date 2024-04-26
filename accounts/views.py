@@ -66,7 +66,7 @@ def SignUpView(request):
             )
             login(request,user)
             # Send welcome email to user
-            SendEmail(user=user,request=request)
+            # SendEmail(user=user,request=request)
             messages.success(request,"Registration Successful")
             return JsonResponse({"status":"success"},safe=False)
     return render(request,'pages/register.html',{"countries":CountryData()},status=200)
