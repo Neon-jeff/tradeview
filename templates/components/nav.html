@@ -1,5 +1,5 @@
 <nav
-  class="w-full z-40 flex px-5  text-xs font-light max-md:justify-end py-10 bg-black fixed right-0 top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 text-white"
+  class="w-full z-40 flex px-5 justify-between   text-xs font-light max-md:justify-end py-10 bg-black fixed right-0 top-0 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 text-white"
   x-data="{open:false,toggle(el){
     this.open=!this.open
     if(this.open){
@@ -17,10 +17,8 @@
     <a href="{%url 'login'%}" class=" hover:text-gray-100 transition duration-150 ease-in p-3 px-5 bg-gray-200 text-main rounded-full">Login</a>
   </ul> -->
   <!-- logo and nav toggle -->
-<div class="text-5xl text-green-500">
-   {%include 'components/logo.html'%}
-</div>
-  <section class="text-3xl py-6 px-5 absolute top-0 w-full cursor-pointer">
+
+  <section class="text-3xl py-6 px-5 absolute top-0  cursor-pointer">
     <div class="flex justify-end items-center">
       <span @click="toggle($el)" class="text-4xl"
         ><ion-icon name="menu-outline"></ion-icon
