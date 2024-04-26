@@ -1,12 +1,16 @@
-<footer
-  class="bg-black w-full text-sm text-white border-t-[1px] border-white"
->
+<footer class="bg-black w-full text-sm text-white border-t-[1px] border-white">
   <div
     class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"
   >
-    <div class="self-center">
+    <div class="self-center text-6xl">
       {%include 'components/logo.html'%}
+      <span class="text-sm">Contact Us</span>
       <!-- social links are here -->
+      <div class="flex items-center gap-5 mt-2  text-2xl">
+        <a href="mailto:"><ion-icon name="mail-outline"></ion-icon></a>
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-icon name="logo-instagram"></ion-icon>
+      </div>
     </div>
     <div
       class="flex-grow lg:justify-end flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"

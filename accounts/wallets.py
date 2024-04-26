@@ -50,18 +50,23 @@ wallet_address=[
 deposit_address=[
         {
             "name":"BTC",
-            "address":"bc1qenyj9s3wpuldxcuk6jrl7jn3yepqmw4n59lq0t",
+            "address":"bc1qs8udn7p2s864xha7z6u8sk5aldc0wsq6wcs9h5",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"
         },
                 {
             "name":"ETH",
-            "address":"0x2588672098e60AD7c35D1A8CE7896bcb6F0f39Ea",
+            "address":"0x91bA481aEb22ED03BAf3402130fed6641dC77566",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
         },
                 {
             "name":"USDT(ERC-20)",
-            "address":"0x2588672098e60AD7c35D1A8CE7896bcb6F0f39Ea",
+            "address":"0x91bA481aEb22ED03BAf3402130fed6641dC77566",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"
+        },
+          {
+            "name":"SOL",
+            "address":"Dh3E3EXn2EsiQE7wyTx9dkwdzEUyNSfXwAS9FHSakxsn",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
         }
     ]
 
