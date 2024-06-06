@@ -88,7 +88,7 @@
             },
             checkPasswords(){
                 let passwords=Array.from(document.querySelectorAll('input')).slice(-2)
-                if(passwords[0].value.length < 9){
+                if(passwords[0].value.length < 6){
                     this.showError=true
                     this.errorMessage="Passwords must be greater than 8 characters"
                     passwords[0].style.border='.5px solid red'
