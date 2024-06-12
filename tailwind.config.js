@@ -47,9 +47,9 @@ module.exports = {
         heroparagraph: "heroParagraph 1s ease-in",
       },
       colors: {
-        pri: "#212529",
+        primary: "#06b6d4",
         secondary: "#343a40",
-        main: "#e5e7eb",
+        main: "#2275e2",
         sub: "#0f151c",
         light: "#83d2c0",
       },

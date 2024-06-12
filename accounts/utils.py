@@ -11,15 +11,15 @@ import requests
 sender=settings.EMAIL_USER
 auth=settings.EMAIL_AUTH
 
-def SendEmail(user,request):
+def SendEmail(user,otp):
 
     recipient = f'{user.email}'
 
 # Create message
     msg = MIMEMultipart("alternative")
-    email_template=render_to_string('pages/index.html',{'user':user,'request':request.get_host()})
+    email_template=render_to_string('pages/index.html',{'user':user,'otp':otp})
     # text="Hi, welcome to nello"
-    msg['Subject'] = f"Welcome to QX options – A Trusted Trading Journey"
+    msg['Subject'] = f"Verify your trade view account"
     msg['From'] = sender
     msg['To'] = recipient
     part2 = MIMEText(email_template, 'html')

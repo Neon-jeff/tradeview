@@ -7,8 +7,8 @@
   x-show="step2"
 >
   <!-- progress bar full -->
-  <div class="flex flex-col text-base text-gray-400">
-    <!-- step checker -->
+  <!-- <div class="flex flex-col text-base text-gray-400">
+    step checker
     <div
       class="radial-progress mb-2 text-gray-200 text-sm"
       style="--value: 50; --size: 3rem; --thickness: 2px"
@@ -17,40 +17,69 @@
       50%
     </div>
     Contact Details
-  </div>
+  </div> -->
   <!-- Fieldsets Start -->
 
-  <fieldset class="flex gap-2 flex-col">
+  <fieldset class="flex gap-2 flex-col" x-data="{show:false}">
     <label for="email">Select Country</label>
+    <span
+      :value="currentCountry.name"
+      class="flex items-center relative gap-5 mt-3 border border-white p-3 rounded-md"
+      @click="show=!show"
+      ><img :src="currentCountry.flag" alt="" />
+      <span x-text="currentCountry.name"></span>
+      <ion-icon
+        name="chevron-down-outline"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-base text-white"
+      ></ion-icon>
+    </span>
+    <span
+      x-show="show"
+      title="name"
+      class="p-3 w-full rounded-md bg-sub h-56 relative overflow-auto"
+      x-cloak
+    >
+      <!-- <span class="py-5 fixed top-0 left-0 right-0 bg-sub px-5">close</span> -->
+      <template x-for="country in allCountries">
+        <span
+          :value="country.name"
+          class="flex items-center gap-5 mt-5 cursor-pointer"
+          @click="setCurrentCountry($el); show=!show"
+          ><img :src="country.flag" alt="" /> <span x-text="country.name"></span
+        ></span>
+      </template>
+    </span>
+  </fieldset>
+  <fieldset class="flex gap-2 flex-col">
+    <label for="email">Select State</label>
 
     <select
       title="name"
-      class="p-3 w-full rounded-md bg-neutral-900"
-      name="country"
+      class="p-3 w-full rounded-md border border-white bg-transparent"
+      name="state"
     >
-      {% for country in countries %}
-      <option value="{{ country.name }}">{{ country.name }}</option>
-      {% endfor %}
+      <template x-for="state in currentCountry.states">
+        <option :value="state" x-text="state" class="bg-sub"></option>
+      </template>
     </select>
   </fieldset>
-
   <fieldset class="flex flex-col gap-2">
     <label for="address">Address *</label>
     <input
       type="text"
       name="address"
       placeholder="Enter Your Address"
-      class="p-3 rounded-md bg-neutral-900"
+      class="p-3 rounded-md bg-transparent border border-white"
       required
     />
   </fieldset>
 
   <fieldset class="flex gap-2 flex-col">
     <label for="">Phone *</label>
-    <span class="flex rounded-md bg-neutral-900">
-      <select class="p-3 w-1/4 rounded-md bg-neutral-900" name="phone_code">
+    <span class="flex rounded-md bg-transparent border border-white">
+      <select class="p-3 w-1/4 rounded-md bg-transparent" name="phone_code">
         {% for country in countries %}
-        <option value="{{ country.phone_code }}">
+        <option value="{{ country.phone_code }}" class="bg-sub">
           {{country.name}} {{ country.phone_code }}
         </option>
         {% endfor %}
@@ -58,7 +87,7 @@
       <input
         type="tel"
         name="phone"
-        class="p-3 bg-neutral-900 rounded-md w-full active:border-[1px]"
+        class="p-3 bg-transparent border border-white rounded-md w-full active:border-[1px]"
         placeholder="Phone number"
         required
       />
@@ -70,16 +99,16 @@
     <select
       name="currency"
       id=""
-      class="p-3 w-full rounded-md bg-neutral-900"
+      class="p-3 w-full rounded-md bg-transparent border border-white"
       required
     >
-      <option value="CAD">CAD</option>
-      <option value="USD">USD</option>
-      <option value="GBP">GBP</option>
-      <option value="AUD">AUD</option>
-      <option value="BRL">BRL</option>
-      <option value="ZAR">ZAR</option>
-      <option value="PHP">PHP</option>
+      <option class="bg-sub" value="CAD">CAD</option>
+      <option class="bg-sub" value="USD">USD</option>
+      <option class="bg-sub" value="GBP">GBP</option>
+      <option class="bg-sub" value="AUD">AUD</option>
+      <option class="bg-sub" value="BRL">BRL</option>
+      <option class="bg-sub" value="ZAR">ZAR</option>
+      <option class="bg-sub" value="PHP">PHP</option>
     </select>
   </fieldset>
 

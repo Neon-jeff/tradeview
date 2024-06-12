@@ -26,15 +26,15 @@
 <h1 class="text-2xl font-medium">Trade Assets</h1>
 {% comment %} main container {% endcomment %}
 
-<div class='flex  gap-10 max-md:flex-col pt-10 h-full'>
-
+<div class='flex  gap-10 max-md:flex-col pt-10  mb-10'>
+<!-- trading form -->
 {%include 'dashboard/trading-form.html'%}
-
-
-<!-- trade history -->
-{%include 'dashboard/trading-history.html'%}
+<!-- trading widget -->
+ {%include 'dashboard/trading-widget.html'%}
 
 </div>
+<!-- trade history -->
+{%include 'dashboard/trading-history.html'%}
 {% comment %} main end {% endcomment %}
 
 

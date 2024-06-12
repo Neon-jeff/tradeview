@@ -1,11 +1,12 @@
 {% extends "base.html" %} {% block content %}
 
 <section
-  class="h-[100vh] bg-black text-gray-300 text-sm max-md:px-10 flex justify-center items-center"
+  class="h-[100vh] bg-gradient-to-tr from-black to-main text-sm max-md:px-10 flex text-black justify-center items-center"
 >
   {% include "components/nav.html" %}
+    {% include "components/alerts.html" %}
   <section
-    class="bg-sub animate-slide flex flex-col gap-2 items-center w-1/2 max-md:w-full p-10 rounded-md"
+    class="bg-white  flex flex-col gap-2 items-center w-1/2 max-md:w-full p-10 rounded-md"
   >
     <!-- verify icon success -->
     <!-- <lord-icon
@@ -17,28 +18,37 @@
       style="width: 50px; height: 50px"
    >
     </lord-icon> -->
-    <div class="text-center">
+    <!-- <div class="text-center">
       <div
-        class="radial-progress text-gray-200"
+        class="radial-progress "
         style="--value: 100; --size: 4rem; --thickness: 2px"
         role="progressbar"
       >
         100%
-      </div>
+      </div> -->
 
-      <h1 class="text-gray-400 text-xl font-medium py-2">
-        Registration Complete
+      <h1 class=" text-xl font-medium  py-2 flex items-end gap-2">
+     Verify Your Email
       </h1>
-      <p>check your inbox to verify your email</p>
+      <input type="text" inputmode="numeric" class="border border-main rounded-md p-3 bg-transparent">
+      <p>enter the 6 digit otp sent to your inbox</p>
     </div>
 
-    <div class="text-gray-500 mt-10 flex gap-2 items-center flex-col">
-      <span>Done Verifying?</span>
-      <a href="{%url 'login'%}" class="bg-gray-200 text-black p-3 rounded-full"
-        >Proceed to dashboard</a
+    <div class=" mt-10 flex gap-2 items-center flex-col">
+      <a href="" class="bg-main text-white p-3 px-5 rounded-full otp"
+        >Verify Email</a
       >
+       <!-- <span>Done Verifying?</span> -->
     </div>
   </section>
+  <script>
+    let input=document.querySelector('input')
+    let link=document.querySelector('.otp')
+    input.addEventListener('input',(e)=>{
+      console.log(link);
+      link.href=`?otp=${e.target.value}`
+    })
+  </script>
 </section>
 
 {% endblock content %}

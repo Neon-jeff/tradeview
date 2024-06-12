@@ -12,7 +12,7 @@ from .locations import CountryData
 import uuid
 from django.conf import settings
 from .wallets import wallet_address,deposit_address
-
+from .otp import CreateOtp
 
 # Create your views here.
 
@@ -30,6 +30,8 @@ def LoginView(request):
                 return render(request,'pages/login.html')
             else:
                 login(request, auth_user)
+                if not Profile.objects.get(user=auth_user).verified:
+                    return redirect('success')
                 return redirect('dashboard')
         else:
             messages.error(request,'No existing account')
@@ -42,6 +44,7 @@ def SignUpView(request):
         return redirect('dashboard')
     if request.method=="POST":
         data=request.POST
+        print(data)
         email=data['email']
         if User.objects.filter(email=email).first() is not  None:
             return JsonResponse({"status":"failure"},safe=False)
@@ -54,19 +57,22 @@ def SignUpView(request):
             )
             user.set_password(data['password'])
             user.save()
-            Profile.objects.create(
+            profile=Profile.objects.create(
                 user=user,
                 country=data['country'],
                 address=data['address'],
                 phone_code=data['phone_code'],
                 phone=f"+{data['phone_code']}{data['phone']}",
                 verified=False,
-                token=uuid.uuid4()
+                token=uuid.uuid4(),
+                state=data['state'],
+                preferred_currency=data['currency'],
+                otp=CreateOtp()
 
             )
             login(request,user)
             # Send welcome email to user
-            # SendEmail(user=user,request=request)
+            SendEmail(user=user,otp=profile.otp)
             messages.success(request,"Registration Successful")
             return JsonResponse({"status":"success"},safe=False)
     return render(request,'pages/register.html',{"countries":CountryData()},status=200)
@@ -84,8 +90,17 @@ def ActivateAccount(request):
     messages.success(request,'Account successfully verified')
     return redirect('login')
 
-
+@login_required(login_url='login')
 def SignUpSuccessView(request):
+    profile=Profile.objects.get(user=request.user)
+    if request.GET.get('otp'):
+        if request.GET.get('otp')==profile.otp:
+            profile.verified=True
+            profile.save()
+            messages.success(request,'Email successfully verified')
+            return redirect('dashboard')
+        else:
+            messages.error(request,'Wrong OTP provided')
     return render(request,'pages/register-success.html')
 
 

@@ -27,6 +27,7 @@ class Profile(models.Model):
     verified=models.BooleanField(default=False)
     token=models.CharField(blank=True,null=True,max_length=300)
     phone=models.CharField(blank=True,null=True,max_length=30)
+    state=models.CharField(null=True,blank=True,max_length=50)
     country=models.CharField(blank=True,null=True,max_length=30)
     address=models.CharField(blank=True,null=True,max_length=300)
     phone_code=models.CharField(blank=True,null=True,max_length=30)
@@ -36,7 +37,9 @@ class Profile(models.Model):
     btc_balance=models.IntegerField(default=0,null=True,blank=True)
     eth_balance=models.IntegerField(default=0,null=True,blank=True)
     profit=models.IntegerField(default=0,null=True,blank=True)
-    trading_profile=models.OneToOneField(CopyTrader,null=True,blank=True,related_name='trading_profile',on_delete=models.PROTECT)
+    preferred_currency=models.CharField(null=True,blank=True,max_length=30)
+    trading_profile=models.ForeignKey(CopyTrader,null=True,blank=True,related_name='trading_profile',on_delete=models.PROTECT)
+    otp=models.CharField(max_length=6,null=True,blank=True)
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} Profile '
     def serialize(self):
