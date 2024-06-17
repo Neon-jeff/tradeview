@@ -13,6 +13,7 @@ import uuid
 from django.conf import settings
 from .wallets import wallet_address,deposit_address
 from .otp import CreateOtp
+from .decorators import ensure_email_verified
 
 # Create your views here.
 
@@ -109,7 +110,17 @@ def Logout(request):
     logout(request)
     return redirect('login')
 
+
 @login_required(login_url='login')
+def ResendOTP(request):
+    user:User=request.user
+    profile:Profile=Profile.objects.get(user=user)
+    SendEmail(user,profile.otp)
+    messages.success(request,'Email resent, check inbox')
+    return redirect('success')
+
+@login_required(login_url='login')
+@ensure_email_verified
 def Dashboard(request):
     user_profile=Profile.objects.filter(user=request.user).first()
     user_json=user_profile.serialize()
