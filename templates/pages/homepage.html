@@ -1,0 +1,84 @@
+{%extends 'base.html'%} {%block content%}
+
+<section class="bg-cyan-50 text-neutral-900">
+  {%include 'components/nav.html'%}
+  <!-- header section -->
+  <section
+    class="min-h-screen max-md:pt-36 pt-16 text-neutral-900 gap-20 mx-auto p-10 max-md:p-5 w-4/5 max-md:w-11/12 max-md:gap-10 flex max-md:flex-col items-center"
+  >
+    <div class="w-1/2 max-md:w-full">
+      <h1 class="text-5xl max-md:text-3xl pb-5 font-medium">
+        Trade with pro experts, earn faster
+      </h1>
+      <p class="text-lg">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, fuga?
+      </p>
+
+      <a
+        href="{%url 'sign-up'%}"
+        class="bg-cyan-600 text-white px-5 py-3 rounded-full mt-10 w-fit block"
+        >Join us now <i class="ri-arrow-right-up-line"></i
+      ></a>
+    </div>
+    <!-- image section card -->
+    <div class="w-1/2 max-md:w-full">
+      <div class="flex justify-end items-end rounded-md">
+        <img
+          src="https://img.freepik.com/free-psd/3d-cryptocurrency-icon-bitcoin-illustration_629802-4.jpg?t=st=1719530515~exp=1719534115~hmac=4fee07914fc2aa85198aabe5470fe550fbc7af0078be3e10eb54412bfaffc02e&w=740"
+          alt=""
+          class="mix-blend-multiply scale-125"
+        />
+      </div>
+    </div>
+  </section>
+  <!-- header section ends -->
+
+  <!-- rating and intro section -->
+  <section class="bg-white p-10 max-md:px-5 pt-20">
+    <h1 class="text-3xl max-md:text-2xl font-medium text-center">
+      Our growing numbers tells our story
+    </h1>
+    <!-- rating container -->
+    <div
+      class="w-3/5 max-md:w-full mx-auto flex max-sm:flex-col max-sm:gap-5 gap-10 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:rounded-xl *:max-sm:p-3 *:max-sm:border *:max-sm:border-neutral-200"
+    >
+      <div class="flex flex-col gap-3">
+        <span class="text-4xl max-sm:text-2xl ma font-semibold">27K</span>
+        <span>Registered Users</span>
+      </div>
+      <div class="flex flex-col gap-3 pl-5">
+        <span class="text-4xl max-sm:text-2xl ma font-semibold">190+</span>
+        <span>Countries supported worldwide</span>
+      </div>
+      <div class="flex flex-col gap-3 pl-5">
+        <span class="text-4xl max-sm:text-2xl ma font-semibold">10+</span>
+        <span>Trading Currencies</span>
+      </div>
+    </div>
+    <!-- rating ends -->
+    <!-- intro container -->
+    <div class="flex mt-10 items-center max-md:flex-col max-md:gap-10">
+      <img
+        src="/static/images/threed.webp"
+        class="mix-blend-multiply w-1/2 object-contain scale-75"
+        alt=""
+      />
+      <div>
+        <h1 class="text-3xl max-md:text-2xl font-medium mb-5">
+          Begin in simple steps
+        </h1>
+        <div>
+          <span
+            class="w-10 h-10 flex rounded-full items-center justify-center border border-cyan-600"
+            >1</span
+          >
+          <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+        </div>
+      </div>
+    </div>
+    <!-- intro container ends -->
+  </section>
+  <!-- intro and rating ends -->
+</section>
+
+{%endblock%}
