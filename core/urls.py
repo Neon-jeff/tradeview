@@ -19,11 +19,12 @@ from django.urls import path,include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
+from .views import HomePage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('',TemplateView.as_view(template_name='pages/homepage.html'),name='home'),
+    path('',HomePage,name='home'),
     path('about/',TemplateView.as_view(template_name='pages/about-us.html'),name='about'),
     path('markets/',TemplateView.as_view(template_name='pages/markets.html'),name='market'),
     path('expert/',TemplateView.as_view(template_name='pages/expert.html'),name='expert'),

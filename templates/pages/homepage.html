@@ -1,13 +1,14 @@
 {%extends 'base.html'%} {%block content%}
 
-<section class="bg-cyan-50 text-neutral-900">
-  {%include 'components/nav.html'%}
+<section class="bg-cyan-50 text-neutral-900" x-data="home">
+  {{crypto|json_script:'crypto'}} {{forex|json_script:'forex'}}
+  {{stocks|json_script:'stocks'}} {%include 'components/nav.html'%}
   <!-- header section -->
   <section
     class="min-h-screen max-md:pt-36 pt-16 text-neutral-900 gap-20 mx-auto p-10 max-md:p-5 w-4/5 max-md:w-11/12 max-md:gap-10 flex max-md:flex-col items-center"
   >
     <div class="w-1/2 max-md:w-full">
-      <h1 class="text-5xl max-md:text-3xl pb-5 font-medium">
+      <h1 class="text-5xl max-md:text-4xl pb-5 font-semibold">
         Trade with pro experts, earn faster
       </h1>
       <p class="text-lg">
@@ -24,7 +25,7 @@
     <div class="w-1/2 max-md:w-full">
       <div class="flex justify-end items-end rounded-md">
         <img
-          src="https://img.freepik.com/free-psd/3d-cryptocurrency-icon-bitcoin-illustration_629802-4.jpg?t=st=1719530515~exp=1719534115~hmac=4fee07914fc2aa85198aabe5470fe550fbc7af0078be3e10eb54412bfaffc02e&w=740"
+          src="/static/images/hero.png"
           alt=""
           class="mix-blend-multiply scale-125"
         />
@@ -35,64 +36,176 @@
 
   <!-- rating and intro section -->
   <section class="bg-white p-10 max-md:px-5 pt-20">
-    <h1 class="text-3xl max-md:text-2xl font-medium text-center">
+    <h1 class="text-3xl font-semibold text-center">
       Our growing numbers tells our story
     </h1>
     <!-- rating container -->
     <div
-      class="w-3/5 max-md:w-full mx-auto flex max-sm:flex-col max-sm:gap-5 gap-10 justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:rounded-xl *:max-sm:p-3 *:max-sm:border *:max-sm:border-neutral-200"
+      class="w-3/5 max-md:w-full mx-auto flex max-sm:flex-col max-sm:gap-8 gap-10 max-md:items-center justify-between divide-x-2 mt-10 divide-neutral-200 max-sm:divide-x-0 *:max-sm:p-0"
     >
-      <div class="flex flex-col gap-3">
-        <span class="text-4xl max-sm:text-2xl ma font-semibold">27K</span>
+      <div
+        class="flex flex-col gap-3 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-cyan-600"
+          >27K</span
+        >
         <span>Registered Users</span>
       </div>
-      <div class="flex flex-col gap-3 pl-5">
-        <span class="text-4xl max-sm:text-2xl ma font-semibold">190+</span>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-cyan-600"
+          >190+</span
+        >
         <span>Countries supported worldwide</span>
       </div>
-      <div class="flex flex-col gap-3 pl-5">
-        <span class="text-4xl max-sm:text-2xl ma font-semibold">10+</span>
+      <div
+        class="flex flex-col gap-3 pl-5 max-md:p-0 max-md:items-center max-md:text-center"
+      >
+        <span class="text-4xl max-sm:text-3xl ma font-bold text-cyan-600"
+          >10+</span
+        >
         <span>Trading Currencies</span>
       </div>
     </div>
     <!-- rating ends -->
     <!-- intro container -->
-    <div class="flex mt-10 items-center max-md:flex-col max-md:gap-10">
+    <div
+      class="flex mt-20 items-center justify-center gap-20 max-md:flex-col max-md:gap-20"
+    >
       <img
-        src="/static/images/threed.webp"
-        class="mix-blend-multiply w-1/2 max-md:w-11/12 object-contain scale-90 max-md:scale-110"
+        src="https://img.freepik.com/free-psd/close-up-plastic-hands-holding-device_23-2149182073.jpg?w=740&t=st=1720057080~exp=1720057680~hmac=98f390cdda1724c599152b1e5741b8cf6ed4836e9cac93c0c0ecae34629bff94"
+        class="mix-blend-multiply w-1/2 max-md:w-11/12 object-cover rounded-xl scale-90 max-md:scale-110"
         alt=""
       />
       <div class="flex flex-col gap-5">
-        <h1 class="text-3xl max-md:text-2xl font-medium mb-5">
+        <h1 class="text-3xl max-md:text-center font-semibold">
           Begin in simple steps
         </h1>
-        <div class="p-5 rounded-xl bg-cyan-50">
+        <div class="p-5 rounded-xl border border-neutral-200">
           <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center border border-cyan-600"
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-cyan-600 font-bold border border-cyan-600"
             >1</span
           >
           <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
         </div>
-        <div class="p-5 rounded-xl bg-cyan-50">
+        <div class="p-5 rounded-xl border border-neutral-200">
           <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center border border-cyan-600"
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-cyan-600 font-bold border border-cyan-600"
             >2</span
           >
           <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
         </div>
-        <div class="p-5 rounded-xl bg-cyan-50">
+        <div class="p-5 rounded-xl border border-neutral-200">
           <span
-            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center border border-cyan-600"
+            class="w-10 h-10 flex rounded-full items-center mb-3 justify-center text-cyan-600 font-bold border border-cyan-600"
             >3</span
           >
           <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
         </div>
+        <a
+          href="{%url 'sign-up'%}"
+          class="bg-cyan-600 text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
+          >Join us now <i class="ri-arrow-right-up-line"></i
+        ></a>
       </div>
     </div>
     <!-- intro container ends -->
   </section>
   <!-- intro and rating ends -->
+
+  <!-- buy crypto container -->
+  <div class="bg-white px-10 max-md:px-5">
+    <h1 class="text-center text-3xl font-semibold">
+      Build your trading portfolio
+    </h1>
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
+      <template x-for="coin in crypto">
+        <div
+          class="flex items-center gap-4 border p-3 border-neutral-200 bg-white rounded-full"
+        >
+          <img
+            :src="coin.image"
+            class="h-10 w-10 rounded-full object-cover"
+            alt=""
+          />
+          <span x-text="coin.name"></span>
+        </div>
+      </template>
+    </div>
+    <a
+      href="{%url 'sign-up'%}"
+      class="bg-cyan-600 text-white px-5 py-3 rounded-full mt-5 w-fit block mx-auto"
+      >Start Trading Crypto<i class="ri-arrow-right-up-line"></i
+    ></a>
+  </div>
+
+  <!-- forex currency -->
+
+  <div class="bg-white px-10 py-14 max-md:px-5">
+    <h1 class="text-center text-3xl font-semibold">
+      Currency and stock trading options
+    </h1>
+    <div class="grid lg:grid-cols-5 grid-cols-2 gap-5 mt-10">
+      <template x-for="currency in forex">
+        <div
+          class="flex flex-col items-center gap-4 border p-3 border-neutral-200 bg-white rounded-xl"
+        >
+          <img
+            :src="location.origin + '/static/images/forex/'+currency.image"
+            class="h-10 w-10 rounded-full object-cover"
+            alt=""
+          />
+          <span x-text="currency.currency"></span>
+          <span x-text="currency.rate" class="font-bold text-cyan-600"></span>
+        </div>
+      </template>
+    </div>
+    <a
+      href="{%url 'sign-up'%}"
+      class="bg-cyan-600 text-white px-5 py-3 rounded-full mt-5 w-fit mx-auto block"
+      >Market Trends<i class="ri-arrow-right-up-line"></i
+    ></a>
+  </div>
+  <!-- markets end -->
+
+  <!-- copy trader explained -->
+  <div class="mt-10 px-10 max-md:px-5">
+    <h1 class="text-center text-3xl font-semibold">
+      Increase trading confidence
+    </h1>
+    <div class="flex gap-10 max-sm:flex-col">
+      <div class="flex flex-col gap-10">
+        <h1 class="text-4xl font-semibold">Copy Trading</h1>
+        <span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+          accusamus doloremque voluptatibus aspernatur ab assumenda commodi.
+          Aspernatur et qui quaerat!
+        </span>
+      </div>
+
+      <div class="flex flex-col gap-10">
+        <h1 class="text-4xl font-semibold">Copy Trading</h1>
+        <span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+          accusamus doloremque voluptatibus aspernatur ab assumenda commodi.
+          Aspernatur et qui quaerat!
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("alpine:init", () => {
+      const crypto = JSON.parse(document.getElementById("crypto").textContent);
+      const forex = JSON.parse(document.getElementById("forex").textContent);
+      console.log(forex);
+      Alpine.data("home", () => ({
+        crypto: crypto.slice(0, 15),
+        forex: forex.slice(0, 10),
+      }));
+    });
+  </script>
 </section>
 
 {%endblock%}

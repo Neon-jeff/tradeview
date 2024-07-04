@@ -10,7 +10,7 @@ environ.Env().read_env()
 # Series of constants i'm using in as helpers
 
 
-print(image_list)
+
 # api key
 api_key=env('RAPID_API_KEY')
 
