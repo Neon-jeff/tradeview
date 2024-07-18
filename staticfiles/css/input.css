@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 html{
-    font-family: "Work Sans", sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: black;
+
+}
+
+iframe{
+    border: none !important;
 }
 *{
     margin: 0;
@@ -18,9 +25,42 @@ input{
 }
 
 input:focus{
-    outline: solid 1px #2cbca5;
+    outline: solid 1px #94d8ff;
+    border: none;
+    border-color: transparent;
 }
 
 .blue-text{
     display: none;
+}
+
+.tv-embed-widget-wrapper__body{
+    border: none;
+}
+
+html.theme-dark .tv-embed-widget-wrapper__body{
+    background: black;
+}
+
+[x-cloak] { display: none !important; }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
