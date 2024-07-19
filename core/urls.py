@@ -19,7 +19,7 @@ from django.urls import path,include
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import HomePage
+from .views import HomePage,NewHome
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +28,8 @@ urlpatterns = [
     path('about/',TemplateView.as_view(template_name='pages/about-us.html'),name='about'),
     path('markets/',TemplateView.as_view(template_name='pages/markets.html'),name='market'),
     path('expert/',TemplateView.as_view(template_name='pages/expert.html'),name='expert'),
-    path('accounts/',include('accounts.urls'))
+    path('accounts/',include('accounts.urls')),
+    path('home',NewHome,name='new-home')
 ]
 
 
