@@ -180,6 +180,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS=[
    "https://tradeview-production.up.railway.app",
    'https://mxstocks.up.railway.app',
-   'www.mxstocks.com'
+   'https://www.mxstocks.com'
 ]
 
