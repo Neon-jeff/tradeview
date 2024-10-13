@@ -50,24 +50,45 @@ wallet_address=[
 deposit_address=[
         {
             "name":"BTC",
-            "address":"36HnZrNsYJS6A74eHCHw9SDeCr8ELTwZ4v",
+            "address":"1HwnjsTDGZJxJiiP9T35XHcbk21vgTvWxZ",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"
         },
                 {
             "name":"ETH(ERC-20)",
-            "address":"0xa15218d9bcf6f02fc2e28d9838bdadf61cc33e1f",
+            "address":"0x11551302f688a17d807fd8117c785c145c408e93",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png"
         },
                 {
             "name":"USDT(TRC-20)",
-            "address":"TAtQkAYx16zXquijS8quPYoxXhgDTbk7Sj",
+            "address":"TXveL3KCf1mprc5pJuYBaptjD6VdR78det",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"
         },
           {
             "name":"SOL",
-            "address":" 9fqgBSE1w1nJjF6iTYsFhsW9Z6fTutRARYypY6AS6qFV",
+            "address":" E42ngLiUSKHiZjCjtDtuzKvXc4XWxBCBMDkD4bbWcoXX",
             "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png"
-        }
+        },
+        {
+            "name":"BNB (BEP20)",
+            "address":"0x11551302f688a17d807fd8117c785c145c408e93",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png"
+        },
+        {
+            "name":"TRX",
+            "address":"TXveL3KCf1mprc5pJuYBaptjD6VdR78det",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png"
+        },
+        {
+            "name":"BEERCOIN",
+            "address":"E42ngLiUSKHiZjCjtDtuzKvXc4XWxBCBMDkD4bbWcoXX",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/31337.png"
+        },
+        {
+            "name":"USDT (ERC20)",
+            "address":"0x11551302f688a17d807fd8117c785c145c408e93",
+            "image":"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png"
+        },
+        
     ]
 
 
